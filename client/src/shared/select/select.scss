@@ -1,0 +1,5 @@
+@use "../../laoyout/_themes/global" as global;
+
+.select{
+  @include global.themify("select");
+}

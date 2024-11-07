@@ -1,0 +1,61 @@
+@use "variables";
+
+$select: (
+        background: variables.$select-background,
+        color: variables.$select-color,
+        width: variables.$select-width,
+        height: variables.$select-height,
+        font-size: variables.$select-font-size,
+        cursor: variables.$select-cursor,
+        display: variables.$select-display,
+        position: variables.$select-position,
+);
+
+$select-hover: ();
+
+$nav: (
+        background-image: variables.$nav-background-image,
+        height: variables.$nav-height,
+        display: variables.$nav-display,
+        justify-content: variables.$nav-justify-content,
+        align-items: variables.$nav-align-items,
+        border-bottom: variables.$nav-border-bottom,
+);
+
+$nav-horizontal: (
+        flex-direction: variables.$nav-horizontal,
+);
+
+$nav-vertical: (
+        flex-direction: variables.$nav-vertical,
+);
+
+$nav-section: (
+        background: variables.$nav-section-background,
+        display: variables.$nav-section-display,
+        gap: variables.$nav-section-gap,
+        align-items: variables.$nav-section-align-items,
+);
+
+$nav-section-right: (
+
+);
+
+$nav-section-left: (
+
+);
+
+$nav-link: (
+        white-space: variables.$nav-link-white-spaces,
+        text-decoration: variables.$nav-link-text-decoration,
+        color: variables.$nav-link-color,
+);
+
+$nav-link-hover: ();
+
+$nav-link-visited: ();
+
+$nav-link-active: ();
+
+$nav-link-active-hover: ();
+

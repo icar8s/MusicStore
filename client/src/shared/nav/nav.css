@@ -1,0 +1,27 @@
+.nav.Basic-theme, .Basic-theme .nav {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.0588235294), rgba(0, 0, 0, 0.1215686275));
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+.nav[data-orientation=horizontal].Basic-theme, .Basic-theme .nav[data-orientation=horizontal] {
+  flex-direction: row;
+}
+.nav[data-orientation=vertical].Basic-theme, .Basic-theme .nav[data-orientation=vertical] {
+  flex-direction: column;
+}
+.nav .section.Basic-theme, .Basic-theme .nav .section {
+  background: transparent;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.nav .section .nav-link.Basic-theme, .Basic-theme .nav .section .nav-link {
+  white-space: nowrap;
+  text-decoration: none;
+  color: #010101;
+}
+
+/*# sourceMappingURL=nav.css.map */

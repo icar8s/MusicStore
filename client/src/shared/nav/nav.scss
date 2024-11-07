@@ -1,0 +1,48 @@
+@use "../../laoyout/_themes/global" as global;
+
+.nav {
+  @include global.themify("nav");
+
+  &[data-orientation="horizontal"] {
+    @include global.themify("nav-horizontal");
+  }
+
+  &[data-orientation="vertical"] {
+    @include global.themify("nav-vertical");
+  }
+
+  .section {
+    @include global.themify("nav-section");
+
+    .nav-link {
+      @include global.themify("nav-link");
+
+      &.active {
+
+        @include global.themify("nav-link-active");
+
+        &:hover {
+
+          @include global.themify("nav-link-active-hover");
+        }
+      }
+
+      &:visited {
+        @include global.themify("nav-link-visited");
+      }
+
+      &:hover {
+        @include global.themify("nav-link-hover");
+      }
+    }
+
+    &[data-alignment="left"] {
+      @include global.themify("nav-section-left");
+    }
+
+    &[data-alignment="right"] {
+      @include global.themify("nav-section-right");
+    }
+  }
+}
+
