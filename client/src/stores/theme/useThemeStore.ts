@@ -1,8 +1,6 @@
 import {definedThemes} from "../../laoyout/_themes/themify.ts";
 import {create} from "zustand";
 
-//all actions must have type
-//define action type
 type SetThemeAction = {
     type: "SET_THEME";
     theme: definedThemes;
