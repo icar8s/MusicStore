@@ -2,6 +2,7 @@ import {Nav} from "../../shared/nav/Nav.tsx";
 import {NavLink} from "react-router-dom";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
 import {ThemeSelector} from "../ThemeSelector/ThemeSelector.tsx";
+import {ProtectedContent} from "../../misc/Protected.tsx";
 
 export const NavigationNav = () => {
     const {selectedTheme} = useThemeStore();
@@ -16,6 +17,22 @@ export const NavigationNav = () => {
 
                 Home
             </NavLink>
+            <ProtectedContent scope={["admin", "moderator"]}>
+                <NavLink
+                    className={`${selectedTheme}-theme nav-link`}
+                    to={""}>
+
+                    Admin Panel
+                </NavLink>
+            </ProtectedContent>
+            <ProtectedContent scope={"admin"}>
+                <NavLink
+                    className={`${selectedTheme}-theme nav-link`}
+                    to={""}>
+
+                    Moderation Panel
+                </NavLink>
+            </ProtectedContent>
             <NavLink
                 className={`${selectedTheme}-theme nav-link`}
                 to={""}>
