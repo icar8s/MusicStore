@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
       image: postgres:latest
@@ -29,6 +27,44 @@ services:
       - "10002:10002"
     volumes:
       - azurite_data:/data
+  
+  musicstore:
+    build:
+      context: ./server
+      dockerfile: ./MusicStore/Dockerfile
+    container_name: masterMusic
+    ports:
+      - "3001:80"
+    depends_on:
+      - postgres
+      - redis
+      - azurite
+      - identityservice
+  
+  gamesshop:
+    build:
+      context: ./server
+      dockerfile: ./GamerShop/Dockerfile
+    container_name: masterGames
+    ports:
+      - "3002:80"
+    depends_on:
+      - postgres
+      - redis
+      - azurite
+      - identityservice
+  
+  identityservice:
+    build:
+      context: ./server
+      dockerfile: ./IdentityServer/Dockerfile
+    container_name: masterIdentity
+    ports:
+      - "3003:80"
+    depends_on:
+      - postgres
+      - redis
+      - azurite
 
   client:
     build:
