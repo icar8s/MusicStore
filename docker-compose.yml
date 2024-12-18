@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  postgres:
+      image: postgres:latest
+      container_name: masterDb
+      environment:
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: admin
+        POSTGRES_DB: masterDb
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      ports:
+        - "5432:5432"
+
+  redis:
+    image: redis:latest
+    container_name: masterRedis
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+  
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: masterAzurite
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    volumes:
+      - azurite_data:/data
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: masterClient
+    ports:
+      - "3000:80" 
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - postgres
+      - redis
+      - azurite
+  
+volumes:
+  postgres_data:
+  azurite_data:
