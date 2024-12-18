@@ -2,4 +2,8 @@
 
 .select{
   @include global.themify("select");
+
+  &:hover{
+    @include global.themify("select-hover");
+  }
 }

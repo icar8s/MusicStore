@@ -1,0 +1,11 @@
+.products-wrapper.Basic-theme, .Basic-theme .products-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.products-wrapper .products-container.Basic-theme, .Basic-theme .products-wrapper .products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/*# sourceMappingURL=products.css.map */

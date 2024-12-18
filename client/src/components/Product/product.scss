@@ -1,0 +1,41 @@
+@use "../../laoyout/_themes/global" as global;
+
+.product-wrapper{
+  @include global.themify("product-wrapper");
+
+  .product-name {
+    @include global.themify("product-name");
+  }
+
+  .product-image {
+    @include global.themify("product-image");
+  }
+
+  &[data-sale="true"]{
+    .product-percentage {
+      @include global.themify("product-percentage-active");
+    }
+
+    .product-actual-price {
+      @include global.themify("product-actual-price-active");
+    }
+
+    .product-price {
+      @include global.themify("product-price-active");
+    }
+  }
+
+  &[data-sale="false"]{
+    .product-percentage {
+      @include global.themify("product-percentage");
+    }
+
+    .product-actual-price {
+      @include global.themify("product-actual-price");
+    }
+
+    .product-price {
+      @include global.themify("product-price");
+    }
+  }
+}

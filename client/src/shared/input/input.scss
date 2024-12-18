@@ -1,0 +1,9 @@
+@use "../../laoyout/_themes/global" as global;
+
+.input{
+  @include global.themify("input");
+
+  &:hover{
+    @include global.themify("input-hover");
+  }
+}

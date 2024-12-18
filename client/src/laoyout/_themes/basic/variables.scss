@@ -1,9 +1,15 @@
+//font
+$xl_font: 25px;
+$lg_font: 20px;
+$m_font: 15px;
+$sm_font: 13px;
+$xs_font: 10px;
+
 //select
 $select-background: #4f4f4f;
 $select-color: #fff;
 $select-width: 220px;
 $select-height: 40px;
-$select-font-size: 16px;
 $select-cursor: pointer;
 $select-display: inline-block;
 $select-position: relative;
@@ -28,3 +34,80 @@ $nav-section-align-items: center;
 $nav-link-white-spaces: nowrap;
 $nav-link-color: #010101;
 $nav-link-text-decoration: none;
+
+//input
+$input-padding: 6px 12px;
+$input-outline: none;
+
+//panel
+$panel-padding: 16px;
+
+//products_wrapper
+$products-wrapper-display: grid;
+$products-wrapper-grid-template-columns: 200px 1fr;
+
+//products_container
+$products-container-display: flex;
+$products-container-flex-wrap: wrap;
+$products-container-gap: 10px;
+
+//product_wrapper
+$product-wrapper-display: grid;
+$product-wrapper-grid-template-areas: "i i" "n ap" "n p";
+$product-wrapper-border-radius: 5px;
+$product-wrapper-padding: 5px 0px;
+$product-wrapper-background: rgba(1, 1, 1, 0.1);
+$product-wrapper-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+$product-wrapper-width: fit-content;
+$product-wrapper-position: relative;
+
+//product_percentage_active
+
+//product_percentage
+$product-percentage-display: none;
+$product-percentage-position: absolute;
+$product-percentage-top: 5px;
+$product-percentage-right: 5px;
+$product-percentage-bottom: auto;
+$product-percentage-left: auto;
+$product-percentage-background: red;
+$product-percentage-border-radius: 5px;
+$product-percentage-color: #fff;
+$product-percentage-padding: 5px 10px;
+
+//product_actual_price_active
+$product-actual-price-grid-area: ap;
+
+//product_actual_price
+$product-actual-price-display: none;
+
+//product_price_active
+$product-price-grid-area: p;
+$product-price-color: gray;
+$product-price-text-decoration: line-through;
+
+//product_price
+
+//product_name
+$product-name-grid-area: n;
+
+//product_image
+$product-image-grid-area: i;
+$product-image-width: 300px;
+$product-image-aspect-ratio: 1;
+
+//background_container
+$background-container-position: absolute;
+$background-container-top: 50%;
+$background-container-left: 50%;
+$background-container-transform: translate(-50%, -50%);
+
+//background_content
+$background-content-font-size: 20rem;
+$background-content-filter: opacity(0.5);
+$background-content-color: #eee;
+
+//main_container
+$main-container-width: 100%;
+$main-container-height: 100%;
+$main-container-background: transparent;

@@ -1,0 +1,14 @@
+.container.Basic-theme, .Basic-theme .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+.container .content.Basic-theme, .Basic-theme .container .content {
+  font-size: 20rem;
+  filter: opacity(0.5);
+  color: #eee;
+}
+
+/*# sourceMappingURL=background.css.map */
