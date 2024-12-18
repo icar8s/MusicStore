@@ -5,7 +5,6 @@ import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 const Layout: ComponentWithMeta = () => {
     return <div>
         <NavigationNav />
-
         <Outlet />
     </div>
 }

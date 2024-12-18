@@ -2,29 +2,36 @@ import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import {Input} from "../../shared/input/Input.tsx";
 import {Button} from "../../shared/Button/Button.tsx";
 
-const Login: ComponentWithMeta = () => {
+const Register: ComponentWithMeta = () => {
     return <div>
+        <section>
+            <span>
+                Email
+            </span>
+            <Input/>
+        </section>
+
         <section>
             <span>
                 Login
             </span>
-            <Input />
+            <Input/>
         </section>
 
         <section>
             <span>
                 Password
             </span>
-            <Input />
+            <Input/>
         </section>
 
-        <Button>Sign In</Button>
+        <Button>Sign Up</Button>
     </div>
 }
 
-Login.meta = {
-    route: "login",
+Register.meta = {
+    route: "register",
     roles: ["admin", "moderator"]
 }
 
-export default Login;
+export default Register;

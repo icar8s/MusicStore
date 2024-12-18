@@ -5,6 +5,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
+  font-size: 15px;
 }
 .nav[data-orientation=horizontal].Basic-theme, .Basic-theme .nav[data-orientation=horizontal] {
   flex-direction: row;

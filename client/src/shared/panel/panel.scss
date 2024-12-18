@@ -1,0 +1,5 @@
+@use "../../laoyout/_themes/global" as global;
+
+.panel{
+  @include global.themify("panel");
+}

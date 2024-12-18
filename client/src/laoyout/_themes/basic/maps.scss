@@ -1,0 +1,159 @@
+@use "variables";
+
+
+$select: (
+        background: variables.$select-background,
+        color: variables.$select-color,
+        width: variables.$select-width,
+        height: variables.$select-height,
+        font-size: variables.$m_font,
+        cursor: variables.$select-cursor,
+        display: variables.$select-display,
+        position: variables.$select-position,
+);
+
+$select-hover: (
+);
+
+$nav: (
+        background-image: variables.$nav-background-image,
+        height: variables.$nav-height,
+        display: variables.$nav-display,
+        justify-content: variables.$nav-justify-content,
+        align-items: variables.$nav-align-items,
+        border-bottom: variables.$nav-border-bottom,
+        font-size: variables.$m_font,
+);
+
+$nav-horizontal: (
+        flex-direction: variables.$nav-horizontal,
+);
+
+$nav-vertical: (
+        flex-direction: variables.$nav-vertical,
+);
+
+$nav-section: (
+        background: variables.$nav-section-background,
+        display: variables.$nav-section-display,
+        gap: variables.$nav-section-gap,
+        align-items: variables.$nav-section-align-items,
+);
+
+$nav-section-right: (
+);
+
+$nav-section-left: (
+);
+
+$nav-link: (
+        white-space: variables.$nav-link-white-spaces,
+        text-decoration: variables.$nav-link-text-decoration,
+        color: variables.$nav-link-color,
+);
+
+$nav-link-hover: ();
+
+$nav-link-visited: ();
+
+$nav-link-active: ();
+
+$nav-link-active-hover: ();
+
+$input: (
+        font-size: variables.$m_font,
+        padding: variables.$input-padding,
+        outline: variables.$input-outline,
+);
+
+$panel: (
+        padding: variables.$panel-padding,
+);
+
+$products-wrapper: (
+        display: variables.$products-wrapper-display,
+        grid-template-columns: variables.$products-wrapper-grid-template-columns,
+);
+
+$products-container: (
+        display: variables.$products-container-display,
+        flex-wrap: variables.$products-container-flex-wrap,
+        gap: variables.$products-container-gap
+);
+
+$product-wrapper: (
+        position: variables.$product-wrapper-position,
+        display: variables.$product-wrapper-display,
+        border-radius: variables.$product-wrapper-border-radius,
+        padding: variables.$product-wrapper-padding,
+        box-shadow: variables.$product-wrapper-box-shadow,
+        width: variables.$product-wrapper-width,
+        grid-template-areas: variables.$product-wrapper-grid-template-areas,
+);
+
+$product-percentage: (
+        display: variables.$product-percentage-display,
+);
+
+$product-percentage-active: (
+        position: variables.$product-percentage-position,
+        top: variables.$product-percentage-top,
+        right: variables.$product-percentage-right,
+        bottom: variables.$product-percentage-bottom,
+        left: variables.$product-percentage-left,
+        background: variables.$product-percentage-background,
+        border-radius: variables.$product-percentage-border-radius,
+        color: variables.$product-percentage-color,
+        padding: variables.$product-percentage-padding,
+        font-size: variables.$m_font,
+);
+
+$product-actual-price: (
+        display: variables.$product-actual-price-display,
+);
+
+$product-actual-price-active: (
+        grid-area: variables.$product-actual-price-grid-area,
+);
+
+$product-price: (
+
+);
+
+$product-price-active: (
+        grid-area: variables.$product-price-grid-area,
+        color: variables.$product-price-color,
+        text-decoration: variables.$product-price-text-decoration,
+        font-size: variables.$sm_font,
+);
+
+$product-name: (
+        grid-area: variables.$product-name-grid-area,
+);
+
+$product-image: (
+        padding: 5px,
+        grid-area: variables.$product-image-grid-area,
+        width: variables.$product-image-width,
+        aspect-ration: variables.$product-image-aspect-ratio,
+);
+
+$background-container: (
+        position: variables.$background-container-position,
+        top: variables.$background-container-top,
+        left: variables.$background-container-left,
+        transform: variables.$background-container-transform,
+        display: flex,
+);
+
+$background-content: (
+        font-size: variables.$background-content-font-size,
+        filter: variables.$background-content-filter,
+        color: variables.$background-content-color,
+);
+
+$main-container: (
+        width: variables.$main-container-width,
+        height: variables.$main-container-height,
+        background: variables.$main-container-background,
+);
