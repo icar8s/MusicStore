@@ -52,8 +52,8 @@ internal static class ServiceExtensions
                 options.RemoveConsumedTokens = true;
                 options.TokenCleanupInterval = 10;
             })
-            .AddDeveloperSigningCredential()
-            .AddAspNetIdentity<User>();
+            .AddDeveloperSigningCredential();
+            //.AddAspNetIdentity<User>();
         
         return services;
     }
