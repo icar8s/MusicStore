@@ -12,6 +12,6 @@ public interface IMusicCartService
     Task<IResult<Guid>> AddGamerToCartAsync(Guid productId,
         CancellationToken cancellationToken = default);
     
-    Task<IResult<bool>> RemoveGamerFromCartAsync(Guid productId,
+    Task<IResult<bool>> RemoveProductFromCartAsync(Guid productId,
         CancellationToken cancellationToken = default);
 }

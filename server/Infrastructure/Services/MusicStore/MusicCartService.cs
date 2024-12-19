@@ -3,6 +3,7 @@ using Application.DTOs.MusicStore;
 using Application.Interfaces.Services.MusicStore;
 using Domain.Entities.General;
 using Domain.Entities.General.Links;
+using MapsterMapper;
 using Persistence.Contexts;
 using Persistence.Repositories;
 using Shared;
@@ -11,15 +12,23 @@ using Shared.Interfaces;
 namespace Infrastructure.Services.MusicStore;
 
 public class MusicCartService(IdentityService identity,
+    IMapper mapper,
     Repository<Cart, MusicStoreContext> genericCartRepository,
     Repository<CartProduct, MusicStoreContext> genericCartProductRepository,
     CartProductRepository<MusicStoreContext> cartProductRepository,
     CartRepository<MusicStoreContext> cartRepository): IMusicCartService
 {
-    public Task<IResult<CartDto<MusicProductShortDto>>> GetCartAsync(Guid cartId,
+    public async Task<IResult<CartDto<MusicProductShortDto>>> GetCartAsync(Guid cartId,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var cart = await genericCartRepository.GetByIdAsync(cartId, cancellationToken);
+
+        if (cart == null)
+        {
+            return Result<CartDto<MusicProductShortDto>>.Failure();
+        }
+        
+        return Result<CartDto<MusicProductShortDto>>.Success(mapper.Map<CartDto<MusicProductShortDto>>(cart));
     }
 
     public async Task<IResult<Guid>> AddGamerToCartAsync(Guid productId,
@@ -38,7 +47,7 @@ public class MusicCartService(IdentityService identity,
         return Result<Guid>.Success(id);
     }
 
-    public async Task<IResult<bool>> RemoveGamerFromCartAsync(Guid productId,
+    public async Task<IResult<bool>> RemoveProductFromCartAsync(Guid productId,
         CancellationToken cancellationToken = default)
     {
         var cartResult = await GetCardAsync(cancellationToken);

@@ -1,13 +1,14 @@
 using Domain.Enums;
+using GamerShop.Misc;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
-builder.Services.Configure<RouteOptions>(options =>
-{
-    options.ConstraintMap.Add("gpt", typeof(GamerProductType));
-});
+builder.Services
+    .AddApplicationLayer()
+    .AddInfrastructureLayer(builder.Configuration)
+    .AddPersistenceLayer(builder.Configuration);
 
 var app = builder.Build();
 

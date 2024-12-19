@@ -1,31 +1,50 @@
 using Application.Common;
 using Application.DTOs.MusicStore;
 using Application.Interfaces.Services.MusicStore;
+using Domain.Entities.MusicStore;
 using Domain.Enums;
+using Mapster;
+using MapsterMapper;
+using Persistence.Contexts;
+using Persistence.Repositories;
+using Shared;
 using Shared.Interfaces;
 
 namespace Infrastructure.Services.MusicStore;
 
-public class MusicProductService: IMusicProductService
+public class MusicProductService(
+    Repository<MusicProduct, MusicStoreContext> genericMusicRepository,
+    IMapper mapper
+    ): IMusicProductService
 {
-    public Task<IResult<MusicProductDetailDto>> GetMusicProductAsync(Guid id,
+    public async Task<IResult<MusicProductDetailDto>> GetMusicProductAsync(Guid id,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var product = await genericMusicRepository.GetByIdAsync(id, cancellationToken);
+
+        if (product == null)
+        {
+            return Result<MusicProductDetailDto>.Failure();
+        }
+
+        return Result<MusicProductDetailDto>.Success(mapper.Map<MusicProductDetailDto>(product));
     }
 
-    public Task<IPaginatedResult<MusicProductShortDto>> GetMusicProductsAsync(PageIndex page,
+    public async Task<IPaginatedResult<MusicProductShortDto>> GetMusicProductsAsync(PageIndex page,
         CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
-    }
+        => await genericMusicRepository
+            .Entities
+            .ProjectToType<MusicProductShortDto>(mapper.Config)
+            .ToPaginatedListAsync(page.PageNumber, page.PageSize, cancellationToken);
 
-    public Task<IPaginatedResult<MusicProductShortDto>> GetMusicProductsByTypeAsync(PageIndex page,
+    public async Task<IPaginatedResult<MusicProductShortDto>> GetMusicProductsByTypeAsync(PageIndex page,
         MusicProductType musicProductType,
         CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
-    }
+        => await genericMusicRepository
+            .Entities
+            .Where(x=>x.Type == musicProductType)
+            .ProjectToType<MusicProductShortDto>(mapper.Config)
+            .ToPaginatedListAsync(page.PageNumber, page.PageSize, cancellationToken);
 
     public Task<IResult<Guid>> AddMusicProductAsync(MusicProductDto musicProduct,
         CancellationToken cancellationToken = default)
@@ -39,9 +58,17 @@ public class MusicProductService: IMusicProductService
         throw new NotImplementedException();
     }
 
-    public Task<IResult<bool>> DeleteMusicProductAsync(Guid id,
+    public async Task<IResult<bool>> DeleteMusicProductAsync(Guid id,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var musicProduct = await genericMusicRepository.GetWithTrackingByIdAsync(id, cancellationToken);
+
+        if (musicProduct == null)
+        {
+            return Result<bool>.Failure();
+        }
+        
+        await genericMusicRepository.DeleteAsync(musicProduct, cancellationToken);
+        return Result<bool>.Success();
     }
 }

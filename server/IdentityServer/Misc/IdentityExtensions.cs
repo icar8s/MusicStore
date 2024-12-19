@@ -27,38 +27,6 @@ internal static class IdentityExtensions
         });
     }
     
-    internal static void ConfigureIdentity(this IServiceCollection services)
-    {
-        services.AddIdentity<User, IdentityRole<Guid>>()
-            .AddEntityFrameworkStores<BaseDbContext>()
-            .AddRoleManager<RoleManager<IdentityRole<Guid>>>()
-            .AddUserManager<UserManager<User>>()
-            .AddDefaultTokenProviders();
-    }
-    
-    internal static void AddIdentityServerContexts(this IServiceCollection services,
-        IConfiguration configuration)
-    {
-        services.AddIdentityServer(options => { options.UserInteraction.LoginUrl = null; })
-            .AddConfigurationStore(options =>
-            {
-                options.ConfigureDbContext = context =>
-                    context.UseNpgsql(configuration.GetConnectionString("configurationDb"),
-                        migration => migration.MigrationsAssembly(typeof(Program).Assembly.FullName));
-            })
-            .AddOperationalStore(options =>
-            {
-                options.ConfigureDbContext = context =>
-                    context.UseNpgsql(configuration.GetConnectionString("operationalDb"),
-                        migration => migration.MigrationsAssembly(typeof(Program).Assembly.FullName));
-                options.EnableTokenCleanup = true;
-                options.RemoveConsumedTokens = true;
-                options.TokenCleanupInterval = 10;
-            })
-            .AddDeveloperSigningCredential()
-            .AddAspNetIdentity<User>();
-    }
-    
     public static void UseDbInitializer(this IApplicationBuilder app)
     {
         using var scope = app.ApplicationServices.CreateScope();

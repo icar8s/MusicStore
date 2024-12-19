@@ -10,6 +10,6 @@ public interface IGamerNewsService
     Task<IPaginatedResult<NewsDto>> GetNewsAsync(PageIndex page,
         CancellationToken cancellationToken = default);
     
-    Task<IResult<Guid>> CreateAsync(News news,
+    Task<IResult<Guid>> CreateAsync(NewsDto news,
         CancellationToken cancellationToken = default);
 }

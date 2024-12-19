@@ -16,20 +16,19 @@ public class MusicNewsService(Repository<News, MusicStoreContext> repository,
 {
     public async Task<IPaginatedResult<NewsDto>> GetNewsAsync(PageIndex page,
         CancellationToken cancellationToken = default)
-    {
-        return await repository.Entities
-            .OrderBy(x=>x.LastModifiedDate)
-            .ProjectToType<NewsDto>(mapper.Config)
-            .ToPaginatedListAsync(page.PageNumber, page.PageSize, cancellationToken);
-    }
+        =>   await repository.Entities
+                .OrderBy(x=>x.LastModifiedDate)
+                .ProjectToType<NewsDto>(mapper.Config)
+                .ToPaginatedListAsync(page.PageNumber, page.PageSize, cancellationToken);
 
-    public async Task<IResult<Guid>> CreateAsync(NewsDto news,
+    public Task<IResult<Guid>> CreateAsync(NewsDto news,
         CancellationToken cancellationToken = default)
     {
-        var entity = mapper.Map<News>(news);
+        throw new NotImplementedException();
+        /*var entity = mapper.Map<News>(news);
         
         var id = await repository.CreateAsync(entity, cancellationToken);
         
-        return Result<Guid>.Success(id);
+        return Result<Guid>.Success(id);*/
     }
 }
