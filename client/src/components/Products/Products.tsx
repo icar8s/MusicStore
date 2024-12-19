@@ -5,7 +5,7 @@ import {Product} from "../Product/Product.tsx";
 import "./products.scss"
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
 
-export const Products : ComponentWithMeta = () => {
+export const Products : () => JSX.Element = () => {
 
     const {products, productsForSelect} = useProductsStore();
 

@@ -1,6 +1,5 @@
 @use "variables";
 
-
 $select: (
         background: variables.$select-background,
         color: variables.$select-color,
@@ -16,13 +15,15 @@ $select-hover: (
 );
 
 $nav: (
-        background-image: variables.$nav-background-image,
+        background-color: variables.$nav-background-color,
         height: variables.$nav-height,
         display: variables.$nav-display,
         justify-content: variables.$nav-justify-content,
         align-items: variables.$nav-align-items,
         border-bottom: variables.$nav-border-bottom,
         font-size: variables.$m_font,
+        font-family: variables.$nav-font-family,
+        box-shadow: variables.$nav-box-shadow,
 );
 
 $nav-horizontal: (
@@ -41,22 +42,37 @@ $nav-section: (
 );
 
 $nav-section-right: (
+        display: variables.$nav-section-right-display,
+        gap: variables.$nav-section-right-gap,
+        align-items: variables.$nav-section-right-align-items,
 );
 
 $nav-section-left: (
+        display: variables.$nav-section-left-display,
+        gap: variables.$nav-section-left-gap,
+        align-items: variables.$nav-section-left-align-items,
 );
 
 $nav-link: (
-        white-space: variables.$nav-link-white-spaces,
-        text-decoration: variables.$nav-link-text-decoration,
+        font-size: variables.$nav-link-font-size,
+        transform: variables.$nav-link-text-transform,
+        padding: variables.$nav-link-padding,
+        transition: variables.$nav-link-transition,
         color: variables.$nav-link-color,
+        text-decoration: variables.$nav-link-text-decoration,
 );
 
-$nav-link-hover: ();
+$nav-link-hover: (
+        color: variables.$nav-link-hover-color,
+        border-bottom: variables.$nav-link-hover-border-bottom,
+);
 
 $nav-link-visited: ();
 
-$nav-link-active: ();
+$nav-link-active: (
+        color: variables.$nav-link-active-color,
+        font-weight: variables.$nav-link-active-font-weight,
+);
 
 $nav-link-active-hover: ();
 
@@ -157,3 +173,70 @@ $main-container: (
         height: variables.$main-container-height,
         background: variables.$main-container-background,
 );
+
+$logo-image: (
+        font-size: variables.$logo-image-font-size,
+        text-transform: variables.$logo-image-text-transform,
+        padding: variables.$logo-image-margin-right,
+        transition: variables.$logo-image-transition,
+        color: variables.$logo-image-color,
+        text-decoration: variables.$logo-image-text-decoration,
+);
+
+$home-container: (
+        width: variables.$home-container-width,
+        height: variables.$home-container-height,
+        display: variables.$home-container-display,
+        align-items: variables.$home-container-align-items,
+        justify-content: variables.$home-container-justify-content,
+        background-color: variables.$home-container-background-color,
+        overflow: variables.$home-container-overflow,
+);
+
+$slider: (
+        width: variables.$slider-width,
+        height: variables.$slider-height,
+        display: variables.$slider-display,
+        align-items: variables.$slider-align-items,
+        justify-content: variables.$slider-justify-content,
+        background: variables.$slider-background,
+        text-align: variables.$slider-text-align,
+        position: variables.$slider-position,
+);
+
+$slider-content: (
+        max-width: variables.$slider-content-max-width,
+        padding: variables.$slider-content-padding,
+        color: variables.$slider-content-color,
+        margin-top: variables.$slider-content-margin-top
+);
+
+$slider-title: (
+        font-size: variables.$slider-title-font-size,
+        font-weight: variables.$slider-title-font-weight,
+        margin-bottom: variables.$slider-title-margin-bottom,
+        color: variables.$slider-title-color,
+);
+
+$slider-description: (
+        font-size: variables.$slider-description-font-size,
+        line-height: variables.$slider-description-line-height,
+        margin-bottom: variables.$slider-description-margin-bottom,
+        color: variables.$slider-description-color,
+);
+
+$slider-button: (
+        font-size: variables.$slider-button-font-size,
+        padding: variables.$slider-button-padding,
+        background-color: variables.$slider-button-background-color,
+        color: variables.$slider-button-color,
+        border: variables.$slider-button-border,
+        border-radius: variables.$slider-button-border-radius,
+        cursor: variables.$slider-button-cursor,
+        transition: variables.$slider-button-transition,
+);
+
+$slider-button-hover: (
+        background-color: variables.$slider-button-hover-background-color,
+);
+

@@ -1,0 +1,37 @@
+@use "../../laoyout/_themes/global" as global;
+
+.home{
+  @include global.themify("home-container");
+}
+.slider {
+  @include global.themify("slider");
+
+  .slider-content {
+    @include global.themify("slider-content");
+  }
+  .slider-title {
+    @include global.themify("slider-title");
+  }
+  .slider-description {
+    @include global.themify("slider-description");
+  }
+  .slider-button {
+    @include global.themify("slider-button");
+  }
+  .slider-button-hover {
+    @include global.themify("slider-button-hover");
+  }
+}
+/* Дополнительные стили для Swiper */
+.swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background: #ff6f61;
+}/* Основной контейнер */
+
+.slider-button:hover {
+  background-color: #e55d50;
+}

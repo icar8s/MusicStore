@@ -1,0 +1,5 @@
+@use "../../laoyout/_themes/global" as global;
+
+.logo{
+  @include global.themify("logo-image");
+}
