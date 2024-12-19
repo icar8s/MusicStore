@@ -11,4 +11,10 @@ public sealed class AccountController: ControllerBase
     {
         throw new NotImplementedException();
     }
+    
+    [HttpPost]
+    public Task EmailConfirmationAsync()
+    {
+        throw new NotImplementedException();
+    }
 }
