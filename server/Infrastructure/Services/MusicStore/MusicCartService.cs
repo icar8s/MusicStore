@@ -13,9 +13,32 @@ namespace Infrastructure.Services.MusicStore;
 public class MusicCartService(IdentityService identity,
     Repository<Cart, MusicStoreContext> genericCartRepository,
     Repository<CartProduct, MusicStoreContext> genericCartProductRepository,
+    CartProductRepository<MusicStoreContext> cartProductRepository,
     CartRepository<MusicStoreContext> cartRepository): IMusicCartService
 {
-    public async Task<IResult<bool>> AddGamerToCartAsync(Guid productId,
+    public Task<IResult<CartDto<MusicProductShortDto>>> GetCartAsync(Guid cartId,
+        CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<IResult<Guid>> AddGamerToCartAsync(Guid productId,
+        CancellationToken cancellationToken = default)
+    {
+        var cartResult = await GetCardAsync(cancellationToken);
+        if (!cartResult.IsSucceeded)
+        {
+            return Result<Guid>.Failure();
+        }
+        
+        var cartProduct = new CartProduct{ProductId = productId, CartId = cartResult.Data!.Id};
+        
+        var id = await genericCartProductRepository.CreateAsync(cartProduct, cancellationToken);
+        
+        return Result<Guid>.Success(id);
+    }
+
+    public async Task<IResult<bool>> RemoveGamerFromCartAsync(Guid productId,
         CancellationToken cancellationToken = default)
     {
         var cartResult = await GetCardAsync(cancellationToken);
@@ -23,13 +46,26 @@ public class MusicCartService(IdentityService identity,
         {
             return Result<bool>.Failure();
         }
-        
-    }
 
-    public Task<IResult<bool>> RemoveGamerFromCartAsync(Guid productId,
-        CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
+        var cartProductId =
+            await cartProductRepository.GetCartIdAsync(cartResult.Data!.Id, productId, cancellationToken);
+
+        if (!cartProductId.HasValue)
+        {
+            return Result<bool>.Failure();
+        }
+
+        var cartProduct =
+            await genericCartProductRepository.GetWithTrackingByIdAsync(cartProductId.Value, cancellationToken);
+
+        if (cartProduct == null)
+        {
+            return Result<bool>.Failure();
+        }
+
+        await genericCartProductRepository.DeleteAsync(cartProduct, cancellationToken);
+        
+        return Result<bool>.Success();
     }
 
     private async Task<IResult<Cart>> GetCardAsync(CancellationToken cancellationToken = default)

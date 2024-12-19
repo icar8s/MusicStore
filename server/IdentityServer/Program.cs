@@ -5,9 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 builder.Services.AddIdentityCors();
-
+builder.Services.AddPersistenceLayer(builder.Configuration);
 builder.Services.ConfigureIdentity();
-builder.Services.ConfigureIdentityServerContexts(builder.Configuration);
+builder.Services.AddIdentityServerContexts(builder.Configuration);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
@@ -15,7 +15,8 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.InitializeDatabase();
+    app.UseIdentityDbInitializer();
+    app.UseDbInitializer();
     app.MapOpenApi();
 }
 

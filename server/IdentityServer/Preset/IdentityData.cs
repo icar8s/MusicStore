@@ -6,7 +6,7 @@ namespace IdentityServer.Preset;
 
 internal static class IdentityData
 {
-    internal static void InitializeDatabase(this IApplicationBuilder app)
+    internal static void UseIdentityDbInitializer(this IApplicationBuilder app)
     {
         using var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>()!.CreateScope();
         serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
