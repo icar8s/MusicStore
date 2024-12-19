@@ -7,16 +7,18 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Duende.IdentityServer" Version="7.0.8" />
+        <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="7.0.8" />
+        <PackageReference Include="Duende.IdentityServer.EntityFramework" Version="7.0.8" />
+        <PackageReference Include="Duende.IdentityServer.EntityFramework.Storage" Version="7.0.8" />
+        <PackageReference Include="Duende.IdentityServer.Storage" Version="7.0.8" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Misc\" />
-      <Folder Include="Preset\" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Domain\Domain.csproj" />
+      <ProjectReference Include="..\Persistence\Persistence.csproj" />
     </ItemGroup>
 
 </Project>
