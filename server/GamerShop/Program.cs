@@ -1,9 +1,14 @@
 using Domain.Enums;
+using Domain.Options;
 using GamerShop.Misc;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+
+builder.Services.Configure<BlobOptions>(
+    builder.Configuration.GetSection(BlobOptions.Name));
+
 
 builder.Services
     .AddApplicationLayer()
