@@ -16,13 +16,15 @@ $select-hover: (
 );
 
 $nav: (
-        background-image: variables.$nav-background-image,
+        background-color: variables.$nav-background-color,
         height: variables.$nav-height,
         display: variables.$nav-display,
         justify-content: variables.$nav-justify-content,
         align-items: variables.$nav-align-items,
         border-bottom: variables.$nav-border-bottom,
         font-size: variables.$m_font,
+        font-family: variables.$nav-font-family,
+        box-shadow: variables.$nav-box-shadow,
 );
 
 $nav-horizontal: (
@@ -41,22 +43,37 @@ $nav-section: (
 );
 
 $nav-section-right: (
+        display: variables.$nav-section-right-display,
+        gap: variables.$nav-section-right-gap,
+        align-items: variables.$nav-section-right-align-items,
 );
 
 $nav-section-left: (
+        display: variables.$nav-section-left-display,
+        gap: variables.$nav-section-left-gap,
+        align-items: variables.$nav-section-left-align-items,
 );
 
 $nav-link: (
-        white-space: variables.$nav-link-white-spaces,
-        text-decoration: variables.$nav-link-text-decoration,
+        font-size: variables.$nav-link-font-size,
+        transform: variables.$nav-link-text-transform,
+        padding: variables.$nav-link-padding,
+        transition: variables.$nav-link-transition,
         color: variables.$nav-link-color,
+        text-decoration: variables.$nav-link-text-decoration,
 );
 
-$nav-link-hover: ();
+$nav-link-hover: (
+        color: variables.$nav-link-hover-color,
+        border-bottom: variables.$nav-link-hover-border-bottom,
+);
 
 $nav-link-visited: ();
 
-$nav-link-active: ();
+$nav-link-active: (
+        color: variables.$nav-link-active-color,
+        font-weight: variables.$nav-link-active-font-weight,
+);
 
 $nav-link-active-hover: ();
 
@@ -156,4 +173,10 @@ $main-container: (
         width: variables.$main-container-width,
         height: variables.$main-container-height,
         background: variables.$main-container-background,
+);
+
+$logo-image: (
+        width: variables.$logo-image-width,
+        height: variables.$logo-image-height,
+
 );

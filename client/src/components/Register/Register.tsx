@@ -2,7 +2,7 @@ import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import {Input} from "../../shared/input/Input.tsx";
 import {Button} from "../../shared/Button/Button.tsx";
 
-const Register: ComponentWithMeta = () => {
+export const Register : () => JSX.Element = () => {
     return <div>
         <section>
             <span>
@@ -33,5 +33,3 @@ Register.meta = {
     route: "register",
     roles: ["admin", "moderator"]
 }
-
-export default Register;

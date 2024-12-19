@@ -6,7 +6,7 @@ $sm_font: 13px;
 $xs_font: 10px;
 
 //select
-$select-background: #4f4f4f;
+$select-background:#4f4f4f;
 $select-color: #fff;
 $select-width: 220px;
 $select-height: 40px;
@@ -15,14 +15,17 @@ $select-display: inline-block;
 $select-position: relative;
 
 //nav
-$nav-background-image: linear-gradient(to bottom, #ffffff0f, #0000001f);
-$nav-border-bottom: 1px solid black;
-$nav-height: 60px;
+$nav-background-color: rgba(255, 255, 255, 0.9);
+$nav-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+$nav-border-bottom: 1px solid #e1e1e1;
+$nav-height: 80px;
+$nav-padding: 0 20px;
 $nav-display: flex;
 $nav-horizontal: row;
 $nav-vertical: column;
 $nav-justify-content: space-between;
 $nav-align-items: center;
+$nav-font-family: "Poppins", sans-serif;
 
 //nav section
 $nav-section-background: transparent;
@@ -30,10 +33,30 @@ $nav-section-display: flex;
 $nav-section-gap: 10px;
 $nav-section-align-items: center;
 
+//nav section-left
+$nav-section-left-display: flex;
+$nav-section-left-gap: 20px;
+$nav-section-left-align-items: center;
+
+//nav section-right
+$nav-section-right-display: flex;
+$nav-section-right-gap: 20px;
+$nav-section-right-align-items: center;
+
 //nav link
-$nav-link-white-spaces: nowrap;
-$nav-link-color: #010101;
+$nav-link-font-size: 16px;
+$nav-link-text-transform: uppercase;
+$nav-link-padding: 5px 10px;
+$nav-link-transition: all 0.3s ease;
+$nav-link-color: #333;
 $nav-link-text-decoration: none;
+
+//nav link-hover
+$nav-link-hover-color: #f15e2c;
+$nav-link-hover-border-bottom: 2px solid #f15e2c;
+//nav link-active
+$nav-link-active-color: #f15e2c;
+$nav-link-active-font-weight: bold;
 
 //input
 $input-padding: 6px 12px;
@@ -90,6 +113,11 @@ $product-price-text-decoration: line-through;
 
 //product_name
 $product-name-grid-area: n;
+
+//logo_image
+$logo-image-width: auto;
+$logo-image-height: 80px;
+
 
 //product_image
 $product-image-grid-area: i;
