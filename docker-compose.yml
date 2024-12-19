@@ -33,6 +33,10 @@ services:
       context: ./server
       dockerfile: ./MusicStore/Dockerfile
     container_name: masterMusic
+    environment:
+      - "entityDb=Host=postgres;Database=postgres;Username=admin;Password=admin"
+      - "azurite=DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
+      - "redis=redis:6379"
     ports:
       - "3001:80"
     depends_on:
@@ -46,6 +50,10 @@ services:
       context: ./server
       dockerfile: ./GamerShop/Dockerfile
     container_name: masterGames
+    environment:
+      - "entityDb=Host=postgres;Database=postgres;Username=admin;Password=admin"
+      - "azurite=DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
+      - "redis=redis:6379"
     ports:
       - "3002:80"
     depends_on:
@@ -59,6 +67,11 @@ services:
       context: ./server
       dockerfile: ./IdentityServer/Dockerfile
     container_name: masterIdentity
+    environment:
+      - "musicDb=Host=postgres;Database=postgres;Username=admin;Password=admin"
+      - "gamerDb=Host=postgres;Database=postgres;Username=admin;Password=admin"
+      - "configurationDb=Host=postgres;Database=postgres;Username=admin;Password=admin"
+      - "operationalDb=Host=postgres;Database=postgres;Username=admin;Password=admin"
     ports:
       - "3003:80"
     depends_on:
