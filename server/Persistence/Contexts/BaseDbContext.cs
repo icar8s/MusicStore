@@ -1,21 +1,32 @@
+using System.Reflection;
 using Domain.Entities.Abstract;
 using Domain.Entities.General;
+using Domain.Entities.General.Links;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Contexts;
 
-public abstract class BaseDbContext<TContext>(DbContextOptions<TContext> options) : IdentityDbContext<User,
+public abstract class BaseDbContext(DbContextOptions options) : IdentityDbContext<User,
     IdentityRole<Guid>,
     Guid,
     IdentityUserClaim<Guid>,
     IdentityUserRole<Guid>,
     IdentityUserLogin<Guid>,
     IdentityRoleClaim<Guid>,
-    IdentityUserToken<Guid>>(options) where TContext : DbContext
+    IdentityUserToken<Guid>>(options)
 {
-
+    public DbSet<Cart> Carts => Set<Cart>();
+    
+    public DbSet<News> News => Set<News>();
+    
+    public DbSet<CartProduct> CartProducts => Set<CartProduct>();
+    
+    public DbSet<Sale> Sales => Set<Sale>();
+    
+    public DbSet<SaleProduct> SaleProducts => Set<SaleProduct>();
+    
     public override int SaveChanges()
     {
         UpdateTimestamps();
@@ -45,5 +56,11 @@ public abstract class BaseDbContext<TContext>(DbContextOptions<TContext> options
                 entry.Entity.LastModifiedDate = DateTime.UtcNow;
             }
         }
+    }
+    
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
 }

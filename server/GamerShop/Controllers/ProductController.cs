@@ -1,4 +1,6 @@
 using Application.Common;
+using Application.DTOs.MusicStore;
+using Domain.Entities.General;
 using Domain.Enums;
 using Microsoft.AspNetCore.Mvc;
 
@@ -29,13 +31,13 @@ public sealed class ProductController : ControllerBase
     }
 
     [HttpPost("add")]
-    public Task CreateAsync()
+    public Task CreateAsync([FromBody] MusicProductDto product)
     {
         throw new NotImplementedException();
     }
 
-    [HttpPut("update")]
-    public Task UpdateAsync()
+    [HttpPut("update/{id:guid}")]
+    public Task UpdateAsync(Guid id, [FromBody] MusicProductDto product)
     {
         throw new NotImplementedException();
     }

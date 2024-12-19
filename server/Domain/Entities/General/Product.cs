@@ -16,4 +16,6 @@ public abstract class Product: EventInfEntity
     public string BlobId { get; set; } = string.Empty;
     
     public virtual List<CartProduct> Products { get; set; }
+    
+    public virtual List<SaleProduct> Sales { get; set; }
 }

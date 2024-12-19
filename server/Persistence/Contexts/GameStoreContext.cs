@@ -1,24 +1,10 @@
-using System.Reflection;
 using Domain.Entities.GamerStore;
-using Domain.Entities.General;
-using Domain.Entities.General.Links;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Contexts;
 
-public class GameStoreContext(DbContextOptions<GameStoreContext> options) : BaseDbContext<GameStoreContext>(options)
+public class GameStoreContext(DbContextOptions<GameStoreContext> options) :
+    BaseDbContext(options)
 {
-    public DbSet<Cart> Carts => Set<Cart>();
-
     public DbSet<GamerProduct> Products => Set<GamerProduct>();
-    
-    public DbSet<News> News => Set<News>();
-    
-    public DbSet<CartProduct> CartProducts => Set<CartProduct>();
-    
-    protected override void OnModelCreating(ModelBuilder builder)
-    {
-        base.OnModelCreating(builder);
-        builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    }
 }
