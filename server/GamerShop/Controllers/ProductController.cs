@@ -1,50 +1,119 @@
 using Application.Common;
+using Application.DTOs.GameStore;
 using Application.DTOs.MusicStore;
+using Application.Interfaces.Services.GamerStore;
+using Domain.Entities.GamerStore;
 using Domain.Entities.General;
 using Domain.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GamerShop.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public sealed class ProductController : ControllerBase
+public sealed class ProductController(IGamerProductService gamerProductService) : ControllerBase
 {
-    // [ProducesResponseType<Product>(StatusCodes.Status200OK)]
-    // [ProducesResponseType(StatusCodes.Status404NotFound)]
     [HttpGet("{id:guid}")]
-    public Task GetDetailByIdAsync([FromRoute] Guid id)
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetDetailByIdAsync([FromRoute] Guid id)
     {
-        throw new NotImplementedException();
+        var result = await gamerProductService.GetGamerProductAsync(id);
+        
+        if (!result.IsSucceeded)
+        {
+            return NotFound();
+        }
+        
+        return Ok(result.Data);
     }
     
     [HttpGet("page")]
-    public Task GetPageAsync(PageIndex page)
+    [AllowAnonymous]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetPageAsync(PageIndex page)
     {
-        throw new NotImplementedException();
+        var result = await gamerProductService.GetGamerProductsAsync(page);
+        
+        if (!result.IsSucceeded)
+        {
+            return NotFound();
+        }
+        
+        return Ok(result.Data);
     }
 
     [HttpGet("{type:gpt}")]
-    public Task GetPageByProductTypeAsync(GamerProductType type, PageIndex page)
+    [AllowAnonymous]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetPageByProductTypeAsync(GamerProductType type, PageIndex page)
     {
-        throw new NotImplementedException();
+        var result = await gamerProductService.GetGamerProductsByTypeAsync(page, type);
+        
+        if (!result.IsSucceeded)
+        {
+            return NotFound();
+        }
+        
+        return Ok(result.Data);
     }
 
     [HttpPost("add")]
-    public Task CreateAsync([FromBody] MusicProductDto product)
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> CreateAsync([FromBody] GamerProductDto product)
     {
-        throw new NotImplementedException();
+        var result = await gamerProductService.AddGamerProductAsync(product);
+        
+        if (!result.IsSucceeded)
+        {
+            return BadRequest();
+        }
+        
+        return Ok(result.Data);
     }
 
     [HttpPut("update/{id:guid}")]
-    public Task UpdateAsync(Guid id, [FromBody] MusicProductDto product)
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> UpdateAsync(Guid id, [FromBody] GamerProductDto product)
     {
-        throw new NotImplementedException();
+        var result = await gamerProductService.UpdateGamerProductAsync(product);
+        
+        if (!result.IsSucceeded)
+        {
+            return BadRequest();
+        }
+            
+        return Ok(result.Data);
     }
+    
 
     [HttpDelete("delete/{id:guid}")]
-    public Task DeleteByIdAsync([FromRoute] Guid id)
+    [Authorize(Roles = "Admin")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> DeleteByIdAsync([FromRoute] Guid id)
     {
-        throw new NotImplementedException();
+        var result = await gamerProductService.DeleteGamerProductAsync(id);
+        
+        if (!result.IsSucceeded)
+        {
+            return BadRequest();
+        }
+        
+        return Ok(result.Data);
     }
 }
