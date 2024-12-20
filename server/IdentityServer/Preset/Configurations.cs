@@ -16,6 +16,8 @@ internal static class Configurations
                 ClientName = "Api",
                 ClientSecrets = { new Secret("client_secret".ToSha256()) },
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                AbsoluteRefreshTokenLifetime = 1,
+                SlidingRefreshTokenLifetime = 1,
                 AllowOfflineAccess = true,
                 AllowedScopes =
                 {
@@ -23,7 +25,8 @@ internal static class Configurations
                     IdentityServerConstants.StandardScopes.Profile,
                     IdentityServerConstants.StandardScopes.Email,
                     "api"
-                }
+                },
+                RefreshTokenUsage = TokenUsage.ReUse
             }
         ];
     }

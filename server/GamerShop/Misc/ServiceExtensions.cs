@@ -73,7 +73,7 @@ internal static class ServiceExtensions
         string audience = "api")
     {
         JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-        var identityUrl = configuration.GetValue<string>("IdentityUrl");
+        var identityUrl = configuration.GetConnectionString("identity");
 
         services.AddAuthentication(options =>
         {

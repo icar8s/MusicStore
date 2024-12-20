@@ -35,9 +35,9 @@ internal static class IdentityExtensions
 
         musicInitializer.Initialize(new MusicStoreData());
         
-        var gamerInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer<GamerProduct>>();
+        var gamerInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer<GamerStoreData>>();
         
-        gamerInitializer.Initialize(new GamerProduct());
+        gamerInitializer.Initialize(new GamerStoreData());
     }
     
     internal static void UseCorsWithPolicy(this IApplicationBuilder app)

@@ -1,22 +1,22 @@
 using Application.DTOs.General;
 using Application.DTOs.MusicStore;
+using Application.Interfaces.Repositories;
+using Application.Interfaces.Services;
 using Application.Interfaces.Services.MusicStore;
 using Domain.Entities.General;
 using Domain.Entities.General.Links;
 using MapsterMapper;
-using Persistence.Contexts;
-using Persistence.Repositories;
 using Shared;
 using Shared.Interfaces;
 
 namespace Infrastructure.Services.MusicStore;
 
-public class MusicCartService(IdentityService identity,
+public class MusicCartService(IIdentityService identity,
     IMapper mapper,
-    Repository<Cart, MusicStoreContext> genericCartRepository,
-    Repository<CartProduct, MusicStoreContext> genericCartProductRepository,
-    CartProductRepository<MusicStoreContext> cartProductRepository,
-    CartRepository<MusicStoreContext> cartRepository): IMusicCartService
+    IRepository<Cart> genericCartRepository,
+    IRepository<CartProduct> genericCartProductRepository,
+    ICartProductRepository cartProductRepository,
+    ICartRepository cartRepository): IMusicCartService
 {
     public async Task<IResult<CartDto<MusicProductShortDto>>> GetCartAsync(Guid cartId,
         CancellationToken cancellationToken = default)

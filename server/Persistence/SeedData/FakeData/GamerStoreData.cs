@@ -7,11 +7,45 @@ namespace Persistence.SeedData.FakeData;
 
 public class GamerStoreData: AbstractData<GamerProduct>
 {
-    public override IList<User> Users => new List<User>();
+    private static readonly Guid _userId = Guid.NewGuid();
+    private static readonly Guid _roleId = Guid.NewGuid();
     
-    public override IList<IdentityRole<Guid>> Roles => new List<IdentityRole<Guid>>();
+    public override IList<User> Users => new List<User>()
+    {
+        new User
+        {
+            Id = _userId,
+            Email = "admin@aaa.com",
+            NormalizedEmail = "ADMIN@AAA.COM",
+            UserName = "vadmin",
+            NormalizedUserName = "VADMIN",
+            EmailConfirmed = true,
+            PasswordHash =
+                "AQAAAAIAAYagAAAAEOObrxK8MEi9CAr6V1lm3CjQwpdMWO46J15/fN4AshwLh45ThOxSLoOFh1id4JNFQA==", // !QAZ2wsx
+            SecurityStamp = Guid.NewGuid().ToString("D"),
+            Balance = 20000,
+        }
+    };
     
-    public override IList<IdentityUserRole<Guid>> UserRoles => new List<IdentityUserRole<Guid>>();
+    public override IList<IdentityRole<Guid>> Roles => new List<IdentityRole<Guid>>()
+    {
+        new ()
+        {
+            Id = _roleId,
+            Name = "Moderator",
+            NormalizedName = "MODERATOR",
+            ConcurrencyStamp = Guid.NewGuid().ToString("D")
+        }
+    };
+    
+    public override IList<IdentityUserRole<Guid>> UserRoles => new List<IdentityUserRole<Guid>>()
+    {
+        new ()
+        {
+            UserId = _userId,
+            RoleId = _roleId
+        }
+    };
     
     public override IList<GamerProduct> Products => new List<GamerProduct>();
     

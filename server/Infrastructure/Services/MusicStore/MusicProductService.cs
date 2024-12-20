@@ -1,5 +1,6 @@
 using Application.Common;
 using Application.DTOs.MusicStore;
+using Application.Interfaces.Repositories;
 using Application.Interfaces.Services.MusicStore;
 using Azure.Storage.Blobs;
 using Domain.Entities.General;
@@ -17,7 +18,7 @@ using Shared.Interfaces;
 namespace Infrastructure.Services.MusicStore;
 
 public class MusicProductService(
-    Repository<MusicProduct, MusicStoreContext> genericMusicRepository,
+    IRepository<MusicProduct> genericMusicRepository,
     IOptions<BlobOptions> blobOptions,
     IMapper mapper
     ): IMusicProductService

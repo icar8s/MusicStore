@@ -2,6 +2,8 @@ using Application.Interfaces;
 using Domain.Entities.GamerStore;
 using Domain.Entities.General;
 using Domain.Entities.MusicStore;
+using IdentityServer.Misc.ContextFactory;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using Persistence.SeedData;
@@ -14,8 +16,10 @@ internal static class ServiceExtensions
     internal static IServiceCollection AddPersistenceLayer(this IServiceCollection services,
         IConfiguration configuration) =>
         services
+            .AddScoped<IContextFactory, CtxFactory>()
             .AddIdentities(configuration)
             .AddDbInitializer()
+            .AddIdentityConfigurations()
             .AddIdentityServerContexts(configuration);
     
     private static IServiceCollection AddIdentities(this IServiceCollection services,
@@ -24,8 +28,18 @@ internal static class ServiceExtensions
             .AddDbContext<MusicStoreContext>(options => 
                 options.UseNpgsql(configuration.GetConnectionString("musicDb")))
             .AddDbContext<GameStoreContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("gameDb")));
+                options.UseNpgsql(configuration.GetConnectionString("gamerDb")));
 
+    private static IServiceCollection AddIdentityConfigurations(this IServiceCollection services)
+    {
+        services.AddIdentity<User, IdentityRole<Guid>>()
+            .AddRoleStore<DynamicRoleStore>()
+            .AddUserStore<DynamicUserStore>()
+            .AddDefaultTokenProviders();
+        
+        return services;
+    }
+    
     private static IServiceCollection AddDbInitializer(this IServiceCollection services)
         => services
             .AddScoped<IDbInitializer<GamerStoreData>,
@@ -48,12 +62,9 @@ internal static class ServiceExtensions
                 options.ConfigureDbContext = context =>
                     context.UseNpgsql(configuration.GetConnectionString("operationalDb"),
                         migration => migration.MigrationsAssembly(typeof(Program).Assembly.FullName));
-                options.EnableTokenCleanup = true;
-                options.RemoveConsumedTokens = true;
-                options.TokenCleanupInterval = 10;
             })
-            .AddDeveloperSigningCredential();
-            //.AddAspNetIdentity<User>();
+            .AddDeveloperSigningCredential()
+            .AddAspNetIdentity<User>();
         
         return services;
     }

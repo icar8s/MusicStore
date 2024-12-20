@@ -1,5 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
+using System.Security.Claims;
 using Application.Interfaces.Repositories;
 using Application.Interfaces.Services;
 using Application.Interfaces.Services.GamerStore;
@@ -7,6 +8,7 @@ using Application.Interfaces.Services.MusicStore;
 using Domain.Entities.GamerStore;
 using Domain.Entities.General;
 using Domain.Entities.General.Links;
+using Domain.Entities.MusicStore;
 using Domain.Enums;
 using FluentValidation;
 using Infrastructure.Services;
@@ -19,6 +21,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
+using Microsoft.IdentityModel.Tokens;
+using MusicStore.Constraints;
 using Persistence.Contexts;
 using Persistence.Repositories;
 using ZiggyCreatures.Caching.Fusion;
@@ -34,7 +38,7 @@ internal static class ServiceExtensions
             .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly())
             .Configure<RouteOptions>(options =>
             {
-                options.ConstraintMap.Add("mpt", typeof(MusicProductType));
+                options.ConstraintMap.Add("mpt", typeof(MusicProductTypeConstraint));
             });
     
     private static IServiceCollection AddMapsterFromAssembly(this IServiceCollection services)
@@ -75,7 +79,7 @@ internal static class ServiceExtensions
         string audience = "api")
     {
         JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-        var identityUrl = configuration.GetValue<string>("IdentityUrl");
+        var identityUrl = configuration.GetConnectionString("identity");
 
         services.AddAuthentication(options =>
         {
@@ -87,7 +91,6 @@ internal static class ServiceExtensions
             options.Authority = identityUrl;
             options.RequireHttpsMetadata = false;
             options.Audience = audience;
-            options.TokenValidationParameters.RoleClaimType = "role";
         });
 
         return services;
@@ -132,7 +135,7 @@ internal static class ServiceExtensions
             .AddScoped<IRepository<CartProduct>, Repository<CartProduct, MusicStoreContext>>()
             .AddScoped<IRepository<News>, Repository<News, MusicStoreContext>>()
             .AddScoped<IRepository<Cart>, Repository<Cart, MusicStoreContext>>()
-            .AddScoped<IRepository<GamerProduct>, Repository<GamerProduct, MusicStoreContext>>()
+            .AddScoped<IRepository<MusicProduct>, Repository<MusicProduct, MusicStoreContext>>()
             .AddScoped<ICartProductRepository, CartProductRepository<MusicStoreContext>>()
             .AddScoped<ICartRepository, CartRepository<MusicStoreContext>>();
 

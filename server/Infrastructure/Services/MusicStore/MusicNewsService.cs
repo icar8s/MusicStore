@@ -1,5 +1,6 @@
 using Application.Common;
 using Application.DTOs.General;
+using Application.Interfaces.Repositories;
 using Application.Interfaces.Services.MusicStore;
 using Azure.Storage.Blobs;
 using Domain.Entities.GamerStore;
@@ -15,7 +16,7 @@ using Shared.Interfaces;
 
 namespace Infrastructure.Services.MusicStore;
 
-public class MusicNewsService(Repository<News, MusicStoreContext> repository,
+public class MusicNewsService(IRepository<News> repository,
     IOptions<BlobOptions> blobOptions,
     IMapper mapper): IMusicNewsService
 {
