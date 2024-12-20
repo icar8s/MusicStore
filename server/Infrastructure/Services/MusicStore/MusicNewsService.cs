@@ -1,9 +1,13 @@
 using Application.Common;
 using Application.DTOs.General;
 using Application.Interfaces.Services.MusicStore;
+using Azure.Storage.Blobs;
+using Domain.Entities.GamerStore;
 using Domain.Entities.General;
+using Domain.Options;
 using Mapster;
 using MapsterMapper;
+using Microsoft.Extensions.Options;
 using Persistence.Contexts;
 using Persistence.Repositories;
 using Shared;
@@ -12,6 +16,7 @@ using Shared.Interfaces;
 namespace Infrastructure.Services.MusicStore;
 
 public class MusicNewsService(Repository<News, MusicStoreContext> repository,
+    IOptions<BlobOptions> blobOptions,
     IMapper mapper): IMusicNewsService
 {
     public async Task<IPaginatedResult<NewsDto>> GetNewsAsync(PageIndex page,
@@ -21,14 +26,32 @@ public class MusicNewsService(Repository<News, MusicStoreContext> repository,
                 .ProjectToType<NewsDto>(mapper.Config)
                 .ToPaginatedListAsync(page.PageNumber, page.PageSize, cancellationToken);
 
-    public Task<IResult<Guid>> CreateAsync(NewsDto news,
+    public async Task<IResult<Guid>> CreateAsync(NewsDto news,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
-        /*var entity = mapper.Map<News>(news);
+        var blobServiceClient = new BlobServiceClient(blobOptions.Value.ConnectionString);
         
-        var id = await repository.CreateAsync(entity, cancellationToken);
+        if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
+        {
+            await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
+        }
         
-        return Result<Guid>.Success(id);*/
+        var blobContainerClient = blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName);
+        
+        var blobClient = blobContainerClient.GetBlobClient($"{news.Name}.txt");
+        
+        var data =  Convert.FromBase64String(news.Base64Image);
+        
+        var binaryData = new BinaryData(data);
+        
+        await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
+        
+        var newsEntity = mapper.Map<News>(news);
+
+        newsEntity.BlobId = $"{blobClient.Uri}/{news.Name}.txt";
+        
+        var id = await repository.CreateAsync(newsEntity, cancellationToken);
+
+        return Result<Guid>.Success(id);
     }
 }

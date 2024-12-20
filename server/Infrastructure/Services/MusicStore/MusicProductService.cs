@@ -1,10 +1,14 @@
 using Application.Common;
 using Application.DTOs.MusicStore;
 using Application.Interfaces.Services.MusicStore;
+using Azure.Storage.Blobs;
+using Domain.Entities.General;
 using Domain.Entities.MusicStore;
 using Domain.Enums;
+using Domain.Options;
 using Mapster;
 using MapsterMapper;
+using Microsoft.Extensions.Options;
 using Persistence.Contexts;
 using Persistence.Repositories;
 using Shared;
@@ -14,6 +18,7 @@ namespace Infrastructure.Services.MusicStore;
 
 public class MusicProductService(
     Repository<MusicProduct, MusicStoreContext> genericMusicRepository,
+    IOptions<BlobOptions> blobOptions,
     IMapper mapper
     ): IMusicProductService
 {
@@ -46,16 +51,64 @@ public class MusicProductService(
             .ProjectToType<MusicProductShortDto>(mapper.Config)
             .ToPaginatedListAsync(page.PageNumber, page.PageSize, cancellationToken);
 
-    public Task<IResult<Guid>> AddMusicProductAsync(MusicProductDto musicProduct,
+    public async Task<IResult<Guid>> AddMusicProductAsync(MusicProductDto musicProduct,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var blobServiceClient = new BlobServiceClient(blobOptions.Value.ConnectionString);
+        
+        if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
+        {
+            await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
+        }
+        
+        var blobContainerClient = blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName);
+        
+        var blobClient = blobContainerClient.GetBlobClient($"{musicProduct.Name}.txt");
+        
+        var data =  Convert.FromBase64String(musicProduct.Base64Image);
+        
+        var binaryData = new BinaryData(data);
+        
+        await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
+        
+        var newsEntity = mapper.Map<MusicProduct>(musicProduct);
+
+        newsEntity.BlobId = $"{blobClient.Uri}/{musicProduct.Name}.txt";
+        
+        var id = await genericMusicRepository.CreateAsync(newsEntity, cancellationToken);
+
+        return Result<Guid>.Success(id);
     }
 
-    public Task<IResult<bool>> UpdateMusicProductAsync(MusicProductDto musicProduct,
+    public async Task<IResult<bool>> UpdateMusicProductAsync(MusicProductDto musicProduct,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var blobServiceClient = new BlobServiceClient(blobOptions.Value.ConnectionString);
+        
+        if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
+        {
+            await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
+        }
+        
+        var blobContainerClient = blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName);
+        
+        var blobClient = blobContainerClient.GetBlobClient($"{musicProduct.Name}.txt");
+        
+        await blobClient.DeleteIfExistsAsync(cancellationToken: cancellationToken);
+        
+        var data =  Convert.FromBase64String(musicProduct.Base64Image);
+        
+        var binaryData = new BinaryData(data);
+        
+        await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
+        
+        var newsEntity = mapper.Map<MusicProduct>(musicProduct);
+
+        newsEntity.BlobId = $"{blobClient.Uri}/{musicProduct.Name}.txt";
+        
+        var id = await genericMusicRepository.CreateAsync(newsEntity, cancellationToken);
+
+        return Result<bool>.Success();
     }
 
     public async Task<IResult<bool>> DeleteMusicProductAsync(Guid id,
