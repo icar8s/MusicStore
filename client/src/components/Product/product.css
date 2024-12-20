@@ -107,14 +107,14 @@
 }
 
 .product-price-button {
-  background-color: #ff69b4;
+  background-color: #69ffb4;
   border: none;
   position: absolute;
   margin-top: 190px;
   margin-left: -60px;
   padding: 10px 30px;
   border-radius: 10px;
-  color: white;
+  color: purple;
   font-size: 16px;
   cursor: pointer;
 }

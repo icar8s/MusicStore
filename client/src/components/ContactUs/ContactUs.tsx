@@ -10,8 +10,8 @@ export const ContactUs:  () => JSX.Element = () => {
                 <p>WELCOME BACK</p>
                 <p>USERS!</p>
                 <h2>CONTACTS</h2>
-                <p>pavkap20@gmail.com</p>
-                <p>+375 (29) 121-50-11</p>
+                <p>gamer123@gmail.com</p>
+                <p>+375 (29) 346-54-11</p>
             </div>
             <div className="card">
                 <form className="contact-form">

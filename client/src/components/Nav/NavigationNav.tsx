@@ -25,7 +25,7 @@ export const NavigationNav = () => {
                 className={`${selectedTheme}-theme logo`}
                 to={Home.meta.route}>
 
-                Music Store
+                Gamer Store
             </NavLink>
         </section>
         <section

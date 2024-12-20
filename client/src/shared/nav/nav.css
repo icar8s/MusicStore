@@ -30,12 +30,12 @@
   text-decoration: none;
 }
 .nav .section .nav-link.active.Basic-theme, .Basic-theme .nav .section .nav-link.active {
-  color: #ff5c77;
+  color: #5cff77;
   font-weight: bold;
 }
 .nav .section .nav-link:hover.Basic-theme, .Basic-theme .nav .section .nav-link:hover {
-  color: #ff5c77;
-  border-bottom: 2px solid #ff5c77;
+  color: #5cff77;
+  border-bottom: 2px solid #5cff77;
 }
 .nav .section[data-alignment=left].Basic-theme, .Basic-theme .nav .section[data-alignment=left] {
   display: flex;

@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  background: linear-gradient(to right, black, #410000);
+  background: linear-gradient(to right, black, #004100);
   text-align: hidden;
   position: hidden;
 }
@@ -40,9 +40,9 @@
 .slider .slider-button.Basic-theme, .Basic-theme .slider .slider-button {
   font-size: 0.95rem;
   padding: 12px 25px;
-  background-color: #ff5c77;
-  color: white;
-  border: 0px solid #f15e2c;
+  background-color: #5cff77;
+  color: purple;
+  border: 0px solid #5ef12c;
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.3s;
