@@ -17,7 +17,7 @@ $select-position: relative;
 //nav
 $nav-background-color: rgba(0, 0, 0, 1);
 $nav-box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.8);
-$nav-border-bottom: 1px solid white;
+$nav-border-bottom: 0px solid white;
 $nav-height: 50px;
 $nav-padding: 20px 20px 20px 20px;
 $nav-display: flex;
@@ -30,7 +30,7 @@ $nav-font-family: "Poppins", sans-serif;
 //nav section
 $nav-section-background: transparent;
 $nav-section-display: flex;
-$nav-section-gap: 150px;
+$nav-section-gap: 50px;
 $nav-section-align-items: center;
 
 //nav section-left
@@ -159,7 +159,7 @@ $slider-height: 100%;
 $slider-display: flex;
 $slider-align-items: center;
 $slider-justify-content: left;
-$slider-background: linear-gradient(to right, black , #5b0000);
+$slider-background: linear-gradient(to right, black , #410000);
 $slider-text-align: hidden;
 $slider-position: hidden;
 

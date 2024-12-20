@@ -3,6 +3,7 @@ export enum ProductType {
 }
 
 export type ShortProduct = {
+    id: string,
     name: string,
     image: string,
     price: number,
@@ -16,6 +17,8 @@ export type Product = ShortProduct & {
     remaining: number,
     description: string,
 }
+
+
 
 export type Sale = {
     id: string,

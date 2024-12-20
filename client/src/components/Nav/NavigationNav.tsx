@@ -5,11 +5,13 @@ import {ProtectedContent} from "../../misc/Protected.tsx";
 import {Products} from "../Products/Products.tsx";
 import {Login} from "../Login/Login.tsx";
 import {Register} from "../Register/Register.tsx";
-import {AdminPanel} from "../AdminPanel/AdminPanel.tsx";
-import {ModerationPanel} from "../ModerationPanel/ModerationPanel.tsx";
 import {ContactUs} from "../ContactUs/ContactUs.tsx";
 import {Home} from "../Home/Home.tsx";
+import login from "../../assets/images/sliderHome/login.png"
+import korzina from "../../assets/images/sliderHome/korzina.png"
 import './navigationNav.scss'
+import React from "react";
+import {Cart} from "../Cart/Cart.tsx";
 
 
 export const NavigationNav = () => {
@@ -35,22 +37,6 @@ export const NavigationNav = () => {
 
                 Home
             </NavLink>
-            <ProtectedContent scope={["admin", "moderator"]}>
-                <NavLink
-                    className={`${selectedTheme}-theme nav-link`}
-                    to={AdminPanel.meta.route}>
-
-                    Admin Panel
-                </NavLink>
-            </ProtectedContent>
-            <ProtectedContent scope={["admin", "moderator"]}>
-                <NavLink
-                    className={`${selectedTheme}-theme nav-link`}
-                    to={ModerationPanel.meta.route}>
-
-                    Moderation Panel
-                </NavLink>
-            </ProtectedContent>
             <NavLink
                 className={`${selectedTheme}-theme nav-link`}
                 to={Products.meta.route}>
@@ -69,17 +55,15 @@ export const NavigationNav = () => {
             data-alignment={"right"}>
 
             <NavLink
-                className={`${selectedTheme}-theme nav-link`}
-                to={Login.meta.route}>
-
-                Login
+                className={`${selectedTheme}-theme`}
+                to={Cart.meta.route}>
+                <img src={korzina}  className={"korzina"} alt="Music Store" />
             </NavLink>
 
             <NavLink
-                className={`${selectedTheme}-theme nav-link`}
-                to={Register.meta.route}>
-
-                Register
+                className={`${selectedTheme}-theme`}
+                to={Login.meta.route}>
+                <img src={login} className={"login"} alt="Music Store" />
             </NavLink>
         </section>
     </Nav>

@@ -22,6 +22,13 @@
     @include global.themify("slider-button-hover");
   }
 }
+.slider-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+}
 /* Дополнительные стили для Swiper */
 .swiper-pagination-bullet {
   background: #fff;
@@ -34,4 +41,17 @@
 
 .slider-button:hover {
   background-color: #e55d50;
+}
+/* Изображение */
+.slider-image {
+  flex: 1; /* Занимает доступное пространство */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-image img {
+  max-width: 100%;
+  height: auto;
+  margin-top: -100px;
 }
