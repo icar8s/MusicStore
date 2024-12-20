@@ -12,5 +12,7 @@ public sealed class CartRepository<TContext>(TContext context):
         CancellationToken cancellationToken = default)
         => await context
             .Set<Cart>()
+            .Include(x=>x.Products)
+            .ThenInclude(x=>x.Product)
             .FirstOrDefaultAsync(x=>x.UserId == userId, cancellationToken);
 }
