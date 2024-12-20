@@ -6,12 +6,11 @@ namespace Application.Interfaces.Services.MusicStore;
 
 public interface IMusicCartService
 {
-    Task<IResult<CartDto<MusicProductShortDto>>> GetCartAsync(Guid cartId,
+    Task<IResult<CartDto<MusicProductShortDto>>> GetCartAsync(CancellationToken cancellationToken = default);
+    
+    Task<IResult<Guid>> AddGamerToCartAsync(Guid productId,
         CancellationToken cancellationToken = default);
     
-    Task<IResult<bool>> AddGamerToCartAsync(Guid productId,
-        CancellationToken cancellationToken = default);
-    
-    Task<IResult<bool>> RemoveGamerFromCartAsync(Guid productId,
+    Task<IResult<bool>> RemoveProductFromCartAsync(Guid productId,
         CancellationToken cancellationToken = default);
 }

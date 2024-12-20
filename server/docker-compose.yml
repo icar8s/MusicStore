@@ -1,6 +1,0 @@
-﻿services:
-  musicstore:
-    image: musicstore
-    build:
-      context: .
-      dockerfile: MusicStore/Dockerfile

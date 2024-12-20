@@ -9,6 +9,5 @@ public sealed class UserMapper: IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.ForType<User, UserDto>();
-        
     }
 }

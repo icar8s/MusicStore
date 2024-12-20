@@ -11,6 +11,8 @@ WORKDIR /src
 COPY ["MusicStore/MusicStore.csproj", "MusicStore/"]
 COPY ["Domain/Domain.csproj", "Domain/"]
 COPY ["Application/Application.csproj", "Application/"]
+COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
+
 
 RUN dotnet restore "MusicStore/MusicStore.csproj"
 COPY . .

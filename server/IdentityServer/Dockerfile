@@ -10,6 +10,7 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["IdentityServer/IdentityServer.csproj", "IdentityServer/"]
 COPY ["Domain/Domain.csproj", "Domain/"]
+COPY ["Persistence/Persistence.csproj", "Persistence/"]
 
 RUN dotnet restore "IdentityServer/IdentityServer.csproj"
 COPY . .
