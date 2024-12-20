@@ -1,6 +1,5 @@
 import React from 'react';
 import './home.scss';
-import french from "../../assets/images/sliderHome/french.png"
 
 
 export const Home: () => JSX.Element = () => {
@@ -25,7 +24,6 @@ export const Home: () => JSX.Element = () => {
 
                     {/* Изображение */}
                     <div className="slider-image">
-                        <img src={french} alt="Music Store" />
                     </div>
                 </div>
             </div>
