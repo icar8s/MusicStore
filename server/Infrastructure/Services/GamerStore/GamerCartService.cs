@@ -20,16 +20,16 @@ public class GamerCartService(IIdentityService identity,
     ICartProductRepository cartProductRepository,
     ICartRepository cartRepository): IGamerCartService
 {
-    public async Task<IResult<CartDto<GamerProductShortDto>>> GetCartAsync(Guid cartId, CancellationToken cancellationToken = default)
+    public async Task<IResult<CartDto<GamerProductShortDto>>> GetCartAsync(CancellationToken cancellationToken = default)
     {
-        var cart = await genericCartRepository.GetByIdAsync(cartId, cancellationToken);
+        var cartResult = await GetCardAsync(cancellationToken);
 
-        if (cart == null)
+        if (!cartResult.IsSucceeded)
         {
             return Result<CartDto<GamerProductShortDto>>.Failure();
         }
-
-        return Result<CartDto<GamerProductShortDto>>.Success(mapper.Map<CartDto<GamerProductShortDto>>(cart));
+        
+        return Result<CartDto<GamerProductShortDto>>.Success(mapper.Map<CartDto<GamerProductShortDto>>(cartResult.Data!));
     }
 
     public async Task<IResult<Guid>> AddGamerToCartAsync(Guid productId, CancellationToken cancellationToken = default)

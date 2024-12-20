@@ -1,26 +1,63 @@
+using Application.Interfaces.Services.MusicStore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MusicStore.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CartController: ControllerBase
+public class CartController(IMusicCartService musicCartService): ControllerBase
 {
-    [HttpGet("{cartId:guid}")]
-    public Task GetCartByIdAsync(Guid cartId)
+    [HttpGet]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetCartByIdAsync(CancellationToken ctx)
     {
-        throw new NotImplementedException();
+        var result = await musicCartService.GetCartAsync(ctx);
+
+        if (!result.IsSucceeded)
+        {
+            return NotFound();
+        }
+        
+        return Ok(result);
     }
 
-    [HttpPut("{cartId:guid}")]
-    public Task AddItemToCartAsync(Guid cartId, Guid itemId, uint amount)
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [HttpPut("{itemId:guid}")]
+    public async Task<IActionResult> AddItemToCartAsync(Guid itemId, 
+        CancellationToken ctx)
     {
-        throw new NotImplementedException();
+        var result = await musicCartService.AddGamerToCartAsync(itemId, ctx);
+
+        if (!result.IsSucceeded)
+        {
+            return NotFound();
+        }
+
+        return Ok(result.Data);
     }
 
-    [HttpDelete("{cartId:guid}")]
-    public Task RemoveItemFromCartAsync(Guid cartId, Guid itemId)
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [HttpDelete("{itemId:guid}")]
+    public async Task<IActionResult> RemoveItemFromCartAsync(Guid itemId, 
+        CancellationToken ctx)
     {
-        throw new NotImplementedException();
+        var result = await musicCartService.AddGamerToCartAsync(itemId, ctx);
+
+        if (!result.IsSucceeded)
+        {
+            return NotFound();
+        }
+
+        return Ok(result.Data);
     }
 }

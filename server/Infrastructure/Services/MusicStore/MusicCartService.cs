@@ -18,17 +18,16 @@ public class MusicCartService(IIdentityService identity,
     ICartProductRepository cartProductRepository,
     ICartRepository cartRepository): IMusicCartService
 {
-    public async Task<IResult<CartDto<MusicProductShortDto>>> GetCartAsync(Guid cartId,
-        CancellationToken cancellationToken = default)
+    public async Task<IResult<CartDto<MusicProductShortDto>>> GetCartAsync(CancellationToken cancellationToken = default)
     {
-        var cart = await genericCartRepository.GetByIdAsync(cartId, cancellationToken);
+        var cartResult = await GetCardAsync(cancellationToken);
 
-        if (cart == null)
+        if (!cartResult.IsSucceeded)
         {
             return Result<CartDto<MusicProductShortDto>>.Failure();
         }
         
-        return Result<CartDto<MusicProductShortDto>>.Success(mapper.Map<CartDto<MusicProductShortDto>>(cart));
+        return Result<CartDto<MusicProductShortDto>>.Success(mapper.Map<CartDto<MusicProductShortDto>>(cartResult.Data!));
     }
 
     public async Task<IResult<Guid>> AddGamerToCartAsync(Guid productId,

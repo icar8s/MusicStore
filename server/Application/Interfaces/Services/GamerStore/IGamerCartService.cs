@@ -6,8 +6,7 @@ namespace Application.Interfaces.Services.GamerStore;
 
 public interface IGamerCartService
 {
-    Task<IResult<CartDto<GamerProductShortDto>>> GetCartAsync(Guid cartId,
-        CancellationToken cancellationToken = default);
+    Task<IResult<CartDto<GamerProductShortDto>>> GetCartAsync(CancellationToken cancellationToken = default);
     
     Task<IResult<Guid>> AddGamerToCartAsync(Guid productId,
         CancellationToken cancellationToken = default);
