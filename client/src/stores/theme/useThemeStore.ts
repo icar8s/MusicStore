@@ -18,7 +18,6 @@ type CombinedThemeAction = SetThemeAction
 
 //reducer invoke provided action
 const reducer = (state: ThemeState, action: CombinedThemeAction): ThemeState => {
-    debugger
     switch (action.type) {
         case "SET_THEME":
             return {...state, selectedTheme: action.theme};

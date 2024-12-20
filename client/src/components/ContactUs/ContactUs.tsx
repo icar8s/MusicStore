@@ -8,7 +8,7 @@ export const ContactUs:  () => JSX.Element = () => {
             <div className="store-hours">
                 <h2>Store hours</h2>
                 <p>WELCOME BACK</p>
-                <p>TEXT</p>
+                <p>USERS!</p>
                 <h2>CONTACTS</h2>
                 <p>pavkap20@gmail.com</p>
                 <p>+375 (29) 121-50-11</p>

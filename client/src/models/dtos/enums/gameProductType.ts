@@ -1,7 +1,4 @@
-namespace Domain.Enums;
-
-public enum GamerProductType: byte
-{
+export enum GamerProductType {
     VideoCard,
     Ssd,
     Tablet,

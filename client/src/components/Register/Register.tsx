@@ -1,15 +1,9 @@
-import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
-import React, {useState} from "react";
+import {useState} from "react";
 
-export const Register : () => JSX.Element = () => {
+export const Register  = ()  => {
     const [email, setEmail] = useState<string>("");
     const [login, setLogin] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const {selectedTheme} = useThemeStore();
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-    };
 
     return (
         <div className="contact-us">

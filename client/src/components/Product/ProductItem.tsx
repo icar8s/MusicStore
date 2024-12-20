@@ -1,17 +1,16 @@
-import {Product, ShortProduct} from "../../models/Product.ts";
 import {Base64Image} from "../Base64Image/Base64Image.tsx";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
 import "./product.scss"
 import noImage from "../../assets/images/sliderHome/slide1.jpg"
 import {NavLink} from "react-router-dom";
-import React from "react";
+import {MusicProductShort} from "../../models/dtos/musicStore/musicProductShort.ts";
 
 interface ProductProps {
-    product: Product;
-    onAddToCart: (product: Product) => void;
+    product: MusicProductShort;
+
 }
 
-export const ProductItem = ({ product, onAddToCart }: ProductProps) => {
+export const ProductItem = ({ product }: ProductProps) => {
     const { selectedTheme } = useThemeStore();
 
     return (
@@ -24,13 +23,13 @@ export const ProductItem = ({ product, onAddToCart }: ProductProps) => {
                 <div className={`${selectedTheme}-theme product-image-background`}></div>
             </div>
             <div className={`${selectedTheme}-theme product-image-container`}>
-                {product.image ? (
-                    <Base64Image className={`${selectedTheme}-theme product-image`} base64String={product.image} />
+                {product.base64Image ? (
+                    <Base64Image className={`${selectedTheme}-theme product-image`} base64String={product.base64Image} />
                 ) : (
                     <img className={`${selectedTheme}-theme product-image`} src={noImage} alt={'xui'} />
                 )}
-                <button className={`${selectedTheme}-theme product-price-button`} onClick={() => onAddToCart(product)}>
-                    {product.actualPrice} BYN
+                <button className={`${selectedTheme}-theme product-price-button`} onClick={() => console.log(product.price)}>
+                    {product.price} BYN
                 </button>
             </div>
         </div>

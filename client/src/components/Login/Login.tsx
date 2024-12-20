@@ -1,27 +1,13 @@
-import { Input } from "../../shared/input/Input.tsx";
-import { Button } from "../../shared/Button/Button.tsx";
-import React, {useState} from "react";
+import {useState} from "react";
 import {NavLink} from "react-router-dom";
-import {ContactUs} from "../ContactUs/ContactUs.tsx";
 import {Register} from "../Register/Register.tsx";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
-import {useProductsStore} from "../../stores/products/useProductsStore.ts";
-import useAuthStore from "../../stores/autorized/useAuthStore.ts";
 
-export const Login: () => JSX.Element = () => {
+export const Login= () => {
     const [login, setLogin] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const { login: authLogin } = useAuthStore();
     const {selectedTheme} = useThemeStore();
 
-    const handleLoginClick = async () => {
-        try {
-            await authLogin(login, password); // Call the login function from AuthStore
-            // If login is successful, you can redirect to a protected route or do something else
-        } catch (error) {
-            console.error("An error occurred during login:", error);
-        }
-    };
 
     return (
         <div className="contact-us">
@@ -48,7 +34,7 @@ export const Login: () => JSX.Element = () => {
                     </label>
                     <button
                         type="submit"
-                        onClick={handleLoginClick}
+                        onClick={() => console.log("login")}
                     >
                         Login
                     </button>
