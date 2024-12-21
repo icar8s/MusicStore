@@ -1,15 +1,5 @@
 @use "variables";
-
-$select: (
-        background: variables.$select-background,
-        color: variables.$select-color,
-        width: variables.$select-width,
-        height: variables.$select-height,
-        font-size: variables.$m_font,
-        cursor: variables.$select-cursor,
-        display: variables.$select-display,
-        position: variables.$select-position,
-);
+@forward "variables";
 
 $select-hover: (
 );

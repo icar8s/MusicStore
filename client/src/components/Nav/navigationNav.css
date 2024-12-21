@@ -1,0 +1,28 @@
+@charset "UTF-8";
+.logo.Basic-theme, .Basic-theme .logo {
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 60px;
+  transition: all 0.3s ease;
+  color: white;
+  text-decoration: none;
+}
+
+.login {
+  height: 45px;
+  width: auto;
+  cursor: pointer;
+  padding-right: 30px;
+  max-width: 100%; /* Чтобы изображение не выходило за пределы контейнера */
+  display: block; /* Убирает отступы снизу, если это необходимо */
+}
+
+.korzina {
+  height: 25px;
+  width: auto;
+  margin-bottom: -5px;
+  max-width: 100%; /* Чтобы изображение не выходило за пределы контейнера */
+  display: block; /* Убирает отступы снизу, если это необходимо */
+}
+
+/*# sourceMappingURL=navigationNav.css.map */

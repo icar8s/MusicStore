@@ -1,31 +1,11 @@
-//font
-$xl_font: 25px;
-$lg_font: 20px;
-$m_font: 15px;
-$sm_font: 13px;
-$xs_font: 10px;
+@use "variables/select" as select;
+@forward "variables/select";
 
-//select
-$select-background:#4f4f4f;
-$select-color: #fff;
-$select-width: 220px;
-$select-height: 40px;
-$select-cursor: pointer;
-$select-display: inline-block;
-$select-position: relative;
+@use "variables/nav" as nav;
+@forward "variables/nav";
 
-//nav
-$nav-background-color: rgba(0, 0, 0, 1);
-$nav-box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.8);
-$nav-border-bottom: 0px solid white;
-$nav-height: 50px;
-$nav-padding: 20px 20px 20px 20px;
-$nav-display: flex;
-$nav-horizontal: row;
-$nav-vertical: column;
-$nav-justify-content: space-between;
-$nav-align-items: center;
-$nav-font-family: "Poppins", sans-serif;
+@use "variables/general/fonts" as font;
+@forward "variables/general/fonts";
 
 //nav section
 $nav-section-background: transparent;
@@ -193,3 +173,4 @@ $slider-button-transition: background-color 0.3s;
 
 //slider-button-hover
 $slider-button-hover-background-color: #f0e0ff;
+
