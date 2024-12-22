@@ -1,4 +1,4 @@
-import "./cart.scss";
+import "./сart.scss";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 
 export const CartGameStore: ComponentWithMeta  = ()  => {

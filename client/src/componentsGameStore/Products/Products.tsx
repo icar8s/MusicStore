@@ -1,7 +1,7 @@
 import { Panel } from "../../shared/panel/Panel.tsx";
 import { useProductsStore } from "../../stores/products/useProductsStore.ts";
 import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
-import "./products.scss";
+import "./products.module.scss";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import {ProductGameStore} from "../Product/Product.tsx";
 
