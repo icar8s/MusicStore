@@ -1,7 +1,8 @@
-import axios, {AxiosError, AxiosRequestConfig} from "axios";
+import axios, {AxiosError} from "axios";
 import {IResponseList} from "./IResponseList.ts";
 import {IFiniteList} from "./finiteList.ts";
 import {IPageIndex} from "./pageIndex.ts";
+import {IRequestBuilder} from "../requestBuilder/requestBuilder.ts";
 
 export interface IInFiniteList<TData> extends Omit<IFiniteList<TData>, "fetch">{
     fetchNext: () => void;
@@ -15,13 +16,17 @@ export class InFiniteList<TData> implements IInFiniteList<TData> {
     private _error?: AxiosError<unknown, unknown> | undefined;
     private _data?: IResponseList<TData>;
 
-    private readonly _config: AxiosRequestConfig<IResponseList<TData>>;
+    private readonly _requestBuilder: IRequestBuilder<IResponseList<TData>>;
     private readonly _pageSize: number;
 
-    constructor(config: AxiosRequestConfig<IResponseList<TData>>,
+    constructor(requestBuilder: IRequestBuilder<IResponseList<TData>>,
                 pageSize: number = 10) {
-        this._config = config;
+        this._requestBuilder = requestBuilder;
         this._pageSize = pageSize;
+    }
+
+    public get requestBuilder() {
+        return this._requestBuilder;
     }
 
     get data(): IResponseList<TData> | undefined {
@@ -51,15 +56,10 @@ export class InFiniteList<TData> implements IInFiniteList<TData> {
         this._data = undefined;
         this._error = undefined;
 
-        const config = {
-            ...this._config,
-            params: {
-                ...this._config.params,
-                page: page,
-            },
-        };
+        this._requestBuilder.addOrSetParam({name: "PageNumber", value: page.pageNumber.toString()})
+        this._requestBuilder.addOrSetParam({name: "PageSize", value: page.pageSize.toString()})
 
-        axios<IResponseList<TData>>(config)
+        axios<IResponseList<TData>>(this._requestBuilder.build())
             .then(response => {
                 this._data = response.data;
             })

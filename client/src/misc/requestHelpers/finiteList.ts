@@ -1,10 +1,12 @@
-import axios, {AxiosError, AxiosRequestConfig} from "axios";
+import axios, {AxiosError} from "axios";
 import {IResponseList} from "./IResponseList.ts";
+import {IRequestBuilder} from "../requestBuilder/requestBuilder.ts";
 
 export interface IFiniteList<TData> {
     pending: boolean;
     error?: AxiosError<unknown, unknown> | undefined;
-    data?: IResponseList<TData>;
+    dataResult?: IResponseList<TData>;
+    requestBuilder: IRequestBuilder<IResponseList<TData>>
     fetch:()=>void;
 }
 
@@ -13,10 +15,14 @@ export class FiniteList<TData> implements IFiniteList<TData> {
     private _error?: AxiosError<unknown, unknown>;
     private _data?: IResponseList<TData> = undefined;
 
-    private _config: AxiosRequestConfig<IResponseList<TData>>;
+    private readonly _requestBuilder: IRequestBuilder<IResponseList<TData>>
 
-    constructor(config: AxiosRequestConfig<IResponseList<TData>>) {
-        this._config = config;
+    constructor(requestBuilder: IRequestBuilder<IResponseList<TData>>) {
+        this._requestBuilder = requestBuilder;
+    }
+
+    public get requestBuilder() {
+        return this._requestBuilder;
     }
 
     public get pending() {
@@ -27,11 +33,11 @@ export class FiniteList<TData> implements IFiniteList<TData> {
         this._pending = value;
     }
 
-    get data(): IResponseList<TData> | undefined {
+    get dataResult(): IResponseList<TData> | undefined {
         return this._data;
     }
 
-    private set data(value: IResponseList<TData> | undefined) {
+    private set dataResult(value: IResponseList<TData> | undefined) {
         this._data = value;
     }
 
@@ -47,9 +53,9 @@ export class FiniteList<TData> implements IFiniteList<TData> {
         this._pending = true;
         this.error = undefined;
         this._data = undefined;
-        axios<IResponseList<TData>>(this._config)
+        axios<IResponseList<TData>>(this._requestBuilder.build())
             .then(response => {
-                this.data = response.data;
+                this.dataResult = response.data;
             })
             .catch(error => {
                 this.error = error;
