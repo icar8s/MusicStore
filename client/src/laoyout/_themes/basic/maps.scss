@@ -192,6 +192,7 @@ $slider: (
         background: variables.$slider-background,
         text-align: variables.$slider-text-align,
         position: variables.$slider-position,
+        z-index: variables.$slider-z-index,
 );
 
 $slider-content: (

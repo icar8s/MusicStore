@@ -1,14 +1,14 @@
 import {Nav} from "../../shared/nav/Nav.tsx";
 import {NavLink} from "react-router-dom";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
-import {Products} from "../Products/Products.tsx";
-import {Login} from "../Login/Login.tsx";
-import {ContactUs} from "../ContactUs/ContactUs.tsx";
-import {Home} from "../Home/Home.tsx";
 import login from "../../assets/images/sliderHome/login.png"
 import korzina from "../../assets/images/sliderHome/korzina.png"
 import './navigationNav.scss'
-import {Cart} from "../Cart/Cart.tsx";
+import {LoginGameStore} from "../Login/Login.tsx";
+import {HomeGameStore} from "../Home/Home.tsx";
+import {ProductsGameStore} from "../Products/Products.tsx";
+import {ContactUsGameStore} from "../ContactUs/ContactUs.tsx";
+import {CartGameStore} from "../Cart/Cart.tsx";
 
 
 export const NavigationNav = () => {
@@ -20,9 +20,9 @@ export const NavigationNav = () => {
             data-alignment={"left"}>
             <NavLink
                 className={`${selectedTheme}-theme logo`}
-                to={Home.meta.route}>
+                to={HomeGameStore.meta.route}>
 
-                Music Store
+                Game Store
             </NavLink>
         </section>
         <section
@@ -30,19 +30,19 @@ export const NavigationNav = () => {
             data-alignment={"center"}>
             <NavLink
                 className={`${selectedTheme}-theme nav-link`}
-                to={Home.meta.route}>
+                to={HomeGameStore.meta.route}>
 
                 Home
             </NavLink>
             <NavLink
                 className={`${selectedTheme}-theme nav-link`}
-                to={Products.meta.route}>
+                to={ProductsGameStore.meta.route}>
 
                 Products
             </NavLink>
             <NavLink
                 className={`${selectedTheme}-theme nav-link`}
-                to={ContactUs.meta.route}>
+                to={ContactUsGameStore.meta.route}>
 
                 Contact us
             </NavLink>
@@ -53,13 +53,13 @@ export const NavigationNav = () => {
 
             <NavLink
                 className={`${selectedTheme}-theme`}
-                to={Cart.meta.route}>
+                to={CartGameStore.meta.route}>
                 <img src={korzina}  className={"korzina"} alt="Music Store" />
             </NavLink>
 
             <NavLink
                 className={`${selectedTheme}-theme`}
-                to={Login.meta.route}>
+                to={LoginGameStore.meta.route}>
                 <img src={login} className={"login"} alt="Music Store" />
             </NavLink>
         </section>

@@ -1,0 +1,18 @@
+.products-wrapper.Basic-theme, .Basic-theme .products-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.products-wrapper .products-container.Basic-theme, .Basic-theme .products-wrapper .products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.products-all {
+  background: linear-gradient(to right, black, #410000);
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+/*# sourceMappingURL=products.css.map */
