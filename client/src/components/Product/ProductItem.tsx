@@ -7,7 +7,6 @@ import {MusicProductShort} from "../../models/dtos/musicStore/musicProductShort.
 
 interface ProductProps {
     product: MusicProductShort;
-
 }
 
 export const ProductItem = ({ product }: ProductProps) => {

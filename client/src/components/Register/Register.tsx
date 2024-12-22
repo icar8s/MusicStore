@@ -1,9 +1,4 @@
-import {useState} from "react";
-
 export const Register  = ()  => {
-    const [email, setEmail] = useState<string>("");
-    const [login, setLogin] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
 
     return (
         <div className="contact-us">
@@ -15,7 +10,6 @@ export const Register  = ()  => {
                         <input
                             type="text"
                             name="name"
-                            onChange={(e) => setEmail(e.target.value)}
                             required
                         />
                     </label>
@@ -23,7 +17,6 @@ export const Register  = ()  => {
                         Login
                         <input
                             type="text"
-                            onChange={(e) => setLogin(e.target.value)}
                             name="name"
                             required
                         />
@@ -33,7 +26,6 @@ export const Register  = ()  => {
                         <input
                             type="email"
                             name="email"
-                            onChange={(e) => setPassword(e.target.value)}
                             required
                         />
                     </label>

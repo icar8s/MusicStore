@@ -1,15 +1,13 @@
-import React from 'react';
 import {Base64Image} from "../Base64Image/Base64Image.tsx";
 import noImage from "../../assets/images/sliderHome/slide1.jpg"
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
 import {useProductsStore} from "../../stores/products/useProductsStore.ts";
 import {useParams} from "react-router-dom";
-import {mockProducts} from "../../misc/mockProducts.ts";
 
-export const ProductDetails: () => JSX.Element = () => {
+export const ProductDetails  = ()  => {
     const { selectedTheme } = useThemeStore();
     const { id } = useParams<{ id: string }>(); // Извлечение id из URL
-    const {products}  = useProductsStore(mockProducts);
+    const {products}  = useProductsStore();
 
     const product = products.find((item) => item.id === id);
     console.log(id)

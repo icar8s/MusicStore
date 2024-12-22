@@ -1,9 +1,8 @@
-import React from 'react';
 import './home.scss';
 import french from "../../assets/images/sliderHome/french.png"
 
 
-export const Home: () => JSX.Element = () => {
+export const Home  = ()  => {
     return (
         <div className="home">
             <div className="slider">
@@ -34,6 +33,6 @@ export const Home: () => JSX.Element = () => {
 };
 
 Home.meta = {
-    route: 'home',
+    route: '',
     roles: ['admin', 'moderator'],
 };

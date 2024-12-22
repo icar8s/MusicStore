@@ -1,7 +1,6 @@
-import React from 'react';
 import './ContactUs.scss'
 
-export const ContactUs:  () => JSX.Element = () => {
+export const ContactUs  = ()  => {
     return (
         <div className="contact-us">
             <h1 className="h1">CONTACT US.</h1>
