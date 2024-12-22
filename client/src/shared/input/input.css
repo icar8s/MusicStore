@@ -1,4 +1,14 @@
-.input.Basic-theme, .Basic-theme .input {
+.input.MsStore-theme, .MsStore-theme .input {
+  font-size: 15px;
+  padding: 6px 12px;
+  outline: none;
+}
+.input.GsStore-theme, .GsStore-theme .input {
+  font-size: 15px;
+  padding: 6px 12px;
+  outline: none;
+}
+.input.Christmas-theme, .Christmas-theme .input {
   font-size: 15px;
   padding: 6px 12px;
   outline: none;

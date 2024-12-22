@@ -36,7 +36,7 @@ export const ProductsGameStore: ComponentWithMeta  = ()  => {
 
             {/* Панель с товарами */}
             <Panel className={`${selectedTheme}-theme products-container`}>
-                {shortsProducts.map((product, index) => (
+                {shortsProducts.dataResult?.data?.map((product, index) => (
                     <ProductGameStore
                         key={index}
                         product={product}

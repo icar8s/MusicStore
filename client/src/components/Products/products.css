@@ -1,8 +1,26 @@
-.products-wrapper.Basic-theme, .Basic-theme .products-wrapper {
+.products-wrapper.MsStore-theme, .MsStore-theme .products-wrapper {
   display: grid;
   grid-template-columns: 200px 1fr;
 }
-.products-wrapper .products-container.Basic-theme, .Basic-theme .products-wrapper .products-container {
+.products-wrapper.GsStore-theme, .GsStore-theme .products-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.products-wrapper.Christmas-theme, .Christmas-theme .products-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.products-wrapper .products-container.MsStore-theme, .MsStore-theme .products-wrapper .products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.products-wrapper .products-container.GsStore-theme, .GsStore-theme .products-wrapper .products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.products-wrapper .products-container.Christmas-theme, .Christmas-theme .products-wrapper .products-container {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;

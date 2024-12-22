@@ -1,4 +1,4 @@
-.nav.Basic-theme, .Basic-theme .nav {
+.nav.MsStore-theme, .MsStore-theme .nav {
   background-color: rgb(0, 0, 0);
   height: 50px;
   display: flex;
@@ -9,19 +9,65 @@
   font-family: "Poppins", sans-serif;
   box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.8);
 }
-.nav[data-orientation=horizontal].Basic-theme, .Basic-theme .nav[data-orientation=horizontal] {
+.nav.GsStore-theme, .GsStore-theme .nav {
+  background-color: rgb(0, 0, 0);
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0px solid white;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.8);
+}
+.nav.Christmas-theme, .Christmas-theme .nav {
+  background-color: rgb(0, 0, 0);
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0px solid white;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.8);
+}
+.nav[data-orientation=horizontal].MsStore-theme, .MsStore-theme .nav[data-orientation=horizontal] {
   flex-direction: row;
 }
-.nav[data-orientation=vertical].Basic-theme, .Basic-theme .nav[data-orientation=vertical] {
+.nav[data-orientation=horizontal].GsStore-theme, .GsStore-theme .nav[data-orientation=horizontal] {
+  flex-direction: row;
+}
+.nav[data-orientation=horizontal].Christmas-theme, .Christmas-theme .nav[data-orientation=horizontal] {
+  flex-direction: row;
+}
+.nav[data-orientation=vertical].MsStore-theme, .MsStore-theme .nav[data-orientation=vertical] {
   flex-direction: column;
 }
-.nav .section.Basic-theme, .Basic-theme .nav .section {
+.nav[data-orientation=vertical].GsStore-theme, .GsStore-theme .nav[data-orientation=vertical] {
+  flex-direction: column;
+}
+.nav[data-orientation=vertical].Christmas-theme, .Christmas-theme .nav[data-orientation=vertical] {
+  flex-direction: column;
+}
+.nav .section.MsStore-theme, .MsStore-theme .nav .section {
   background: transparent;
   display: flex;
   gap: 50px;
   align-items: center;
 }
-.nav .section .nav-link.Basic-theme, .Basic-theme .nav .section .nav-link {
+.nav .section.GsStore-theme, .GsStore-theme .nav .section {
+  background: transparent;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+.nav .section.Christmas-theme, .Christmas-theme .nav .section {
+  background: transparent;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+.nav .section .nav-link.MsStore-theme, .MsStore-theme .nav .section .nav-link {
   font-size: 16px;
   transform: uppercase;
   padding: 5px 10px;
@@ -29,20 +75,72 @@
   color: white;
   text-decoration: none;
 }
-.nav .section .nav-link.active.Basic-theme, .Basic-theme .nav .section .nav-link.active {
+.nav .section .nav-link.GsStore-theme, .GsStore-theme .nav .section .nav-link {
+  font-size: 16px;
+  transform: uppercase;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  color: white;
+  text-decoration: none;
+}
+.nav .section .nav-link.Christmas-theme, .Christmas-theme .nav .section .nav-link {
+  font-size: 16px;
+  transform: uppercase;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+  color: white;
+  text-decoration: none;
+}
+.nav .section .nav-link.active.MsStore-theme, .MsStore-theme .nav .section .nav-link.active {
   color: #ff5c77;
   font-weight: bold;
 }
-.nav .section .nav-link:hover.Basic-theme, .Basic-theme .nav .section .nav-link:hover {
+.nav .section .nav-link.active.GsStore-theme, .GsStore-theme .nav .section .nav-link.active {
+  color: #69ef26;
+  font-weight: bold;
+}
+.nav .section .nav-link.active.Christmas-theme, .Christmas-theme .nav .section .nav-link.active {
+  color: #69ef26;
+  font-weight: bold;
+}
+.nav .section .nav-link:hover.MsStore-theme, .MsStore-theme .nav .section .nav-link:hover {
   color: #ff5c77;
   border-bottom: 2px solid #ff5c77;
 }
-.nav .section[data-alignment=left].Basic-theme, .Basic-theme .nav .section[data-alignment=left] {
+.nav .section .nav-link:hover.GsStore-theme, .GsStore-theme .nav .section .nav-link:hover {
+  color: #69ef26;
+  border-bottom: 2px solid #69ef26;
+}
+.nav .section .nav-link:hover.Christmas-theme, .Christmas-theme .nav .section .nav-link:hover {
+  color: #69ef26;
+  border-bottom: 2px solid #69ef26;
+}
+.nav .section[data-alignment=left].MsStore-theme, .MsStore-theme .nav .section[data-alignment=left] {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-.nav .section[data-alignment=right].Basic-theme, .Basic-theme .nav .section[data-alignment=right] {
+.nav .section[data-alignment=left].GsStore-theme, .GsStore-theme .nav .section[data-alignment=left] {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav .section[data-alignment=left].Christmas-theme, .Christmas-theme .nav .section[data-alignment=left] {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav .section[data-alignment=right].MsStore-theme, .MsStore-theme .nav .section[data-alignment=right] {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav .section[data-alignment=right].GsStore-theme, .GsStore-theme .nav .section[data-alignment=right] {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.nav .section[data-alignment=right].Christmas-theme, .Christmas-theme .nav .section[data-alignment=right] {
   display: flex;
   gap: 20px;
   align-items: center;

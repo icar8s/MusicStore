@@ -1,4 +1,10 @@
-.panel.Basic-theme, .Basic-theme .panel {
+.panel.MsStore-theme, .MsStore-theme .panel {
+  padding: 16px;
+}
+.panel.GsStore-theme, .GsStore-theme .panel {
+  padding: 16px;
+}
+.panel.Christmas-theme, .Christmas-theme .panel {
   padding: 16px;
 }
 

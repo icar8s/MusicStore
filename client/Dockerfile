@@ -1,11 +1,12 @@
-FROM node:21-alpine3.20 AS builder
+FROM node:21-alpine AS builder
 WORKDIR /app
-COPY package.json package-lock.json ./
+
+COPY package.json .
 RUN npm install
 COPY . .
 RUN npm run build
 
-FROM busybox:1.30 AS runner
-WORKDIR /app
-COPY --from=builder /app/dist .
-CMD ["busybox", "httpd", "-f", "-v", "-p", "8080"]
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
