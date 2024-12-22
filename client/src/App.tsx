@@ -8,7 +8,7 @@ import {useThemeStore} from "./stores/theme/useThemeStore.ts";
 import {Register} from "./components/Register/Register.tsx";
 import {Home} from "./components/Home/Home.tsx";
 import {ContactUs} from "./components/ContactUs/ContactUs.tsx";
-import {ProductDetails} from "./components/ProductDetails/ProductDetails.tsx";
+import {ProductDetail} from "./components/ProductDetail/ProductDetail.tsx";
 import {Cart} from "./components/Cart/Cart.tsx";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
                     <Route path={Home.meta.route} element={<Home/>}/>
                     <Route path={Cart.meta.route} element={<Cart/>}/>
                     <Route path={ContactUs.meta.route} element={<ContactUs/>}/>
-                    <Route path={ProductDetails.meta.route} element={<ProductDetails/>}/>
+                    <Route path={ProductDetail.meta.route} element={<ProductDetail/>}/>
                 </Route>
 
                 <Route path="*" element={<>Not Found</>}/>
