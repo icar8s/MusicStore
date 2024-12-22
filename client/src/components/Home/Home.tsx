@@ -1,6 +1,8 @@
 import './home.scss';
 import french from "../../assets/images/sliderHome/french.png"
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
+import {NavLink} from "react-router-dom";
+import {Products} from "../Products/Products.tsx";
 
 
 export const Home: ComponentWithMeta  = ()  => {
@@ -20,7 +22,15 @@ export const Home: ComponentWithMeta  = ()  => {
                             this collection is perfect for every musician. Don’t miss out—visit our store or shop online to take advantage of these incredible offers.
                             Winter 2024 is your time to shine musically!
                         </p>
-                        <button className="slider-button">Shop Now</button>
+                        <button className="slider-button">
+                            <NavLink
+                                className={`nav-link`}
+                                to={Products.meta.route}>
+
+                                Shop Now
+                            </NavLink>
+                        </button>
+
                     </div>
 
                     {/* Изображение */}

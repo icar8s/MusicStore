@@ -225,6 +225,7 @@ $slider-button: (
         border-radius: variables.$slider-button-border-radius,
         cursor: variables.$slider-button-cursor,
         transition: variables.$slider-button-transition,
+        text-decoration: variables.$slider-button-text-decoration
 );
 
 $slider-button-hover: (

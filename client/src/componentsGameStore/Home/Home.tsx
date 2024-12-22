@@ -1,6 +1,9 @@
 import './home.scss';
 import video from "../../assets/images/sliderHome/why-hyperpc-alt-2.mp4"
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
+import {NavLink} from "react-router-dom";
+import {Products} from "../../components/Products/Products.tsx";
+import {ProductsGameStore} from "../Products/Products.tsx";
 
 export const HomeGameStore: ComponentWithMeta  = ()  => {
     return (
@@ -17,13 +20,21 @@ export const HomeGameStore: ComponentWithMeta  = ()  => {
                             Enjoy special discounts, limited-edition products, and bundled deals available only this season. Whether you're a hardcore gamer or building your first gaming rig, this collection is perfect for every level of gamer.
                             Don’t miss out—visit our store or shop online to upgrade your gaming gear today. Winter 2024 is your time to dominate the game!
                         </p>
-                        <button className="slider-button">Shop Now</button>
+                        <button className="slider-button">
+                            <NavLink
+                                className={`slider-button`}
+                                to={ProductsGameStore.meta.route}>
+
+                                Shop Now
+                            </NavLink>
+
+                        </button>
                     </div>
 
                     {/* Видео */}
                     <div className="slider-video">
                         <video autoPlay loop muted playsInline>
-                            <source src={video} type="video/mp4" />
+                            <source src={video} type="video/mp4"/>
                             Your browser does not support the video tag.
                         </video>
                     </div>
