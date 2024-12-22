@@ -177,3 +177,105 @@ $slider-button-transition: background-color 0.3s;
 //slider-button-hover
 $slider-button-hover-background-color: #f0e0ff;
 
+// Переменные для .contact-us
+$contact-us-font-family: Arial, sans-serif;
+$contact-us-color: white;
+$contact-us-background: linear-gradient(to right, black , #410000);
+$contact-us-display: flex;
+$contact-us-width: 100%;
+$contact-us-height: 100%;
+$contact-us-min-height: 100vh;
+
+// Переменные для .h1
+$h1-font-size: 3em;
+$h1-margin: 150px 30px 20px 200px;
+$h1-position: absolute;
+
+// Переменные для .sale
+$sale-width: 100%;
+$sale-height: 100%;
+$sale-background: #410000;
+$sale-color: #010101;
+$sale-font-size: 14px;
+
+// Переменные для .content
+$content-display: flex;
+$content-justify-content: space-between;
+$content-align-items: flex-start;
+$content-margin-right: -200px;
+
+// Переменные для .login-card
+$login-card-margin-left: 42%;
+
+// Переменные для .login-text
+$login-text-margin-top: 20px;
+
+// Переменные для h2
+$h2-margin: 0;
+$h2-font-size: 28px;
+$h2-margin-bottom: 20px;
+
+// Переменные для .store-hours
+$store-hours-border-left: 3px solid #DF8EC2;
+$store-hours-height: 100%;
+$store-hours-padding-left: 10px;
+$store-hours-flex: 1;
+$store-hours-margin-left: 200px;
+$store-hours-margin-top: 250px;
+
+// Переменные для .card
+$card-position: relative;
+$card-width: 19%;
+$card-height: 30%;
+$card-margin-right: 300px;
+$card-margin-top: 150px;
+$card-padding: 20px;
+$card-color: #010101;
+$card-background: white;
+$card-border-radius: 10px;
+$card-display: flex;
+$card-flex-direction: column;
+$card-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+// Переменные для .card::before и .card::after
+$card-border: 5px solid #DF8EC2;
+$card-size: 30%;
+$card-margin: -20px -20px;
+$card-before-top: -3px;
+$card-before-left: -3px;
+$card-before-border-right: none;
+$card-before-border-bottom: none;
+$card-after-bottom: -3px;
+$card-after-right: -3px;
+$card-after-border-left: none;
+$card-after-border-top: none;
+
+// Переменные для .contact-form
+$contact-form-display: flex;
+$contact-form-flex-direction: column;
+
+// Переменные для .contact-form label
+$contact-form-label-margin-bottom: 10px;
+
+// Переменные для .contact-form input и textarea
+$contact-form-input-padding: 10px;
+$contact-form-input-margin-top: 5px;
+$contact-form-input-width: 80%;
+$contact-form-input-border: 1px solid #ccc;
+$contact-form-input-border-radius: 5px;
+$contact-form-input-outline: none;
+
+// Переменные для .contact-form input:focus и textarea:focus
+$contact-form-input-focus-border-color: #877d1f;
+
+// Переменные для .contact-form button
+$contact-form-button-margin-top: 20px;
+$contact-form-button-padding: 10px;
+$contact-form-button-background-color: pink;
+$contact-form-button-border: none;
+$contact-form-button-border-radius: 5px;
+$contact-form-button-cursor: pointer;
+$contact-form-button-transition: background-color 0.3s;
+
+// Переменные для .contact-form button:hover
+$contact-form-button-hover-background-color: #ff69b4;
