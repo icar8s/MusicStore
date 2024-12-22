@@ -18,6 +18,8 @@ import {HomeGameStore} from "./componentsGameStore/Home/Home.tsx";
 import {ContactUsGameStore} from "./componentsGameStore/ContactUs/ContactUs.tsx";
 import {ProductDetailGameStore} from "./componentsGameStore/ProductDetail/ProductDetail.tsx";
 import {CartGameStore} from "./componentsGameStore/Cart/Cart.tsx";
+import {NewsGameStore} from "./componentsGameStore/News/News.tsx";
+import {News} from "./components/News/News.tsx";
 
 function App() {
     const scope = import.meta.env.VITE_APP_SCOPE;
@@ -25,7 +27,7 @@ function App() {
     return <div className={`${selectedTheme}-theme container`}>
         <BrowserRouter>
             <Routes>
-                {scope === "mstore" ? (
+                {scope === "MsStore" ? (
                 <Route path={Layout.meta.route} element={<ProtectedRoute component={Layout}/>}>
                     <Route path={Login.meta.route} element={<Login/>}/>
                     <Route path={Register.meta.route} element={<Register/>}/>
@@ -34,12 +36,14 @@ function App() {
                     <Route path={Cart.meta.route} element={<Cart/>}/>
                     <Route path={ContactUs.meta.route} element={<ContactUs/>}/>
                     <Route path={ProductDetail.meta.route} element={<ProductDetail/>}/>
+                    <Route path={News.meta.route} element={<News/>}/>
                 </Route>
                 ) : (
                 <Route path={LayoutGameStore.meta.route} element={<ProtectedRoute component={LayoutGameStore}/>}>
                     <Route path={LoginGameStore.meta.route} element={<LoginGameStore/>}/>
                     <Route path={RegisterGameStore.meta.route} element={<RegisterGameStore/>}/>
                     <Route path={ProductsGameStore.meta.route} element={<ProductsGameStore/>}/>
+                    <Route path={NewsGameStore.meta.route} element={<NewsGameStore/>}/>
                     <Route path={HomeGameStore.meta.route} element={<HomeGameStore/>}/>
                     <Route path={CartGameStore.meta.route} element={<CartGameStore/>}/>
                     <Route path={ContactUsGameStore.meta.route} element={<ContactUsGameStore/>}/>

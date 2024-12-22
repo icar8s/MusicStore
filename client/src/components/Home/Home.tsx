@@ -24,7 +24,7 @@ export const Home: ComponentWithMeta  = ()  => {
                         </p>
                         <button className="slider-button">
                             <NavLink
-                                className={`nav-link`}
+                                className={`slider-button`}
                                 to={Products.meta.route}>
 
                                 Shop Now
@@ -32,7 +32,6 @@ export const Home: ComponentWithMeta  = ()  => {
                         </button>
 
                     </div>
-
                     {/* Изображение */}
                     <div className="slider-image">
                         <img src={french} alt="Music Store" />

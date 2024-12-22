@@ -11,7 +11,7 @@ export type ThemeState = {
 }
 
 const initialState: ThemeState = {
-    selectedTheme: "Basic",
+    selectedTheme: import.meta.env.VITE_APP_SCOPE,
 }
 
 type CombinedThemeAction = SetThemeAction

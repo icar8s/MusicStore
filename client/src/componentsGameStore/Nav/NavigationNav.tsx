@@ -9,11 +9,13 @@ import {HomeGameStore} from "../Home/Home.tsx";
 import {ProductsGameStore} from "../Products/Products.tsx";
 import {ContactUsGameStore} from "../ContactUs/ContactUs.tsx";
 import {CartGameStore} from "../Cart/Cart.tsx";
+import {NewsGameStore} from "../News/News.tsx";
 
 
 export const NavigationNav = () => {
-    const {selectedTheme} = useThemeStore();
-
+    const scope = import.meta.env.VITE_APP_SCOPE;
+    let {selectedTheme} = useThemeStore();
+    selectedTheme = scope;
     return <Nav>
         <section
             className={`${selectedTheme}-theme section-left`}
@@ -33,6 +35,12 @@ export const NavigationNav = () => {
                 to={HomeGameStore.meta.route}>
 
                 Home
+            </NavLink>
+            <NavLink
+                className={`${selectedTheme}-theme nav-link`}
+                to={NewsGameStore.meta.route}>
+
+                News
             </NavLink>
             <NavLink
                 className={`${selectedTheme}-theme nav-link`}

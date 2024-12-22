@@ -2,7 +2,6 @@ import './home.scss';
 import video from "../../assets/images/sliderHome/why-hyperpc-alt-2.mp4"
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import {NavLink} from "react-router-dom";
-import {Products} from "../../components/Products/Products.tsx";
 import {ProductsGameStore} from "../Products/Products.tsx";
 
 export const HomeGameStore: ComponentWithMeta  = ()  => {

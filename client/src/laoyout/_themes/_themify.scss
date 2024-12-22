@@ -1,9 +1,13 @@
 @use "sass:map";
 @use "sass:meta";
-@use "./basic/define" as basic;
+@use "msStore/define" as msStore;
+@use "gsStore/define" as gsStore;
+@use "./christmas/define" as material;
 
 $themes: (
-  Basic: basic.$basic-theme,
+  MsStore: msStore.$msStore-theme,
+        GsStore: gsStore.$gsStore-theme,
+        Christmas: material.$christmas-theme
 );
 
 @mixin themify($property, $key, $themes: $themes) {

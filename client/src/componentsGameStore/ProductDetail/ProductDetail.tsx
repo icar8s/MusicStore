@@ -8,7 +8,6 @@ export const ProductDetailGameStore: ComponentWithMeta  = ()  => {
 
     console.log(id)
 
-
     return (
         <div>
             <div className={`${selectedTheme}-theme product-image-container`}>

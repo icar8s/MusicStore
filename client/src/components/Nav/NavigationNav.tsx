@@ -9,6 +9,7 @@ import login from "../../assets/images/sliderHome/login.png"
 import korzina from "../../assets/images/sliderHome/korzina.png"
 import './navigationNav.scss'
 import {Cart} from "../Cart/Cart.tsx";
+import {News} from "../News/News.tsx";
 
 
 export const NavigationNav = () => {
@@ -33,6 +34,12 @@ export const NavigationNav = () => {
                 to={Home.meta.route}>
 
                 Home
+            </NavLink>
+            <NavLink
+                className={`${selectedTheme}-theme nav-link`}
+                to={News.meta.route}>
+
+                News
             </NavLink>
             <NavLink
                 className={`${selectedTheme}-theme nav-link`}
