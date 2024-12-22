@@ -13,7 +13,8 @@ export const Product =<TProduct extends ProductShort, >({ product }: ProductProp
     const { selectedTheme } = useThemeStore();
 
     return (
-        <div className={`${selectedTheme}-theme product-wrapper`} data-sale={product.sale !== undefined}>
+        <div className={`${selectedTheme}-theme product-wrapper custom-product-wrapper`}
+             data-sale={product.sale !== undefined}>
             <div className={`${selectedTheme}-theme product-content`}>
                 <span className={`${selectedTheme}-theme product-name`}>{product.name}</span>
                 <NavLink className={`${selectedTheme}-theme product-learn-more`} to={`/products/${product.id}`}>
@@ -23,11 +24,12 @@ export const Product =<TProduct extends ProductShort, >({ product }: ProductProp
             </div>
             <div className={`${selectedTheme}-theme product-image-container`}>
                 {product.base64Image ? (
-                    <Base64Image className={`${selectedTheme}-theme product-image`} base64String={product.base64Image} />
+                    <Base64Image className={`${selectedTheme}-theme product-image`} base64String={product.base64Image}/>
                 ) : (
-                    <img className={`${selectedTheme}-theme product-image`} src={noImage} alt={'xui'} />
+                    <img className={`${selectedTheme}-theme product-image`} src={noImage} alt={'xui'}/>
                 )}
-                <button className={`${selectedTheme}-theme product-price-button`} onClick={() => console.log(product.price)}>
+                <button className={`${selectedTheme}-theme product-price-button`}
+                        onClick={() => console.log(product.price)}>
                     {product.price} BYN
                 </button>
             </div>

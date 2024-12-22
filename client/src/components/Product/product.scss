@@ -1,113 +1,118 @@
 @use "../../laoyout/_themes/global" as global;
 
-.product-wrapper{
-  @include global.themify("product-wrapper");
+.custom-product-wrapper {
+  .product-wrapper {
+    @include global.themify("product-wrapper");
+
+    .product-name {
+      @include global.themify("product-name");
+    }
+
+    .product-image {
+      @include global.themify("product-image");
+    }
+
+    &[data-sale="true"] {
+      .product-percentage {
+        @include global.themify("product-percentage-active");
+      }
+
+      .product-actual-price {
+        @include global.themify("product-actual-price-active");
+      }
+
+      .product-price {
+        @include global.themify("product-price-active");
+      }
+    }
+
+    &[data-sale="false"] {
+      .product-percentage {
+        @include global.themify("product-percentage");
+      }
+
+      .product-actual-price {
+        @include global.themify("product-actual-price");
+      }
+
+      .product-price {
+        @include global.themify("product-price");
+      }
+    }
+  }
+
+  .product-wrapper {
+    position: relative;
+    height: 180px;
+    margin-top: 50px;
+    background-size: cover;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .product-content {
+    display: flex;
+    flex-direction: column;
+  }
 
   .product-name {
-    @include global.themify("product-name");
+    font-size: 24px;
+    color: white;
+    z-index: 2;
+    margin-left: 40px;
+    margin-top: 20px;
+  }
+
+  .product-learn-more {
+    font-size: 16px;
+    color: white;
+    margin-top: 90px;
+    margin-left: 30px;
+    z-index: 2;
+  }
+
+  .product-image-container {
+    display: flex;
+    margin-top: -50px;
+    margin-left: 150px;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
   }
 
   .product-image {
-    @include global.themify("product-image");
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
   }
 
-  &[data-sale="true"]{
-    .product-percentage {
-      @include global.themify("product-percentage-active");
-    }
-
-    .product-actual-price {
-      @include global.themify("product-actual-price-active");
-    }
-
-    .product-price {
-      @include global.themify("product-price-active");
-    }
+  .product-image-background {
+    position: absolute;
+    background: url('../../assets/images/sliderHome/cardProduct.png') no-repeat center center;
+    width: 100%;
+    height: 120px;
+    margin-top: 65px;
+    z-index: 1;
+    box-shadow: 240px 0 200px 0 rgba(255, 255, 255, 0.5);
   }
 
-  &[data-sale="false"]{
-    .product-percentage {
-      @include global.themify("product-percentage");
-    }
-
-    .product-actual-price {
-      @include global.themify("product-actual-price");
-    }
-
-    .product-price {
-      @include global.themify("product-price");
-    }
+  .product-price-button {
+    background-color: #ff69b4;
+    border: none;
+    position: absolute;
+    margin-top: 190px;
+    margin-left: -60px;
+    padding: 10px 30px;
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
   }
-}
-.product-wrapper {
-  position: relative;
-  height: 180px;
-  margin-top: 50px;
-  background-size: cover;
-  border-radius: 30px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-.product-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.product-name {
-  font-size: 24px;
-  color: white;
-  z-index: 2;
-  margin-left: 40px;
-  margin-top: 20px;
-}
-
-.product-learn-more {
-  font-size: 16px;
-  color: white;
-  margin-top: 90px;
-  margin-left: 30px;
-  z-index: 2;
-}
-
-.product-image-container {
-  display: flex;
-  margin-top: -50px;
-  margin-left: 150px;
-  position: relative;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 2;
-}
-
-.product-image {
-  max-width: 80px;
-  max-height: 80px;
-  border-radius: 50px;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
-}
-.product-image-background{
-  position: absolute;
-  background: url('../../assets/images/sliderHome/cardProduct.png') no-repeat center center;
-  width: 100%;
-  height: 120px;
-  margin-top: 65px;
-  z-index: 1;
-  box-shadow: 240px 0 200px 0 rgba(255, 255, 255, 0.5 );
-}
-.product-price-button {
-  background-color: #ff69b4;
-  border: none;
-  position: absolute;
-  margin-top: 190px;
-  margin-left: -60px;
-  padding: 10px 30px;
-  border-radius: 10px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
 }
