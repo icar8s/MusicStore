@@ -1,4 +1,5 @@
 import {NavLink} from "react-router-dom";
+import styles from "../ContactUs/сontactUs.module.scss";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import {RegisterGameStore} from "../Register/Register.tsx";
@@ -7,27 +8,30 @@ export const LoginGameStore: ComponentWithMeta  = () => {
     const {selectedTheme} = useThemeStore();
 
     return (
-        <div className="contact-us">
-            <div className="card login-card">
-                <form className="contact-form">
-                    <h2>Login</h2>
-                    <label>
+        <div className={styles["contact-us"]}>
+            <div className={`${styles.card} ${styles["login-card"]}`}>
+                <form className={styles["contact-form"]}>
+                    <h2 className={styles.h2}>Login</h2>
+                    <label className={styles["contact-form-label"]}>
                         Email
                         <input
                             type="text"
                             name="name"
+                            className={styles["contact-form-input"]}
                             required
                         />
-                    </label>
-                    <label>
+                    </label >
+                    <label className={styles["contact-form-label"]}>
                         Password
                         <input
                             type="email"
                             name="email"
+                            className={styles["contact-form-input"]}
                             required
                         />
                     </label>
                     <button
+                        className={`${styles["contact-form-button-hover"]} ${styles["contact-form-button"]}`}
                         type="submit"
                         onClick={() => console.log("login")}
                     >

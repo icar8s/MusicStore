@@ -1,34 +1,54 @@
-import './ContactUs.scss'
+import styles from './сontactUs.module.scss';
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 
-export const ContactUs: ComponentWithMeta  = ()  => {
+export const ContactUs: ComponentWithMeta = () => {
     return (
-        <div className="contact-us">
-            <h1 className="h1">CONTACT US.</h1>
-            <div className="store-hours">
-                <h2>Store hours</h2>
+        <div className={styles["contact-us"]}>
+            <h1 className={styles.h1}>CONTACT US.</h1>
+            <div className={styles["store-hours"]}>
+                <h2 className={styles.h2}>Store hours</h2>
                 <p>WELCOME BACK</p>
                 <p>USERS!</p>
-                <h2>CONTACTS</h2>
+                <h2 className={styles.h2}>CONTACTS</h2>
                 <p>pavkap20@gmail.com</p>
                 <p>+375 (29) 121-50-11</p>
             </div>
-            <div className="card">
-                <form className="contact-form">
-                    <h2>Contact Form</h2>
-                    <label>
+            <div className={styles.card}>
+                <form className={styles["contact-form"]}>
+                    <h2 className={styles.h2}>Contact Form</h2>
+                    <label className={styles["contact-form-label"]}>
                         NAME
-                        <input type="text" name="name" required />
+                        <input
+                            className={styles["contact-form-input"]}
+                            type="text"
+                            name="name"
+                            required
+                        />
                     </label>
                     <label>
                         EMAIL
-                        <input type="email" name="email" required />
+                        <input
+                            className={styles["contact-form-input"]}
+                            type="email"
+                            name="email"
+                            required
+                        />
                     </label>
                     <label>
                         MESSAGE
-                        <input type="MESSAGE" name="MESSAGE" required />
+                        <input
+                            className={styles["contact-form-input"]}
+                            type="MESSAGE"
+                            name="MESSAGE"
+                            required
+                        />
                     </label>
-                    <button type="submit">SEND MESSAGE</button>
+                    <button
+                        className={`${styles["contact-form-button-hover"]} ${styles["contact-form-button"]}`}
+                        type="submit"
+                    >
+                        SEND MESSAGE
+                    </button>
                 </form>
             </div>
         </div>
@@ -37,5 +57,5 @@ export const ContactUs: ComponentWithMeta  = ()  => {
 
 ContactUs.meta = {
     route: "contactUs",
-    roles: ["admin", "moderator"]
-}
+    roles: ["admin", "moderator"],
+};

@@ -1,0 +1,125 @@
+.contact-us {
+  font-family: Arial, sans-serif;
+  color: white;
+  background: linear-gradient(to right, black , #410000);
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.h1 {
+  font-size: 3em;
+  margin: 150px 30px 20px 200px;
+  position: absolute;
+}
+.sale{
+  width: 100%;
+  height: 100%;
+  background: #410000;
+  color: #010101;
+  font-size: 14px;
+}
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Выравнивание по верхнему краю */
+  margin-right: -200px;
+}
+.login-card {
+  margin-left: 42%;
+}
+.login-text{
+  margin-top: 20px;
+}
+h2 {
+  margin: 0;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.store-hours {
+  border-left: 3px solid #DF8EC2;
+  height: 100%;
+  padding-left: 10px;
+  flex: 1; /* Занимает равное пространство */
+  margin-left: 200px;
+  margin-top: 250px;
+}
+
+.card {
+  position: relative;
+  width: 19%;
+  height: 30%;
+  margin-right: 300px;
+  margin-top: 150px;
+  padding: 20px;
+  color: #010101;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  border: 5px solid #ff69b4;
+  width: 30%;
+  height: 30%;
+  margin: -20px -20px;
+}
+
+.card::before {
+  top: -3px;
+  left: -3px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.card::after {
+  bottom: -3px;
+  right: -3px;
+  border-left: none;
+  border-top: none;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  margin-top: 5px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff69b4;
+}
+
+.contact-form button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: pink;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #ff69b4;
+}

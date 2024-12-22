@@ -13,9 +13,7 @@ import {NewsGameStore} from "../News/News.tsx";
 
 
 export const NavigationNav = () => {
-    const scope = import.meta.env.VITE_APP_SCOPE;
     let {selectedTheme} = useThemeStore();
-    selectedTheme = scope;
     return <Nav>
         <section
             className={`${selectedTheme}-theme section-left`}

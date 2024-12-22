@@ -1,8 +1,7 @@
-@charset "UTF-8";
 .contact-us {
   font-family: Arial, sans-serif;
   color: white;
-  background: linear-gradient(to right, black, #410000);
+  background: linear-gradient(to right, black , #044100);
   display: flex;
   width: 100%;
   height: 100%;
@@ -14,30 +13,25 @@
   margin: 150px 30px 20px 200px;
   position: absolute;
 }
-
-.sale {
+.sale{
   width: 100%;
   height: 100%;
   background: #410000;
   color: #010101;
   font-size: 14px;
 }
-
 .content {
   display: flex;
   justify-content: space-between;
   align-items: flex-start; /* Выравнивание по верхнему краю */
   margin-right: -200px;
 }
-
 .login-card {
   margin-left: 42%;
 }
-
-.login-text {
+.login-text{
   margin-top: 20px;
 }
-
 h2 {
   margin: 0;
   font-size: 28px;
@@ -45,7 +39,7 @@ h2 {
 }
 
 .store-hours {
-  border-left: 3px solid #DF8EC2;
+  border-left: 3px solid #69ef26;
   height: 100%;
   padding-left: 10px;
   flex: 1; /* Занимает равное пространство */
@@ -70,9 +64,9 @@ h2 {
 
 .card::before,
 .card::after {
-  content: "";
+  content: '';
   position: absolute;
-  border: 5px solid #ff69b4;
+  border: 5px solid #69ef26;
   width: 30%;
   height: 30%;
   margin: -20px -20px;
@@ -113,13 +107,13 @@ h2 {
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #ff69b4;
+  border-color: #877d1f;
 }
 
 .contact-form button {
   margin-top: 20px;
   padding: 10px;
-  background-color: pink;
+  background-color: #28670e;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -127,7 +121,5 @@ h2 {
 }
 
 .contact-form button:hover {
-  background-color: #ff69b4;
+  background-color: #69ef26;
 }
-
-/*# sourceMappingURL=ContactUs.css.map */
