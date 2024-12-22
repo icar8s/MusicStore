@@ -44,8 +44,8 @@ public sealed class ProductController(IMusicProductService musicProductService) 
         return Ok(result.Data);
         
     }
-
-    [HttpGet("{type:mpt}")]
+    
+    [HttpGet("page/{type:mpt}")]
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

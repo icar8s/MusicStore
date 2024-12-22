@@ -34,7 +34,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageAsync(PageIndex page)
+    public async Task<IActionResult> GetPageAsync([FromQuery]PageIndex page)
     {
         var result = await gamerProductService.GetGamerProductsAsync(page);
         
@@ -46,7 +46,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
         return Ok(result.Data);
     }
 
-    [HttpGet("{type:gpt}")]
+    [HttpGet("page/{type:gpt}")]
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -97,7 +97,6 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
             
         return Ok(result.Data);
     }
-    
 
     [HttpDelete("delete/{id:guid}")]
     [Authorize(Roles = "Admin")]

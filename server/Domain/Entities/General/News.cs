@@ -2,7 +2,7 @@ using Domain.Entities.Abstract;
 
 namespace Domain.Entities.General;
 
-public sealed class News: EventInfEntity
+public class News: EventInfEntity
 {
     public string Name { get; set; } = string.Empty;
 

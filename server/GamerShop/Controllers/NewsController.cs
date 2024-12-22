@@ -44,6 +44,5 @@ public sealed class NewsController(IGamerNewsService gamerNewsService): Controll
         }
         
         return Ok(result.Data);
-        
     }
 }
