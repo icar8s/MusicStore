@@ -17,6 +17,7 @@ using Shared.Interfaces;
 namespace Infrastructure.Services.MusicStore;
 
 public class MusicNewsService(IRepository<News> repository,
+    BlobServiceClient blobServiceClient,
     IOptions<BlobOptions> blobOptions,
     IMapper mapper): IMusicNewsService
 {
@@ -30,8 +31,6 @@ public class MusicNewsService(IRepository<News> repository,
     public async Task<IResult<Guid>> CreateAsync(NewsDto news,
         CancellationToken cancellationToken = default)
     {
-        var blobServiceClient = new BlobServiceClient(blobOptions.Value.ConnectionString);
-        
         if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
         {
             await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);

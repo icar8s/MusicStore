@@ -10,14 +10,13 @@ using Domain.Options;
 using Mapster;
 using MapsterMapper;
 using Microsoft.Extensions.Options;
-using Persistence.Contexts;
-using Persistence.Repositories;
 using Shared;
 using Shared.Interfaces;
 
 namespace Infrastructure.Services.MusicStore;
 
 public class MusicProductService(
+    BlobServiceClient blobServiceClient,
     IRepository<MusicProduct> genericMusicRepository,
     IOptions<BlobOptions> blobOptions,
     IMapper mapper
@@ -55,8 +54,6 @@ public class MusicProductService(
     public async Task<IResult<Guid>> AddMusicProductAsync(MusicProductDto musicProduct,
         CancellationToken cancellationToken = default)
     {
-        var blobServiceClient = new BlobServiceClient(blobOptions.Value.ConnectionString);
-        
         if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
         {
             await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
@@ -84,8 +81,6 @@ public class MusicProductService(
     public async Task<IResult<bool>> UpdateMusicProductAsync(MusicProductDto musicProduct,
         CancellationToken cancellationToken = default)
     {
-        var blobServiceClient = new BlobServiceClient(blobOptions.Value.ConnectionString);
-        
         if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
         {
             await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);

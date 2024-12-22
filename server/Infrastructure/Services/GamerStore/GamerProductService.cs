@@ -19,6 +19,7 @@ namespace Infrastructure.Services.GamerStore;
 
 public class GamerProductService(
     IRepository<GamerProduct> genericGamerRepository,
+    BlobServiceClient blobServiceClient,
     IOptions<BlobOptions> blobOptions,
     IMapper mapper
     ): IGamerProductService
@@ -55,8 +56,6 @@ public class GamerProductService(
     public async Task<IResult<Guid>> AddGamerProductAsync(GamerProductDto gamerProduct,
         CancellationToken cancellationToken = default)
     {
-        var blobServiceClient = new BlobServiceClient(blobOptions.Value.ConnectionString);
-        
         if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
         {
             await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
@@ -84,8 +83,6 @@ public class GamerProductService(
     public async Task<IResult<bool>> UpdateGamerProductAsync(GamerProductDto gamerProduct,
         CancellationToken cancellationToken = default)
     {
-        var blobServiceClient = new BlobServiceClient(blobOptions.Value.ConnectionString);
-        
         if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
         {
             await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);

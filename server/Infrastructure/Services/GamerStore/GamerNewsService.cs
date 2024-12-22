@@ -13,7 +13,9 @@ using Shared.Interfaces;
 
 namespace Infrastructure.Services.GamerStore;
 
-public class GamerNewsService(IRepository<News> repository, IOptions<BlobOptions> blobOptions,
+public class GamerNewsService(IRepository<News> repository,
+    BlobServiceClient blobServiceClient,
+    IOptions<BlobOptions> blobOptions,
     IMapper mapper): IGamerNewsService
 {
     public async Task<IPaginatedResult<NewsDto>> GetNewsAsync(PageIndex page,
@@ -26,9 +28,6 @@ public class GamerNewsService(IRepository<News> repository, IOptions<BlobOptions
     public async Task<IResult<Guid>> CreateAsync(NewsDto news,
         CancellationToken cancellationToken = default)
     {
-        
-        var blobServiceClient = new BlobServiceClient(blobOptions.Value.ConnectionString);
-        
         if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
         {
             await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
