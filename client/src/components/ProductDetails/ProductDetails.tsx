@@ -3,8 +3,9 @@ import noImage from "../../assets/images/sliderHome/slide1.jpg"
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
 import {useProductsStore} from "../../stores/products/useProductsStore.ts";
 import {useParams} from "react-router-dom";
+import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 
-export const ProductDetails  = ()  => {
+export const ProductDetails: ComponentWithMeta  = ()  => {
     const { selectedTheme } = useThemeStore();
     const { id } = useParams<{ id: string }>(); // Извлечение id из URL
     const {products}  = useProductsStore();

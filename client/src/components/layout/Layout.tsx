@@ -1,7 +1,8 @@
 import {Outlet} from "react-router-dom";
 import {NavigationNav} from "../Nav/NavigationNav.tsx";
+import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 
-const Layout: () => JSX.Element = () => {
+const Layout: ComponentWithMeta = () => {
     return <div>
         <NavigationNav />
         <Outlet />

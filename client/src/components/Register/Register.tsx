@@ -1,4 +1,6 @@
-export const Register  = ()  => {
+import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
+
+export const Register: ComponentWithMeta  = ()  => {
 
     return (
         <div className="contact-us">

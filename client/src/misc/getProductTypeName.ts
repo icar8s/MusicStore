@@ -1,9 +1,10 @@
-import {ProductType} from "../models/Product.ts";
+import {MusicProductType} from "../models/dtos/enums/musicProductType.ts";
+import {GamerProductType} from "../models/dtos/enums/gameProductType.ts";
 
-export const getProductTypeName = (type: ProductType) => {
+export function getProductTypeName<Type extends MusicProductType | GamerProductType>(type: Type): string {
     return type.toString()
 }
 
-export const getProductsTypeNames = (): string[] => {
-    return Object.keys(ProductType).filter(key => isNaN(Number.parseInt(key)))
+export function getProductsTypeNames<Type extends MusicProductType | GamerProductType>(type: Type): string[] {
+    return Object.keys(type).filter(key => isNaN(Number.parseInt(key)))
 }

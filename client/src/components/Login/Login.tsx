@@ -1,9 +1,14 @@
+import {useState} from "react";
 import {NavLink} from "react-router-dom";
 import {Register} from "../Register/Register.tsx";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
+import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 
-export const Login  = ()  => {
+export const Login: ComponentWithMeta  = () => {
+    const [login, setLogin] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
     const {selectedTheme} = useThemeStore();
+
 
     return (
         <div className="contact-us">
@@ -15,6 +20,7 @@ export const Login  = ()  => {
                         <input
                             type="text"
                             name="name"
+                            onChange={(e) => setLogin(e.target.value)}
                             required
                         />
                     </label>
@@ -23,6 +29,7 @@ export const Login  = ()  => {
                         <input
                             type="email"
                             name="email"
+                            onChange={(e) => setPassword(e.target.value)}
                             required
                         />
                     </label>

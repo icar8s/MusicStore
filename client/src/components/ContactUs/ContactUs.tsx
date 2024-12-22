@@ -1,6 +1,7 @@
 import './ContactUs.scss'
+import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 
-export const ContactUs  = ()  => {
+export const ContactUs: ComponentWithMeta  = ()  => {
     return (
         <div className="contact-us">
             <h1 className="h1">CONTACT US.</h1>

@@ -26,8 +26,9 @@ export const ProtectedRoute = ({
 }
 
 interface IProtectedContent {
-    children: React.ReactNode;
+    children: ComponentWithMeta;
     scope: string[] | string;
+    roles: string[] | string;
 }
 
 export const ProtectedContent = ({children, scope}: IProtectedContent) => {

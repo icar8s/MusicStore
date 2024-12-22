@@ -1,6 +1,7 @@
 import "./cart.scss";
+import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 
-export const Cart  = ()  => {
+export const Cart: ComponentWithMeta  = ()  => {
     return (
         <div className="cart-all cart-wrapper">
             PWNZ
