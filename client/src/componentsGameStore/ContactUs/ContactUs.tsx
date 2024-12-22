@@ -6,7 +6,7 @@ export const ContactUsGameStore: ComponentWithMeta  = ()  => {
         <div className="contact-us">
             <h1 className="h1">CONTACT US.</h1>
             <div className="store-hours">
-                <h2>Store hours</h2>
+                <h2 className="h2">Store hours</h2>
                 <p>WELCOME BACK</p>
                 <p>USERS!</p>
                 <h2>CONTACTS</h2>

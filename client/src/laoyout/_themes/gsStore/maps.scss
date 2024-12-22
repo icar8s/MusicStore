@@ -232,3 +232,121 @@ $slider-button-hover: (
         background-color: variables.$slider-button-hover-background-color,
 );
 
+$contact-us: (
+        font-family: variables.$contact-us-font-family,
+        color: variables.$contact-us-color,
+        background: variables.$contact-us-background,
+        display: variables.$contact-us-display,
+        width: variables.$contact-us-width,
+        height: variables.$contact-us-height,
+        min-height: variables.$contact-us-min-height,
+);
+
+$h1: (
+        font-size: variables.$h1-font-size,
+        margin: variables.$h1-margin,
+        position: variables.$h1-position,
+);
+
+$sale: (
+        width: variables.$sale-width,
+        height: variables.$sale-height,
+        background: variables.$sale-background,
+        color: variables.$sale-color,
+        font-size: variables.$sale-font-size,
+);
+
+$content: (
+        display: variables.$content-display,
+        justify-content: variables.$content-justify-content,
+        align-items: variables.$content-align-items,
+        margin-right: variables.$content-margin-right,
+);
+
+$login-card: (
+        margin-left: variables.$login-card-margin-left,
+);
+
+$login-text: (
+        margin-top: variables.$login-text-margin-top,
+);
+
+$h2: (
+        margin: variables.$h2-margin,
+        font-size: variables.$h2-font-size,
+        margin-bottom: variables.$h2-margin-bottom,
+);
+
+$store-hours: (
+        border-left: variables.$store-hours-border-left,
+        height: variables.$store-hours-height,
+        padding-left: variables.$store-hours-padding-left,
+        flex: variables.$store-hours-flex,
+        margin-left: variables.$store-hours-margin-left,
+        margin-top: variables.$store-hours-margin-top,
+);
+
+$card: (
+        position: variables.$card-position,
+        width: variables.$card-width,
+        height: variables.$card-height,
+        margin-right: variables.$card-margin-right,
+        margin-top: variables.$card-margin-top,
+        padding: variables.$card-padding,
+        color: variables.$card-color,
+        background: variables.$card-background,
+        border-radius: variables.$card-border-radius,
+        display: variables.$card-display,
+        flex-direction: variables.$card-flex-direction,
+        box-shadow: variables.$card-box-shadow,
+);
+
+$card-before: (
+        top: variables.$card-before-top,
+        left: variables.$card-before-left,
+        border-right: variables.$card-before-border-right,
+        border-bottom: variables.$card-before-border-bottom,
+);
+
+$card-after: (
+        bottom: variables.$card-after-bottom,
+        right: variables.$card-after-right,
+        border-left: variables.$card-after-border-left,
+        border-top: variables.$card-after-border-top,
+);
+
+$contact-form: (
+        display: variables.$contact-form-display,
+        flex-direction: variables.$contact-form-flex-direction,
+);
+
+$contact-form-label: (
+        margin-bottom: variables.$contact-form-label-margin-bottom,
+);
+
+$contact-form-input: (
+        padding: variables.$contact-form-input-padding,
+        margin-top: variables.$contact-form-input-margin-top,
+        width: variables.$contact-form-input-width,
+        border: variables.$contact-form-input-border,
+        border-radius: variables.$contact-form-input-border-radius,
+        outline: variables.$contact-form-input-outline,
+);
+
+$contact-form-input-focus: (
+        border-color: variables.$contact-form-input-focus-border-color,
+);
+
+$contact-form-button: (
+        margin-top: variables.$contact-form-button-margin-top,
+        padding: variables.$contact-form-button-padding,
+        background-color: variables.$contact-form-button-background-color,
+        border: variables.$contact-form-button-border,
+        border-radius: variables.$contact-form-button-border-radius,
+        cursor: variables.$contact-form-button-cursor,
+        transition: variables.$contact-form-button-transition,
+);
+
+$contact-form-button-hover: (
+        background-color: variables.$contact-form-button-hover-background-color,
+);
