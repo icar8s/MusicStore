@@ -1,15 +1,15 @@
-import {Base64Image} from "../Base64Image/Base64Image.tsx";
+import {Base64Image} from "../../shared/Base64Image/Base64Image.tsx";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
 import "./product.scss"
 import noImage from "../../assets/images/sliderHome/slide1.jpg"
 import {NavLink} from "react-router-dom";
-import {MusicProductShort} from "../../models/dtos/musicStore/musicProductShort.ts";
+import {ProductShort} from "../../models/dtos/general/productShort.ts";
 
-interface ProductProps {
-    product: MusicProductShort;
+interface ProductProps<TProduct extends ProductShort> {
+    product: TProduct;
 }
 
-export const ProductItem = ({ product }: ProductProps) => {
+export const Product =<TProduct extends ProductShort, >({ product }: ProductProps<TProduct>) => {
     const { selectedTheme } = useThemeStore();
 
     return (

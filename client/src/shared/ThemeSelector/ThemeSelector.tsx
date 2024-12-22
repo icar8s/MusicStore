@@ -1,5 +1,5 @@
-import {Select} from "../../shared/select/Select.tsx";
-import {SelectOption} from "../../shared/option/SelectOption.tsx";
+import {Select} from "../select/Select.tsx";
+import {SelectOption} from "../option/SelectOption.tsx";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
 import {definedThemes, definedThemesKeys} from "../../laoyout/_themes/themify.ts";
 

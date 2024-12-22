@@ -9,7 +9,6 @@ export const Login: ComponentWithMeta  = () => {
     const [password, setPassword] = useState<string>("");
     const {selectedTheme} = useThemeStore();
 
-
     return (
         <div className="contact-us">
             <div className="card login-card">

@@ -27,14 +27,13 @@ export const ProtectedRoute = ({
 
 interface IProtectedContent {
     children: ComponentWithMeta;
-    scope: string[] | string;
     roles: string[] | string;
 }
 
-export const ProtectedContent = ({children, scope}: IProtectedContent) => {
+export const ProtectedContent = ({children, roles}: IProtectedContent) => {
     const {role} = useIdentityStore();
 
-    if((typeof scope === "string" && scope !== role) || !scope.includes(role)){
+    if((typeof roles === "string" && role !== roles) || !roles.includes(role)){
         return null
     }
 

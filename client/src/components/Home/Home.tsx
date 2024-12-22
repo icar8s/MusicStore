@@ -1,8 +1,9 @@
 import './home.scss';
 import french from "../../assets/images/sliderHome/french.png"
+import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 
 
-export const Home  = ()  => {
+export const Home: ComponentWithMeta  = ()  => {
     return (
         <div className="home">
             <div className="slider">

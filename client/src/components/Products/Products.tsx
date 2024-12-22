@@ -1,10 +1,11 @@
 import { Panel } from "../../shared/panel/Panel.tsx";
 import { useProductsStore } from "../../stores/products/useProductsStore.ts";
-import { ProductItem } from "../Product/ProductItem.tsx";
+import { Product } from "../Product/Product.tsx";
 import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
 import "./products.scss";
+import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 
-export function Products(){
+export const Products: ComponentWithMeta  = ()  => {
     const { shortsProducts } = useProductsStore();
     const { selectedTheme } = useThemeStore();
 
@@ -36,7 +37,7 @@ export function Products(){
             {/* Панель с товарами */}
             <Panel className={`${selectedTheme}-theme products-container`}>
                 {shortsProducts.map((product, index) => (
-                    <ProductItem
+                    <Product
                         key={index}
                         product={product}
                         //onAddToCart={handleAddToCart}
