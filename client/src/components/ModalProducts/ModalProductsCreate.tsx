@@ -1,19 +1,11 @@
-import "./modal.scss"; // Стили для модального окна
+import "./modal.scss";
+import {useModal} from "../../misc/providers/ModalProvider.tsx"; // Стили для модального окна
 
-interface ModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-}
-
-export const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
-    if (!isOpen) return null;
+export const Modal: React.FC = () => {
 
     return (
         <div className="modal-overlay">
             <div className="modal-content">
-                <button className="modal-close" onClick={onClose}>
-                    &times;
-                </button>
                 <h2>Contact Us</h2>
                 <form className="contact-form">
                     <label htmlFor="name">Name</label>

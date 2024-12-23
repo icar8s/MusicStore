@@ -44,6 +44,9 @@ export const ModalProvider = ({children} : IModalProvider) => {
                 <div
                     className={"modal-content"}
                     onClick={(e) => e.stopPropagation()}>
+                    <button onClick={closeModal} className="modal-close">
+
+                    </button>
                     {modalContent}
                 </div>
             </div>
