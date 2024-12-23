@@ -1,0 +1,36 @@
+.products-wrapper.MsStore-theme, .MsStore-theme .products-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.products-wrapper.GsStore-theme, .GsStore-theme .products-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.products-wrapper.Christmas-theme, .Christmas-theme .products-wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.products-wrapper .products-container.MsStore-theme, .MsStore-theme .products-wrapper .products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.products-wrapper .products-container.GsStore-theme, .GsStore-theme .products-wrapper .products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.products-wrapper .products-container.Christmas-theme, .Christmas-theme .products-wrapper .products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.products-all {
+  background: linear-gradient(to right, black, #044100);
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+/*# sourceMappingURL=products.module.css.map */

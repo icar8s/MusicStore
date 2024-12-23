@@ -1,0 +1,116 @@
+services:
+  postgres:
+      image: postgres:latest
+      container_name: masterDb
+      environment:
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: admin
+        POSTGRES_DB: masterDb
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      ports:
+        - "5432:5432"
+
+  redis:
+    image: redis:latest
+    container_name: masterRedis
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+  
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: masterAzurite
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    volumes:
+      - azurite_data:/data
+  
+  musicstore:
+    build:
+      context: ./server
+      dockerfile: ./MusicStore/Dockerfile
+    container_name: masterMusic
+    environment:
+      - "ConnectionStrings__entityDb=Host=postgres;Port=5432;Database=musicDev;User Id=admin;Password=admin;Command Timeout=20;"
+      - "ConnectionStrings__azurite=DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=azurite:10000/devstoreaccount1;"
+      - "ConnectionStrings__redis=redis:6379"
+      - "ConnectionStrings__identity=identityservice:3003"
+    ports:
+      - "3001:8080"
+    depends_on:
+      - postgres
+      - redis
+      - azurite
+      - identityservice
+  
+  gamesshop:
+    build:
+      context: ./server
+      dockerfile: ./GamerShop/Dockerfile
+    container_name: masterGames
+    environment:
+      - "ConnectionStrings__entityDb=Host=postgres;Port=5432;Database=gamerDev;User Id=admin;Password=admin;Command Timeout=20;"
+      - "ConnectionStrings__azurite=DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=azurite:10000/devstoreaccount1;"
+      - "ConnectionStrings__redis=redis:6379"
+      - "ConnectionStrings__identity=identityservice:3003"
+    ports:
+      - "3002:8080"
+    depends_on:
+      - postgres
+      - redis
+      - azurite
+      - identityservice
+  
+  identityservice:
+    build:
+      context: ./server
+      dockerfile: ./IdentityServer/Dockerfile
+    container_name: masterIdentity
+    environment:
+      - "ConnectionStrings__musicDb=Host=postgres;Port=5432;Database=musicDev;User Id=admin;Password=admin;Command Timeout=20;"
+      - "ConnectionStrings__gamerDb=Host=postgres;Port=5432;Database=gamerDev;User Id=admin;Password=admin;Command Timeout=20;"
+      - "ConnectionStrings__configurationDb=Host=postgres;Port=5432;Database=configuration;User Id=admin;Password=admin;Command Timeout=20;"
+      - "ConnectionStrings__operationalDb=Host=postgres;Port=5432;Database=operational;User Id=admin;Password=admin;Command Timeout=20;"
+    ports:
+      - "3003:8080"
+    depends_on:
+      - postgres
+      - redis
+      - azurite
+
+  client-ms:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: msClient
+    ports:
+      - "4000:80" 
+    environment:
+      NODE_ENV: development
+      VITE_APP_SCOPE: MsStore
+    depends_on:
+      - postgres
+      - redis
+      - azurite
+
+  client-gs:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: gsClient
+    ports:
+      - "4001:80" 
+    environment:
+      NODE_ENV: development
+      VITE_APP_SCOPE: GsStore
+    depends_on:
+      - postgres
+      - redis
+      - azurite
+  
+volumes:
+  postgres_data:
+  azurite_data:

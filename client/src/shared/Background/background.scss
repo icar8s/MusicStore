@@ -1,0 +1,10 @@
+@use "../../laoyout/_themes/global" as global;
+
+.container{
+  @include global.themify("background-container");
+
+  .content{
+    @include global.themify("background-content");
+
+  }
+}

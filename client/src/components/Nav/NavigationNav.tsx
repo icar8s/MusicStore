@@ -1,51 +1,74 @@
 import {Nav} from "../../shared/nav/Nav.tsx";
 import {NavLink} from "react-router-dom";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
-import {ThemeSelector} from "../ThemeSelector/ThemeSelector.tsx";
+import {Products} from "../Products/Products.tsx";
+import {Login} from "../Login/Login.tsx";
+import {ContactUs} from "../ContactUs/ContactUs.tsx";
+import {Home} from "../Home/Home.tsx";
+import login from "../../assets/images/sliderHome/login.png"
+import korzina from "../../assets/images/sliderHome/korzina.png"
+import './navigationNav.scss'
+import {Cart} from "../Cart/Cart.tsx";
+import {News} from "../News/News.tsx";
+
 
 export const NavigationNav = () => {
     const {selectedTheme} = useThemeStore();
 
     return <Nav>
         <section
-            className={`${selectedTheme}-theme section`}
+            className={`${selectedTheme}-theme section-left`}
             data-alignment={"left"}>
             <NavLink
+                className={`${selectedTheme}-theme logo`}
+                to={Home.meta.route}>
+
+                Music Store
+            </NavLink>
+        </section>
+        <section
+            className={`${selectedTheme}-theme section`}
+            data-alignment={"center"}>
+            <NavLink
                 className={`${selectedTheme}-theme nav-link`}
-                to={""}>
+                to={Home.meta.route}>
 
                 Home
             </NavLink>
             <NavLink
                 className={`${selectedTheme}-theme nav-link`}
-                to={""}>
+                to={News.meta.route}>
+
+                News
+            </NavLink>
+            <NavLink
+                className={`${selectedTheme}-theme nav-link`}
+                to={Products.meta.route}>
 
                 Products
             </NavLink>
             <NavLink
                 className={`${selectedTheme}-theme nav-link`}
-                to={""}>
+                to={ContactUs.meta.route}>
 
                 Contact us
             </NavLink>
         </section>
-
         <section
             className={`${selectedTheme}-theme section`}
             data-alignment={"right"}>
 
             <NavLink
-                className={`${selectedTheme}-theme nav-link`}
-                to={""}>
-
-                Login</NavLink>
-            <NavLink
-                className={`${selectedTheme}-theme nav-link`}
-                to={""}>
-
-                Register
+                className={`${selectedTheme}-theme`}
+                to={Cart.meta.route}>
+                <img src={korzina}  className={"korzina"} alt="Music Store" />
             </NavLink>
-            <ThemeSelector />
+
+            <NavLink
+                className={`${selectedTheme}-theme`}
+                to={Login.meta.route}>
+                <img src={login} className={"login"} alt="Music Store" />
+            </NavLink>
         </section>
     </Nav>
 }

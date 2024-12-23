@@ -1,0 +1,351 @@
+@use "variables";
+@forward "variables";
+
+$select-hover: (
+);
+
+$nav: (
+        background-color: variables.$nav-background-color,
+        height: variables.$nav-height,
+        display: variables.$nav-display,
+        justify-content: variables.$nav-justify-content,
+        align-items: variables.$nav-align-items,
+        border-bottom: variables.$nav-border-bottom,
+        font-size: variables.$m_font,
+        font-family: variables.$nav-font-family,
+        box-shadow: variables.$nav-box-shadow,
+);
+
+$nav-horizontal: (
+        flex-direction: variables.$nav-horizontal,
+);
+
+$nav-vertical: (
+        flex-direction: variables.$nav-vertical,
+);
+
+$nav-section: (
+        background: variables.$nav-section-background,
+        display: variables.$nav-section-display,
+        gap: variables.$nav-section-gap,
+        align-items: variables.$nav-section-align-items,
+);
+
+$nav-section-right: (
+        display: variables.$nav-section-right-display,
+        gap: variables.$nav-section-right-gap,
+        align-items: variables.$nav-section-right-align-items,
+);
+
+$nav-section-left: (
+        display: variables.$nav-section-left-display,
+        gap: variables.$nav-section-left-gap,
+        align-items: variables.$nav-section-left-align-items,
+);
+
+$nav-link: (
+        font-size: variables.$nav-link-font-size,
+        transform: variables.$nav-link-text-transform,
+        padding: variables.$nav-link-padding,
+        transition: variables.$nav-link-transition,
+        color: variables.$nav-link-color,
+        text-decoration: variables.$nav-link-text-decoration,
+);
+
+$nav-link-hover: (
+        color: variables.$nav-link-hover-color,
+        border-bottom: variables.$nav-link-hover-border-bottom,
+);
+
+$nav-link-visited: ();
+
+$nav-link-active: (
+        color: variables.$nav-link-active-color,
+        font-weight: variables.$nav-link-active-font-weight,
+);
+
+$nav-link-active-hover: ();
+
+$input: (
+        font-size: variables.$m_font,
+        padding: variables.$input-padding,
+        outline: variables.$input-outline,
+);
+
+$panel: (
+        padding: variables.$panel-padding,
+);
+
+$products-wrapper: (
+        display: variables.$products-wrapper-display,
+        grid-template-columns: variables.$products-wrapper-grid-template-columns,
+);
+
+$products-container: (
+        display: variables.$products-container-display,
+        flex-wrap: variables.$products-container-flex-wrap,
+        gap: variables.$products-container-gap
+);
+
+$product-wrapper: (
+        position: variables.$product-wrapper-position,
+        display: variables.$product-wrapper-display,
+        border-radius: variables.$product-wrapper-border-radius,
+        padding: variables.$product-wrapper-padding,
+        box-shadow: variables.$product-wrapper-box-shadow,
+        width: variables.$product-wrapper-width,
+        grid-template-areas: variables.$product-wrapper-grid-template-areas,
+);
+
+$product-percentage: (
+        display: variables.$product-percentage-display,
+);
+
+$product-percentage-active: (
+        position: variables.$product-percentage-position,
+        top: variables.$product-percentage-top,
+        right: variables.$product-percentage-right,
+        bottom: variables.$product-percentage-bottom,
+        left: variables.$product-percentage-left,
+        background: variables.$product-percentage-background,
+        border-radius: variables.$product-percentage-border-radius,
+        color: variables.$product-percentage-color,
+        padding: variables.$product-percentage-padding,
+        font-size: variables.$m_font,
+);
+
+$product-actual-price: (
+        display: variables.$product-actual-price-display,
+);
+
+$product-actual-price-active: (
+        grid-area: variables.$product-actual-price-grid-area,
+);
+
+$product-price: (
+
+);
+
+$product-price-active: (
+        grid-area: variables.$product-price-grid-area,
+        color: variables.$product-price-color,
+        text-decoration: variables.$product-price-text-decoration,
+        font-size: variables.$sm_font,
+);
+
+$product-name: (
+        grid-area: variables.$product-name-grid-area,
+);
+
+$product-image: (
+        padding: 5px,
+        grid-area: variables.$product-image-grid-area,
+        width: variables.$product-image-width,
+        aspect-ration: variables.$product-image-aspect-ratio,
+);
+
+$background-container: (
+        position: variables.$background-container-position,
+        top: variables.$background-container-top,
+        left: variables.$background-container-left,
+        transform: variables.$background-container-transform,
+        display: flex,
+);
+
+$background-content: (
+        font-size: variables.$background-content-font-size,
+        filter: variables.$background-content-filter,
+        color: variables.$background-content-color,
+);
+
+$main-container: (
+        width: variables.$main-container-width,
+        height: variables.$main-container-height,
+        background: variables.$main-container-background,
+);
+
+$logo-image: (
+        font-size: variables.$logo-image-font-size,
+        text-transform: variables.$logo-image-text-transform,
+        padding: variables.$logo-image-margin-right,
+        transition: variables.$logo-image-transition,
+        color: variables.$logo-image-color,
+        text-decoration: variables.$logo-image-text-decoration,
+);
+
+$home-container: (
+        width: variables.$home-container-width,
+        height: variables.$home-container-height,
+        display: variables.$home-container-display,
+        align-items: variables.$home-container-align-items,
+        justify-content: variables.$home-container-justify-content,
+        background-color: variables.$home-container-background-color,
+        overflow: variables.$home-container-overflow,
+);
+
+$slider: (
+        width: variables.$slider-width,
+        height: variables.$slider-height,
+        display: variables.$slider-display,
+        align-items: variables.$slider-align-items,
+        justify-content: variables.$slider-justify-content,
+        background: variables.$slider-background,
+        text-align: variables.$slider-text-align,
+        position: variables.$slider-position,
+        z-index: variables.$slider-z-index,
+);
+
+$slider-content: (
+        max-width: variables.$slider-content-max-width,
+        padding: variables.$slider-content-padding,
+        color: variables.$slider-content-color,
+        margin-top: variables.$slider-content-margin-top
+);
+
+$slider-title: (
+        font-size: variables.$slider-title-font-size,
+        font-weight: variables.$slider-title-font-weight,
+        margin-bottom: variables.$slider-title-margin-bottom,
+        color: variables.$slider-title-color,
+);
+
+$slider-description: (
+        font-size: variables.$slider-description-font-size,
+        line-height: variables.$slider-description-line-height,
+        margin-bottom: variables.$slider-description-margin-bottom,
+        color: variables.$slider-description-color,
+);
+
+$slider-button: (
+        font-size: variables.$slider-button-font-size,
+        padding: variables.$slider-button-padding,
+        background-color: variables.$slider-button-background-color,
+        color: variables.$slider-button-color,
+        border: variables.$slider-button-border,
+        border-radius: variables.$slider-button-border-radius,
+        cursor: variables.$slider-button-cursor,
+        transition: variables.$slider-button-transition,
+        text-decoration: variables.$slider-button-text-decoration
+);
+
+$slider-button-hover: (
+        background-color: variables.$slider-button-hover-background-color,
+);
+$contact-us: (
+        font-family: variables.$contact-us-font-family,
+        color: variables.$contact-us-color,
+        background: variables.$contact-us-background,
+        display: variables.$contact-us-display,
+        width: variables.$contact-us-width,
+        height: variables.$contact-us-height,
+        min-height: variables.$contact-us-min-height,
+);
+
+$h1: (
+        font-size: variables.$h1-font-size,
+        margin: variables.$h1-margin,
+        position: variables.$h1-position,
+);
+
+$sale: (
+        width: variables.$sale-width,
+        height: variables.$sale-height,
+        background: variables.$sale-background,
+        color: variables.$sale-color,
+        font-size: variables.$sale-font-size,
+);
+
+$content: (
+        display: variables.$content-display,
+        justify-content: variables.$content-justify-content,
+        align-items: variables.$content-align-items,
+        margin-right: variables.$content-margin-right,
+);
+
+$login-card: (
+        margin-left: variables.$login-card-margin-left,
+);
+
+$login-text: (
+        margin-top: variables.$login-text-margin-top,
+);
+
+$h2: (
+        margin: variables.$h2-margin,
+        font-size: variables.$h2-font-size,
+        margin-bottom: variables.$h2-margin-bottom,
+);
+
+$store-hours: (
+        border-left: variables.$store-hours-border-left,
+        height: variables.$store-hours-height,
+        padding-left: variables.$store-hours-padding-left,
+        flex: variables.$store-hours-flex,
+        margin-left: variables.$store-hours-margin-left,
+        margin-top: variables.$store-hours-margin-top,
+);
+
+$card: (
+        position: variables.$card-position,
+        width: variables.$card-width,
+        height: variables.$card-height,
+        margin-right: variables.$card-margin-right,
+        margin-top: variables.$card-margin-top,
+        padding: variables.$card-padding,
+        color: variables.$card-color,
+        background: variables.$card-background,
+        border-radius: variables.$card-border-radius,
+        display: variables.$card-display,
+        flex-direction: variables.$card-flex-direction,
+        box-shadow: variables.$card-box-shadow,
+);
+
+$card-before: (
+        top: variables.$card-before-top,
+        left: variables.$card-before-left,
+        border-right: variables.$card-before-border-right,
+        border-bottom: variables.$card-before-border-bottom,
+);
+
+$card-after: (
+        bottom: variables.$card-after-bottom,
+        right: variables.$card-after-right,
+        border-left: variables.$card-after-border-left,
+        border-top: variables.$card-after-border-top,
+);
+
+$contact-form: (
+        display: variables.$contact-form-display,
+        flex-direction: variables.$contact-form-flex-direction,
+);
+
+$contact-form-label: (
+        margin-bottom: variables.$contact-form-label-margin-bottom,
+);
+
+$contact-form-input: (
+        padding: variables.$contact-form-input-padding,
+        margin-top: variables.$contact-form-input-margin-top,
+        width: variables.$contact-form-input-width,
+        border: variables.$contact-form-input-border,
+        border-radius: variables.$contact-form-input-border-radius,
+        outline: variables.$contact-form-input-outline,
+);
+
+$contact-form-input-focus: (
+        border-color: variables.$contact-form-input-focus-border-color,
+);
+
+$contact-form-button: (
+        margin-top: variables.$contact-form-button-margin-top,
+        padding: variables.$contact-form-button-padding,
+        background-color: variables.$contact-form-button-background-color,
+        border: variables.$contact-form-button-border,
+        border-radius: variables.$contact-form-button-border-radius,
+        cursor: variables.$contact-form-button-cursor,
+        transition: variables.$contact-form-button-transition,
+);
+
+$contact-form-button-hover: (
+        background-color: variables.$contact-form-button-hover-background-color,
+);

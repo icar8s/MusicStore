@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  gap:10px;
+
+  &>input,
+  &>textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+
+    &:focus {
+      border-color: #69ffb4;
+    }
+  }
+
+  &>textarea{
+    resize: vertical;
+    max-height: 400px;
+  }
+
+  &>button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: lightgreen;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #69ffb4;
+    }
+  }
+
+}

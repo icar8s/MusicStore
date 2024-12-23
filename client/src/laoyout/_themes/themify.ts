@@ -1,6 +1,7 @@
 enum DefinedThemes {
-    Basic,
-    Christmas
+    MsStore,
+    Christmas,
+    GsStore
 }
 
 export type definedThemes = keyof typeof DefinedThemes;

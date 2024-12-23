@@ -1,0 +1,33 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  gap: 10px;
+}
+.form > input, .form > textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+.form > input:focus, .form > textarea:focus {
+  border-color: #69ffb4;
+}
+.form > textarea {
+  resize: vertical;
+  max-height: 400px;
+}
+.form > button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.form > button:hover {
+  background-color: #69ffb4;
+}
+
+/*# sourceMappingURL=productModal.css.map */

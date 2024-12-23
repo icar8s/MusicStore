@@ -1,0 +1,85 @@
+@use "../../laoyout/_themes/global" as global;
+
+.home{
+  @include global.themify("home-container");
+}
+.slider {
+  @include global.themify("slider");
+
+  .slider-content {
+    @include global.themify("slider-content");
+  }
+  .slider-title {
+    @include global.themify("slider-title");
+  }
+  .slider-description {
+    @include global.themify("slider-description");
+  }
+  .slider-button {
+    @include global.themify("slider-button");
+  }
+  .slider-button-hover {
+    @include global.themify("slider-button-hover");
+  }
+}
+.slider-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  z-index: 1;
+  width: 100%;
+}
+/* Дополнительные стили для Swiper */
+.swiper-pagination-bullet {
+  background: #fff;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background: #ff6f61;
+}/* Основной контейнер */
+
+.slider-button:hover {
+  background-color: #e55d50;
+}
+/* Изображение */
+.slider-image {
+  flex: 1; /* Занимает доступное пространство */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-image img {
+  max-width: 100%;
+  height: auto;
+  margin-top: -100px;
+}
+
+.slider-video video {
+  width: 85%; /* Занимает 80% ширины контейнера */
+  height: auto; /* Автоматически подстраивает высоту */
+  object-fit: cover; /* Сохраняет пропорции и обрезает края, чтобы заполнить контейнер */
+  display: block;
+  opacity: 0.7; /* Прозрачность видео */
+  margin-left: 50px; /* Смещение видео вправо */
+  margin-top: -50px; /* Смещение видео вверх */
+
+  /* Добавляем закругленные углы */
+  border-radius: 15px;
+
+  /* Тень вокруг видео */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5), /* Основная тень */
+  0px 6px 6px rgba(0, 0, 0, 0.3); /* Дополнительная мягкая тень */
+
+  /* Плавный переход на случай изменений */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Эффект при наведении */
+.slider-video video:hover {
+  transform: scale(1.15); /* Легкое увеличение при наведении */
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.6), /* Усиление тени */
+  0px 8px 8px rgba(0, 0, 0, 0.4); /* Усиление дополнительной тени */
+}

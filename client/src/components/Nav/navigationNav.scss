@@ -1,0 +1,20 @@
+@use "../../laoyout/_themes/global" as global;
+
+.logo{
+  @include global.themify("logo-image");
+}
+.login {
+  height: 45px;
+  width: auto;
+  cursor: pointer;
+  padding-right: 30px;
+  max-width: 100%; /* Чтобы изображение не выходило за пределы контейнера */
+  display: block; /* Убирает отступы снизу, если это необходимо */
+}
+.korzina {
+  height: 25px;
+  width: auto;
+  margin-bottom: -5px;
+  max-width: 100%; /* Чтобы изображение не выходило за пределы контейнера */
+  display: block; /* Убирает отступы снизу, если это необходимо */
+}

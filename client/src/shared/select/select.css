@@ -1,9 +1,29 @@
-.select.Basic-theme, .Basic-theme .select {
+.select.MsStore-theme, .MsStore-theme .select {
   background: #4f4f4f;
   color: #fff;
   width: 220px;
   height: 40px;
-  font-size: 16px;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+.select.GsStore-theme, .GsStore-theme .select {
+  background: #4f4f4f;
+  color: #fff;
+  width: 220px;
+  height: 40px;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+.select.Christmas-theme, .Christmas-theme .select {
+  background: #4f4f4f;
+  color: #fff;
+  width: 220px;
+  height: 40px;
+  font-size: 15px;
   cursor: pointer;
   display: inline-block;
   position: relative;
