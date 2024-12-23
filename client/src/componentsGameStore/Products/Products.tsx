@@ -21,7 +21,6 @@ export const ProductsGameStore: ComponentWithMeta  = ()  => {
                 <ProtectedContent roles={""}>
                     <div
                         style={{
-                            position: "fixed",
                             top: "0",
                             left: "0",
                             width: "100%",
@@ -36,7 +35,8 @@ export const ProductsGameStore: ComponentWithMeta  = ()  => {
                                 right: "20px",
                                 bottom: "50px",
                                 width: "50px",
-                                display: ""
+                                display: "",
+                                cursor: "pointer"
                             }}
                             src={create}
                             alt="Product 1"

@@ -4,7 +4,7 @@ import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 export const ContactUsGameStore: ComponentWithMeta = () => {
     return (
         <div className={styles["contact-us"]}>
-            <h1 className={styles.h1}>CONTACT US.</h1>
+            <h1 className={styles.h1}>CONTACT US<p className={`${styles.h1} ${styles["point"]}`}>.</p></h1>
             <div className={styles["store-hours"]}>
                 <h2 className={styles.h2}>Store hours</h2>
                 <p>WELCOME BACK</p>

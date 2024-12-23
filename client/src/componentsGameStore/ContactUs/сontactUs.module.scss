@@ -61,7 +61,9 @@ h2 {
   flex-direction: column;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.point{
+  color: #69ef26;
+}
 .card::before,
 .card::after {
   content: '';

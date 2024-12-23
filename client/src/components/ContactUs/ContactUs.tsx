@@ -6,7 +6,11 @@ import {Button} from "../../shared/button/Button.tsx";
 export const ContactUs: ComponentWithMeta = () => {
     return (
         <div className={styles["contact-us"]}>
-            <h1 className={styles.h1}>CONTACT US.</h1>
+            <div className={styles["title-container"]}>
+                <h1 className={styles.h1}>
+                    CONTACT US<span className={styles.point}>.</span>
+                </h1>
+            </div>
             <div className={styles["store-hours"]}>
                 <h2 className={styles.h2}>Store hours</h2>
                 <p>WELCOME BACK</p>
