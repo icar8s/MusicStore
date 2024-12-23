@@ -1,6 +1,6 @@
 export const getBaseEndpointUrl = () => {
     const scope: string = import.meta.env.VITE_APP_SCOPE ?? "mstore"
-    return scope === "mstore" ? "http://localhost:5001/" : "http://localhost:5002/"
+    return scope === "MsStore" ? "http://localhost:3001/" : "http://localhost:3002/"
 }
 
 export const getBaseIdentityUrl = () => {

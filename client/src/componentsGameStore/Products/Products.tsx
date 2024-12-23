@@ -4,10 +4,22 @@ import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
 import "./products.module.scss";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import {ProductGameStore} from "../Product/Product.tsx";
+import {useEffect} from "react";
 
 export const ProductsGameStore: ComponentWithMeta  = ()  => {
-    const { shortsProducts } = useProductsStore();
+    const { shortMusicProducts, selectedGamerProductType} = useProductsStore();
     const { selectedTheme } = useThemeStore();
+
+    useEffect(() => {
+        if(selectedGamerProductType){
+            shortMusicProducts.requestBuilder.addOrSetQueryParam({name: "type", value: selectedGamerProductType.toString()})
+            shortMusicProducts.fetchFirst()
+        }
+    }, [selectedGamerProductType]);
+
+    useEffect(() => {
+        shortMusicProducts.fetchFirst()
+    }, []);
 
     // Состояние для корзины
     //const [cart, setCart] = useState<Product[]>([]);
@@ -36,7 +48,7 @@ export const ProductsGameStore: ComponentWithMeta  = ()  => {
 
             {/* Панель с товарами */}
             <Panel className={`${selectedTheme}-theme products-container`}>
-                {shortsProducts.dataResult?.data?.map((product, index) => (
+                {shortMusicProducts.dataResult?.data?.map((product, index) => (
                     <ProductGameStore
                         key={index}
                         product={product}
