@@ -1,5 +1,6 @@
 import {createContext, ReactNode, useContext, useEffect, useState} from "react";
 import "./modal.scss"
+import change from "../../assets/images/sliderHome/cross-circle.png"
 
 interface IModalContext {
     openModal: (content: ReactNode) => void;
@@ -44,14 +45,27 @@ export const ModalProvider = ({children} : IModalProvider) => {
                 <div
                     className={"modal-content"}
                     onClick={(e) => e.stopPropagation()}>
-                    <button onClick={closeModal} className="modal-close">
 
-                    </button>
                     {modalContent}
                 </div>
             </div>
         )}
     </ModalContext.Provider>
+}
+
+interface IModalTitle {
+    title: string;
+}
+
+export const ModalTitle = ({title}: IModalTitle) => {
+    const {closeModal} = useModal();
+
+    return <div className={"modal-title"}>
+        <button onClick={closeModal} className="modal-close">
+            <img style={{width: "20px"}} src={change} alt="change"/>
+        </button>
+        <h2>{title}</h2>
+    </div>
 }
 
 export const useModal = (): IModalContext => {

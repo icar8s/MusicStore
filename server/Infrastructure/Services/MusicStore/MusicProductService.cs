@@ -18,6 +18,8 @@ namespace Infrastructure.Services.MusicStore;
 public class MusicProductService(
     BlobServiceClient blobServiceClient,
     IRepository<MusicProduct> genericMusicRepository,
+    IRepository<Sale> genericSaleRepository,
+    ISaleRepository saleRepository,
     IOptions<BlobOptions> blobOptions,
     IMapper mapper
     ): IMusicProductService
@@ -69,12 +71,23 @@ public class MusicProductService(
         
         await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
         
-        var newsEntity = mapper.Map<MusicProduct>(musicProduct);
+        var musicEntity = mapper.Map<MusicProduct>(musicProduct);
 
-        newsEntity.BlobId = $"{blobClient.Uri}/{musicProduct.Name}.txt";
+        musicEntity.BlobId = $"{blobClient.Uri}/{musicProduct.Name}.txt";
         
-        var id = await genericMusicRepository.CreateAsync(newsEntity, cancellationToken);
-
+        var id = await genericMusicRepository.CreateAsync(musicEntity, cancellationToken);
+        
+        if (musicProduct.Percentage >= 0)
+        {
+            var sale = new Sale
+            {
+                ProductId = id,
+                Percentage = musicProduct.Percentage
+            };
+            
+            await genericSaleRepository.CreateAsync(sale, cancellationToken);
+        }
+        
         return Result<Guid>.Success(id);
     }
 
@@ -98,12 +111,32 @@ public class MusicProductService(
         
         await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
         
-        var newsEntity = mapper.Map<MusicProduct>(musicProduct);
+        var musicEntity = mapper.Map<MusicProduct>(musicProduct);
 
-        newsEntity.BlobId = $"{blobClient.Uri}/{musicProduct.Name}.txt";
+        musicEntity.BlobId = $"{blobClient.Uri}/{musicProduct.Name}.txt";
         
-        var id = await genericMusicRepository.CreateAsync(newsEntity, cancellationToken);
-
+        await genericMusicRepository.UpdateAsync(musicEntity, cancellationToken);
+        
+        var sale = await saleRepository.GetByProductIdAsync(musicEntity.Id, cancellationToken);
+        
+        if (musicProduct.Percentage >= 0)
+        {
+            if (sale != null)
+            {
+                sale.Percentage = musicProduct.Percentage;
+                await genericSaleRepository.UpdateAsync(sale, cancellationToken);
+            }
+            else
+            {
+                sale = new Sale
+                {
+                    ProductId = musicEntity.Id,
+                    Percentage = musicProduct.Percentage
+                };
+                await genericSaleRepository.CreateAsync(sale, cancellationToken);
+            }
+        }
+        
         return Result<bool>.Success();
     }
 

@@ -4,40 +4,52 @@ import { Product } from "../Product/Product.tsx";
 import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
 import styles from "./products.module.scss";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
-import {Modal} from "../ModalProducts/ModalProductsCreate.tsx";
 import create from "../../assets/images/sliderHome/plus-circle.png"
-import change from "../../assets/images/sliderHome/cross-circle.png"
-import remove from "../../assets/images/sliderHome/Group 35.png"
 import {useModal} from "../../misc/providers/ModalProvider.tsx";
+import {ProductModal} from "./ModalProducts/ProductModal.tsx";
+import {ProtectedContent} from "../../misc/Protected.tsx";
+import {useEffect} from "react";
 
 export const Products: ComponentWithMeta = () => {
-    const { shortMusicProducts } = useProductsStore();
+    const { shortMusicProducts} = useProductsStore();
     const { selectedTheme } = useThemeStore();
     const {openModal} = useModal();
+
+    useEffect(() => {
+        shortMusicProducts.fetchFirst()
+    }, []);
 
     return (
         <div className={`${styles.productsWrapper} ${selectedTheme}-theme ${styles["products-all"]}`}>
             <div className="products-container">
-                <div className="images-row">
-                    <img
-                        src={create}
-                        alt="Product 1"
-                        onClick={()=> openModal(<Modal/>)}
-                    />
-                    <img
-                        src={change}
-                        alt="Product 2"
-                        onClick={()=> openModal(<Modal/>)}
-                    />
-                    <img
-                        src={remove}
-                        alt="Product 3"
-                        onClick={()=> openModal(<Modal/>)}
-                    />
-                </div>
+                <ProtectedContent roles={"admin"}>
+                    <div
+                        style={{
+                            position: "fixed",
+                            top: "0",
+                            left: "0",
+                            width: "100%",
+                            height: "100%",
+                        }}
+                        className="images-row">
+                        <img
+                            style={{
+                                position: "absolute",
+                                top: "auto",
+                                left: "auto",
+                                right: "20px",
+                                bottom: "50px",
+                                width: "50px",
+                                display: ""
+                            }}
+                            src={create}
+                            alt="Product 1"
+                            onClick={() => openModal(<ProductModal/>)}
+                        />
+                    </div>
+                </ProtectedContent>
             </div>
 
-            {/* Панель с товарами */}
             <Panel className={`${styles.productsContainer} ${selectedTheme}-theme`}>
                 {shortMusicProducts.dataResult?.data?.map((product, index) => (
                     <Product
@@ -53,5 +65,5 @@ export const Products: ComponentWithMeta = () => {
 
 Products.meta = {
     route: "products",
-    roles: ["admin", "moderator"],
+    roles: [""],
 };

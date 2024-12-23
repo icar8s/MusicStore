@@ -13,6 +13,8 @@ import {MusicProductType} from "../../models/dtos/enums/musicProductType.ts";
 import {GamerProductShort} from "../../models/dtos/gameStore/gamerProductShort.ts";
 import {GamerProductDetail} from "../../models/dtos/gameStore/gamerProductDetail.ts";
 import {GamerProductType} from "../../models/dtos/enums/gameProductType.ts";
+import {MusicProduct} from "../../models/dtos/musicStore/musicProduct.ts";
+import {GamerProduct} from "../../models/dtos/gameStore/gamerProduct.ts";
 
 export type ProductState = {
     shortMusicProducts: IInFiniteList<MusicProductShort>;
@@ -33,6 +35,10 @@ const initialState: ProductState = {
 export type ProductDispatch = {
     selectMusicProductType: (payload: MusicProductType) => void;
     selectGamerProductType: (payload: GamerProductType) => void;
+    createMusicProduct: (payload: MusicProduct, token: string) => void;
+    updateMusicProduct: (payload: MusicProduct, token: string) => void;
+    createGamerProduct: (payload: GamerProduct, token: string) => void;
+    updateGamerProduct: (payload: GamerProduct, token: string) => void;
 }
 
 const useProductsStore = create<ProductState & ProductDispatch>((set) => ({
@@ -49,6 +55,18 @@ const useProductsStore = create<ProductState & ProductDispatch>((set) => ({
             selectedProductType: state.selectedGamerProductType === payload ? payload : undefined
         };
     }),
+    createMusicProduct: async (payload: MusicProduct, token: string) => {
+        console.log(payload, token);
+    },
+    updateMusicProduct: async (payload: MusicProduct, token: string) => {
+        console.log(payload, token);
+    },
+    createGamerProduct: async (payload: GamerProduct, token: string) => {
+        console.log(payload, token);
+    },
+    updateGamerProduct: async (payload: GamerProduct, token: string) => {
+        console.log(payload, token);
+    }
 }));
 
 export {useProductsStore};

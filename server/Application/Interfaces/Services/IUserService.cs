@@ -8,4 +8,5 @@ public interface IUserService
 {
     Task<Result<bool>> RegisterUserAsync(UserRegisterDto userRegisterDto,
         CancellationToken cancellationToken = default);
+    
 }

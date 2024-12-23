@@ -21,10 +21,11 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseIdentityDbInitializer();
-    app.UseDbInitializer();
     app.MapOpenApi();
 }
+app.UseIdentityDbInitializer();
+app.UseDbInitializer();
+
 app.UseCors("AllowAll");
 app.UseCorsWithPolicy();
 app.UseHttpsRedirection();

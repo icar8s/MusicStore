@@ -1,7 +1,7 @@
 import {AxiosRequestConfig} from "axios";
 import {getBaseEndpointUrl} from "../endpointHelper.ts";
 
-export interface IRequestBuilder<TType> {
+export interface IRequestBuilder {
     setMethod: (method: string | undefined) => void;
 
     addOrSetParam: (param?: {name: string, value: string}) => void;
@@ -16,10 +16,10 @@ export interface IRequestBuilder<TType> {
     clearToken: () => void;
     setUrl:(url: string) => void;
 
-    build:(baseEndpoint?: string) => AxiosRequestConfig<TType>;
+    build:(baseEndpoint?: string) => AxiosRequestConfig;
 }
 
-export class RequestBuilder<TType> implements IRequestBuilder<TType> {
+export class RequestBuilder implements IRequestBuilder {
     private _method: string = "GET";
     private _token: string | undefined;
     private _params: Record<string, string> = {};
@@ -78,14 +78,13 @@ export class RequestBuilder<TType> implements IRequestBuilder<TType> {
         this._url = url;
     }
 
-    build = (baseEndpoint?: string) :AxiosRequestConfig<TType> =>{
+    build = (baseEndpoint?: string) :AxiosRequestConfig =>{
 
         let url = baseEndpoint ?? getBaseEndpointUrl() + this._url;
         for (const param in this._queryParams) {
             url = url.replace(`{${param}}`, this._queryParams[param]);
         }
-        console.log(this._params)
-        const config: AxiosRequestConfig<TType> = {
+        const config: AxiosRequestConfig = {
             method: this._method,
             url: url,
             headers: {
@@ -103,5 +102,4 @@ export class RequestBuilder<TType> implements IRequestBuilder<TType> {
 
         return config;
     }
-
 }

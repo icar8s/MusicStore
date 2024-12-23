@@ -17,5 +17,5 @@ public abstract class Product: EventInfEntity
     
     public virtual List<CartProduct> Products { get; set; }
     
-    public virtual List<SaleProduct> Sales { get; set; }
+    public virtual Sale? Sale { get; set; }
 }

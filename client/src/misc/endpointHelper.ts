@@ -4,5 +4,5 @@ export const getBaseEndpointUrl = () => {
 }
 
 export const getBaseIdentityUrl = () => {
-    return "http://localhost:3003/"
+    return "http://localhost:3003/connect/token"
 }

@@ -1,3 +1,4 @@
+using System.Text.Json;
 using MusicStore.Misc;
 using Domain.Options;
 
@@ -23,15 +24,18 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
+
+app.UseCors("AllowAll");
 
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-app.UseCors("AllowAll");
+
 app.UseAuthentication();
 
 app.UseAuthorization();

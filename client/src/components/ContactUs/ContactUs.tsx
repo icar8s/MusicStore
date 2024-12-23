@@ -1,5 +1,7 @@
 import styles from './сontactUs.module.scss';
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
+import {Input} from "../../shared/input/Input.tsx";
+import {Button} from "../../shared/button/Button.tsx";
 
 export const ContactUs: ComponentWithMeta = () => {
     return (
@@ -18,7 +20,7 @@ export const ContactUs: ComponentWithMeta = () => {
                     <h2 className={styles.h2}>Contact Form</h2>
                     <label className={styles["contact-form-label"]}>
                         NAME
-                        <input
+                        <Input
                             className={styles["contact-form-input"]}
                             type="text"
                             name="name"
@@ -27,7 +29,7 @@ export const ContactUs: ComponentWithMeta = () => {
                     </label>
                     <label>
                         EMAIL
-                        <input
+                        <Input
                             className={styles["contact-form-input"]}
                             type="email"
                             name="email"
@@ -36,19 +38,19 @@ export const ContactUs: ComponentWithMeta = () => {
                     </label>
                     <label>
                         MESSAGE
-                        <input
+                        <Input
                             className={styles["contact-form-input"]}
-                            type="MESSAGE"
+                            type="text"
                             name="MESSAGE"
                             required
                         />
                     </label>
-                    <button
+                    <Button
                         className={`${styles["contact-form-button-hover"]} ${styles["contact-form-button"]}`}
                         type="submit"
                     >
                         SEND MESSAGE
-                    </button>
+                    </Button>
                 </form>
             </div>
         </div>
@@ -57,5 +59,5 @@ export const ContactUs: ComponentWithMeta = () => {
 
 ContactUs.meta = {
     route: "contactUs",
-    roles: ["admin", "moderator"],
+    roles: [""],
 };

@@ -9,7 +9,7 @@ import {Home} from "./components/Home/Home.tsx";
 import {ContactUs} from "./components/ContactUs/ContactUs.tsx";
 import {ProductDetail} from "./components/ProductDetail/ProductDetail.tsx";
 import {Cart as Cart} from "./components/Cart/Cart.tsx";
-import LayoutGameStore from "./componentsGameStore/layout/Layout.tsx";
+import LayoutGameStore from "./componentsGameStore/Layout/Layout.tsx";
 import {LoginGameStore} from "./componentsGameStore/Login/Login.tsx";
 import {ProductsGameStore} from "./componentsGameStore/Products/Products.tsx";
 import {RegisterGameStore} from "./componentsGameStore/Register/Register.tsx";
@@ -19,7 +19,7 @@ import {ProductDetailGameStore} from "./componentsGameStore/ProductDetail/Produc
 import {CartGameStore} from "./componentsGameStore/Cart/Cart.tsx";
 import {NewsGameStore} from "./componentsGameStore/News/News.tsx";
 import {News} from "./components/News/News.tsx";
-import Layout from "./components/layout/Layout.tsx";
+import {Layout} from "./components/Layout/Layout.tsx";
 
 function App() {
     const scope = import.meta.env.VITE_APP_SCOPE;

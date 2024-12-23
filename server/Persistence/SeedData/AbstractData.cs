@@ -23,6 +23,4 @@ public abstract class AbstractData<TProduct>
     public abstract IList<News> News { get; }
     
     public abstract IList<CartProduct> CartProducts { get; }
-    
-    public abstract IList<SaleProduct> SaleProducts { get; }
 }

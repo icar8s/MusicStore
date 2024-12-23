@@ -7,5 +7,7 @@ public class Sale: BaseEntity
 {
     public float Percentage { get; set; }
     
-    public virtual List<SaleProduct> SaleProducts { get; set; }
+    public virtual Product? Product { get; set; }
+    
+    public Guid ProductId { get; set; }
 }

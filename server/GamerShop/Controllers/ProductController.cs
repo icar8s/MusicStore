@@ -34,7 +34,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageAsync([FromQuery]PageIndex page)
+    public async Task<IActionResult> GetPageAsync([FromBody]PageIndex page)
     {
         var result = await gamerProductService.GetGamerProductsAsync(page);
         
@@ -50,7 +50,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageByProductTypeAsync(GamerProductType type, PageIndex page)
+    public async Task<IActionResult> GetPageByProductTypeAsync(GamerProductType type, [FromParams]PageIndex page)
     {
         var result = await gamerProductService.GetGamerProductsByTypeAsync(page, type);
         

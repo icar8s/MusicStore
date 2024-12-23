@@ -6,18 +6,39 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 1000;
 }
-
-.modal-content {
-  background: white;
+.modal-overlay .modal-content {
+  background: linear-gradient(to right, black, #410000);
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   width: 400px;
+  color: white;
   position: relative;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+.modal-overlay .modal-content .modal-title {
+  color: mintcream;
+  display: flex;
+  flex-direction: column;
+}
+.modal-overlay .modal-content .modal-title > * {
+  display: block;
+}
+.modal-overlay .modal-content .modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  left: auto;
+  bottom: auto;
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
 }
 
-/*# sourceMappingURL=modal.css.map */
+/*# sourceMappingURL=createProductModal.css.map */

@@ -25,9 +25,9 @@ public sealed class ProductConfiguration: IEntityTypeConfiguration<Product>
             .HasForeignKey(x=>x.ProductId)
             .OnDelete(DeleteBehavior.Cascade);
         
-        builder.HasMany(x=>x.Sales)
+        builder.HasOne(x=>x.Sale)
             .WithOne(x=>x.Product)
-            .HasForeignKey(x=>x.ProductId)
+            .HasForeignKey<Sale>(x=>x.ProductId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -56,8 +56,8 @@ export class InFiniteList<TData> implements IInFiniteList<TData> {
         this._data = undefined;
         this._error = undefined;
 
-        this._requestBuilder.addOrSetParam({name: "PageNumber", value: page.pageNumber.toString()})
-        this._requestBuilder.addOrSetParam({name: "PageSize", value: page.pageSize.toString()})
+        this._requestBuilder.addOrSetParam({name: "pageNumber", value: page.pageNumber.toString()})
+        this._requestBuilder.addOrSetParam({name: "pageSize", value: page.pageSize.toString()})
 
         axios<IResponseList<TData>>(this._requestBuilder.build())
             .then(response => {

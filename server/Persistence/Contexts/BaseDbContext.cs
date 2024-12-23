@@ -25,8 +25,6 @@ public abstract class BaseDbContext(DbContextOptions options) : IdentityDbContex
     
     public DbSet<Sale> Sales => Set<Sale>();
     
-    public DbSet<SaleProduct> SaleProducts => Set<SaleProduct>();
-    
     public override int SaveChanges()
     {
         UpdateTimestamps();

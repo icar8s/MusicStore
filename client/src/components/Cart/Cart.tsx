@@ -11,5 +11,5 @@ export const Cart: ComponentWithMeta  = ()  => {
 
 Cart.meta = {
     route: "Cart",
-    roles: ["admin", "moderator"],
+    roles: [""],
 };

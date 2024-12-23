@@ -54,6 +54,7 @@ internal static class ServiceExtensions
         services
             .AddScoped<IIdentityService, IdentityService>()
             .AddScoped<IGamerCartService, GamerCartService>()
+            .AddScoped<IUserService, UserService>()
             .AddScoped<IGamerNewsService, GamerNewsService>()
             .AddScoped<IGamerProductService, GamerProductService>();
     
@@ -126,12 +127,12 @@ internal static class ServiceExtensions
         services
             .AddScoped<IRepository<Product>, Repository<Product, GameStoreContext>>()
             .AddScoped<IRepository<Sale>, Repository<Sale, GameStoreContext>>()
-            .AddScoped<IRepository<SaleProduct>, Repository<SaleProduct, GameStoreContext>>()
             .AddScoped<IRepository<CartProduct>, Repository<CartProduct, GameStoreContext>>()
             .AddScoped<IRepository<News>, Repository<News, GameStoreContext>>()
             .AddScoped<IRepository<Cart>, Repository<Cart, GameStoreContext>>()
             .AddScoped<IRepository<GamerProduct>, Repository<GamerProduct, GameStoreContext>>()
             .AddScoped<ICartProductRepository, CartProductRepository<GameStoreContext>>()
+            .AddScoped<ISaleRepository, SaleRepository<GameStoreContext>>()
             .AddScoped<ICartRepository, CartRepository<GameStoreContext>>();
 
     private static IServiceCollection AddCache(this IServiceCollection services,

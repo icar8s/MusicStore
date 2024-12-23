@@ -42,5 +42,5 @@ export const ProductDetail: ComponentWithMeta  = ()  => {
 
 ProductDetail.meta = {
     route: `/products/:id`,
-    roles: ["admin", "moderator"]
+    roles: [""]
 };

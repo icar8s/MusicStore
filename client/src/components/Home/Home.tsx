@@ -44,5 +44,5 @@ export const Home: ComponentWithMeta  = ()  => {
 
 Home.meta = {
     route: '',
-    roles: ['admin', 'moderator'],
+    roles: [""],
 };

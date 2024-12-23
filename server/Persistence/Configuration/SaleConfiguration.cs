@@ -10,10 +10,5 @@ public sealed class SaleConfiguration: IEntityTypeConfiguration<Sale>
     {
         builder.Property(x => x.Percentage)
             .IsRequired();
-        
-        builder.HasMany(x=>x.SaleProducts)
-            .WithOne(x=>x.Sale)
-            .HasForeignKey(x=>x.SaleId)
-            .OnDelete(DeleteBehavior.Cascade);
     }
 }

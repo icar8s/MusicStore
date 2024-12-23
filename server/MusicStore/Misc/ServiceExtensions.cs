@@ -59,6 +59,7 @@ internal static class ServiceExtensions
     private static IServiceCollection AddServices(this IServiceCollection services) =>
         services
             .AddScoped<IIdentityService, IdentityService>()
+            .AddScoped<IUserService, UserService>()
             .AddScoped<IMusicCartService, MusicCartService>()
             .AddScoped<IMusicNewsService, MusicNewsService>()
             .AddScoped<IMusicProductService, MusicProductService>();
@@ -71,6 +72,7 @@ internal static class ServiceExtensions
             .AddUserManager<UserManager<User>>()
             .AddRoleManager<RoleManager<IdentityRole<Guid>>>()
             .AddDefaultTokenProviders();
+        
         return services;
     }
     
@@ -131,12 +133,12 @@ internal static class ServiceExtensions
         services
             .AddScoped<IRepository<Product>, Repository<Product, MusicStoreContext>>()
             .AddScoped<IRepository<Sale>, Repository<Sale, MusicStoreContext>>()
-            .AddScoped<IRepository<SaleProduct>, Repository<SaleProduct, MusicStoreContext>>()
             .AddScoped<IRepository<CartProduct>, Repository<CartProduct, MusicStoreContext>>()
             .AddScoped<IRepository<News>, Repository<News, MusicStoreContext>>()
             .AddScoped<IRepository<Cart>, Repository<Cart, MusicStoreContext>>()
             .AddScoped<IRepository<MusicProduct>, Repository<MusicProduct, MusicStoreContext>>()
             .AddScoped<ICartProductRepository, CartProductRepository<MusicStoreContext>>()
+            .AddScoped<ISaleRepository, SaleRepository<MusicStoreContext>>()
             .AddScoped<ICartRepository, CartRepository<MusicStoreContext>>();
 
     private static IServiceCollection AddCache(this IServiceCollection services,

@@ -2,11 +2,11 @@ namespace Application.DTOs.General;
 
 public sealed class UserRegisterDto
 {
-    public string UserName { get; }
+    public string UserName { get; set; }
     
-    public string Email { get; }
+    public string Email { get; set;}
     
-    public string Password { get; }
+    public string Password { get; set;}
     
-    public string PasswordConfiramation { get; }
+    public string PasswordConfirmation { get;set; }
 }

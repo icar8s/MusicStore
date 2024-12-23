@@ -1,4 +1,4 @@
-import React from "react";
+import React, {JSX} from "react";
 import {useIdentityStore} from "../stores/identity/useIdentityStore.ts";
 
 type ComponentWithMeta = React.ComponentType & {
@@ -18,7 +18,7 @@ export const ProtectedRoute = ({
 
     const {role} = useIdentityStore();
 
-    if(!component.meta.roles.includes(role)){
+    if(!component.meta.roles.includes(role.dataResult?.data ?? "")){
         return <>You don't have permission to this resource'</>
     }
 
@@ -26,16 +26,19 @@ export const ProtectedRoute = ({
 }
 
 interface IProtectedContent {
-    children: ComponentWithMeta;
+    children: JSX.Element;
     roles: string[] | string;
 }
 
 export const ProtectedContent = ({children, roles}: IProtectedContent) => {
     const {role} = useIdentityStore();
 
-    if((typeof roles === "string" && role !== roles) || !roles.includes(role)){
+    if((typeof roles === "string" &&
+        (role.dataResult?.data ?? "") !== roles) ||
+        !roles.includes(role.dataResult?.data ?? "")){
+
         return null
     }
 
-    return children
+    return <>{children}</>
 }

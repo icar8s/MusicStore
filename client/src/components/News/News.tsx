@@ -10,5 +10,5 @@ export const News: ComponentWithMeta  = () => {
 
 News.meta = {
     route: "news",
-    roles: ["admin", "moderator"],
+    roles: [""],
 }

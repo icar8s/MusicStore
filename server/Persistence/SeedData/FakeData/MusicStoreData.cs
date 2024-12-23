@@ -56,6 +56,4 @@ public class MusicStoreData : AbstractData<MusicProduct>
     public override IList<News> News => new List<News>();
     
     public override IList<CartProduct> CartProducts => new List<CartProduct>();
-    
-    public override IList<SaleProduct> SaleProducts => new List<SaleProduct>();
 }

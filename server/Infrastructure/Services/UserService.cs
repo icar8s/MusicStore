@@ -9,7 +9,7 @@ namespace Infrastructure.Services;
 
 public class UserService(
     UserManager<User> userManager,
-    RoleManager<IdentityRole> roleManager,
+    RoleManager<IdentityRole<Guid>> roleManager,
     IMapper mapper
     ) : IUserService
 {
@@ -17,16 +17,16 @@ public class UserService(
         CancellationToken cancellationToken = default)
     {
         var user = mapper.Map<User>(userRegisterDto);
-        
+
         await userManager.CreateAsync(user, userRegisterDto.Password);
-        
+
         if (!await roleManager.RoleExistsAsync("user"))
         {
-            await roleManager.CreateAsync(new IdentityRole("user"));
+            await roleManager.CreateAsync(new IdentityRole<Guid>("user"));
         }
-        
+
         await userManager.AddToRoleAsync(user, "user");
-        
+
         return Result<bool>.Success();
     }
 }
