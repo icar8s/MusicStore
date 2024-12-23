@@ -13,7 +13,7 @@ import {NewsGameStore} from "../News/News.tsx";
 
 
 export const NavigationNav = () => {
-    let {selectedTheme} = useThemeStore();
+    const {selectedTheme} = useThemeStore();
     return <Nav>
         <section
             className={`${selectedTheme}-theme section-left`}
