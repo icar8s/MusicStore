@@ -8,6 +8,7 @@ using Domain.Entities.General;
 using Domain.Entities.General.Links;
 using Domain.Enums;
 using FluentValidation;
+using GamerShop.Constraints;
 using Infrastructure.Services;
 using Infrastructure.Services.GamerStore;
 using Mapster;
@@ -32,7 +33,7 @@ internal static class ServiceExtensions
             .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly())
             .Configure<RouteOptions>(options =>
             {
-                options.ConstraintMap.Add("gpt", typeof(GamerProductType));
+                options.ConstraintMap.Add("gpt", typeof(GamerProductTypeConstraint));
             });
     
     private static IServiceCollection AddMapsterFromAssembly(this IServiceCollection services)

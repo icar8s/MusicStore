@@ -2,27 +2,27 @@ import "./productModal.scss";
 import {ModalTitle} from "../../../misc/providers/ModalProvider.tsx";
 import {ImagePicker} from "../../../shared/imagePicker/ImagePicker.tsx";
 import {ChangeEvent, FormEvent, useState} from "react";
-import {MusicProduct} from "../../../models/dtos/musicStore/musicProduct.ts";
-import {MusicProductDetail} from "../../../models/dtos/musicStore/musicProductDetail.ts";
-import {
-    definedMusicProductKeys,
-    musicProductType,
-    MusicProductType
-} from "../../../models/dtos/enums/musicProductType.ts";
 import {SelectOption} from "../../../shared/option/SelectOption.tsx";
 import {Select} from "../../../shared/select/Select.tsx";
 import {Input} from "../../../shared/input/Input.tsx";
 import {Button} from "../../../shared/button/Button.tsx";
+import {GamerProductDetail} from "../../../models/dtos/gameStore/gamerProductDetail.ts";
+import {GamerProduct} from "../../../models/dtos/gameStore/gamerProduct.ts";
+import {
+    definedGamerProductKeys,
+    gamerProductType,
+    GamerProductType
+} from "../../../models/dtos/enums/gameProductType.ts";
 
 export interface IProductModal {
-    product?: MusicProductDetail
+    product?: GamerProductDetail
 }
 
 export const ProductModal = ({product}: IProductModal) => {
 
     const isEdit = product !== undefined;
 
-    const [productState, setProductState] = useState<MusicProduct>(
+    const [productState, setProductState] = useState<GamerProduct>(
         product
             ? {
                 id: product.id,
@@ -42,7 +42,7 @@ export const ProductModal = ({product}: IProductModal) => {
                 base64Image: '',
                 description: '',
                 percentage: 0,
-                type: MusicProductType.Guitar
+                type: GamerProductType.Laptop
             }
     );
 
@@ -121,11 +121,11 @@ export const ProductModal = ({product}: IProductModal) => {
                     <label htmlFor="type">Product Type</label>
                     <Select
                         onClick={(e)=> {
-                            const productType = e.currentTarget.value as musicProductType;
-                            setProductState((prev) => ({ ...prev, type: MusicProductType[productType] }));
+                            const productType = e.currentTarget.value as gamerProductType;
+                            setProductState((prev) => ({ ...prev, type: GamerProductType[productType] }));
                         }}
                         defaultValue={productState.type}>
-                        {definedMusicProductKeys.map(type =>
+                        {definedGamerProductKeys.map(type =>
                             <SelectOption
                                 key={type}
                                 value={type}>

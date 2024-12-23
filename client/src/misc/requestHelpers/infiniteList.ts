@@ -16,10 +16,10 @@ export class InFiniteList<TData> implements IInFiniteList<TData> {
     private _error?: AxiosError<unknown, unknown> | undefined;
     private _data?: IResponseList<TData>;
 
-    private readonly _requestBuilder: IRequestBuilder<IResponseList<TData>>;
+    private readonly _requestBuilder: IRequestBuilder;
     private readonly _pageSize: number;
 
-    constructor(requestBuilder: IRequestBuilder<IResponseList<TData>>,
+    constructor(requestBuilder: IRequestBuilder,
                 pageSize: number = 10) {
         this._requestBuilder = requestBuilder;
         this._pageSize = pageSize;

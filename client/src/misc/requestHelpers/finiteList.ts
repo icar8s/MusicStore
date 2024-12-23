@@ -6,7 +6,7 @@ export interface IFiniteList<TData> {
     pending: boolean;
     error?: AxiosError<unknown, unknown> | undefined;
     dataResult?: IResponseList<TData>;
-    requestBuilder: IRequestBuilder<IResponseList<TData>>
+    requestBuilder: IRequestBuilder
     fetch:()=>void;
 }
 
@@ -15,9 +15,9 @@ export class FiniteList<TData> implements IFiniteList<TData> {
     private _error?: AxiosError<unknown, unknown>;
     private _data?: IResponseList<TData> = undefined;
 
-    private readonly _requestBuilder: IRequestBuilder<IResponseList<TData>>
+    private readonly _requestBuilder: IRequestBuilder
 
-    constructor(requestBuilder: IRequestBuilder<IResponseList<TData>>) {
+    constructor(requestBuilder: IRequestBuilder) {
         this._requestBuilder = requestBuilder;
     }
 

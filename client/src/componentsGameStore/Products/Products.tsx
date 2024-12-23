@@ -3,53 +3,52 @@ import { useProductsStore } from "../../stores/products/useProductsStore.ts";
 import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
 import "./products.module.scss";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
-import {ProductGameStore} from "../Product/Product.tsx";
-import {useEffect} from "react";
+import {useModal} from "../../misc/providers/ModalProvider.tsx";
+import styles from "../../components/Products/products.module.scss";
+import {ProtectedContent} from "../../misc/Protected.tsx";
+import create from "../../assets/images/sliderHome/plus-circle.png";
+import {ProductModal} from "./ModalProducts/ProductModal.tsx";
+import {Product} from "../../components/Product/Product.tsx";
 
 export const ProductsGameStore: ComponentWithMeta  = ()  => {
-    const { shortMusicProducts, selectedGamerProductType} = useProductsStore();
+    const { shortGamerProducts} = useProductsStore();
     const { selectedTheme } = useThemeStore();
-
-    useEffect(() => {
-        if(selectedGamerProductType){
-            shortMusicProducts.requestBuilder.addOrSetQueryParam({name: "type", value: selectedGamerProductType.toString()})
-            shortMusicProducts.fetchFirst()
-        }
-    }, [selectedGamerProductType]);
-
-    useEffect(() => {
-        shortMusicProducts.fetchFirst()
-    }, []);
-
-    // Состояние для корзины
-    //const [cart, setCart] = useState<Product[]>([]);
-
-    // Функция добавления товара в корзину
-    /*const handleAddToCart = (product: MusicProductShort) => {
-        /!*setCart((prevCart) => {
-            const productInCart = prevCart.find((item) => item.id === product.id);
-            if (productInCart) {
-                // Если товар уже в корзине, увеличиваем его количество
-                return prevCart.map((item) =>
-                    item.id === product.id
-                        ? { ...item, quantity: (item.quantity || 1) + 1 }
-                        : item
-                );
-            }
-            // Если товара нет в корзине, добавляем его с количеством 1
-            return [...prevCart, { ...product, quantity: 1 }];
-        });*!/
-    };*/
+    const {openModal} = useModal();
 
     return (
-        <div className={`${selectedTheme}-theme products-wrapper products-all`}>
-            {/* Отображение количества товаров для выбора */}
-            <div></div>
+        <div className={`${styles.productsWrapper} ${selectedTheme}-theme ${styles["products-all"]}`}>
+            <div className="products-container">
+                <ProtectedContent roles={""}>
+                    <div
+                        style={{
+                            position: "fixed",
+                            top: "0",
+                            left: "0",
+                            width: "100%",
+                            height: "100%",
+                        }}
+                        className="images-row">
+                        <img
+                            style={{
+                                position: "absolute",
+                                top: "auto",
+                                left: "auto",
+                                right: "20px",
+                                bottom: "50px",
+                                width: "50px",
+                                display: ""
+                            }}
+                            src={create}
+                            alt="Product 1"
+                            onClick={() => openModal(<ProductModal/>)}
+                        />
+                    </div>
+                </ProtectedContent>
+            </div>
 
-            {/* Панель с товарами */}
-            <Panel className={`${selectedTheme}-theme products-container`}>
-                {shortMusicProducts.dataResult?.data?.map((product, index) => (
-                    <ProductGameStore
+            <Panel className={`${styles.productsContainer} ${selectedTheme}-theme`}>
+                {shortGamerProducts.dataResult?.data?.map((product, index) => (
+                    <Product
                         key={index}
                         product={product}
                         //onAddToCart={handleAddToCart}
@@ -62,5 +61,5 @@ export const ProductsGameStore: ComponentWithMeta  = ()  => {
 
 ProductsGameStore.meta = {
     route: "ProductsGameStore",
-    roles: ["admin", "moderator"],
+    roles: [""],
 };

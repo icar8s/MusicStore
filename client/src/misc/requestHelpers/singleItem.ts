@@ -13,9 +13,9 @@ export class SingleItem<TData> implements ISingleItem<TData> {
     private _data?: IResult<TData>;
     private _pending: boolean = false;
     private _error?: AxiosError<unknown, unknown> | undefined;
-    private readonly _requestBuilder: IRequestBuilder<IResult<TData>>
+    private readonly _requestBuilder: IRequestBuilder
 
-    constructor(requestBuilder: IRequestBuilder<IResult<TData>>) {
+    constructor(requestBuilder: IRequestBuilder) {
         this._requestBuilder = requestBuilder;
     }
 

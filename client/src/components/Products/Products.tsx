@@ -6,23 +6,18 @@ import styles from "./products.module.scss";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import create from "../../assets/images/sliderHome/plus-circle.png"
 import {useModal} from "../../misc/providers/ModalProvider.tsx";
-import {ProductModal} from "./ModalProducts/ProductModal.tsx";
+import {ProductModal} from "../../componentsGameStore/Products/ModalProducts/ProductModal.tsx";
 import {ProtectedContent} from "../../misc/Protected.tsx";
-import {useEffect} from "react";
 
 export const Products: ComponentWithMeta = () => {
     const { shortMusicProducts} = useProductsStore();
     const { selectedTheme } = useThemeStore();
     const {openModal} = useModal();
 
-    useEffect(() => {
-        shortMusicProducts.fetchFirst()
-    }, []);
-
     return (
         <div className={`${styles.productsWrapper} ${selectedTheme}-theme ${styles["products-all"]}`}>
             <div className="products-container">
-                <ProtectedContent roles={"admin"}>
+                <ProtectedContent roles={""}>
                     <div
                         style={{
                             position: "fixed",

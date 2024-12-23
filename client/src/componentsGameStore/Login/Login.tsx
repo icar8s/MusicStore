@@ -52,5 +52,5 @@ export const LoginGameStore: ComponentWithMeta  = () => {
 // Определяем мета-информацию для компонента
 LoginGameStore.meta = {
     route: "LoginGameStore",
-    roles: ["admin", "moderator"],
+    roles: [""],
 };

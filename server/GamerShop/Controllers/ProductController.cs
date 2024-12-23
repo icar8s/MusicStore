@@ -50,7 +50,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageByProductTypeAsync(GamerProductType type, [FromParams]PageIndex page)
+    public async Task<IActionResult> GetPageByProductTypeAsync(GamerProductType type, [FromBody]PageIndex page)
     {
         var result = await gamerProductService.GetGamerProductsByTypeAsync(page, type);
         

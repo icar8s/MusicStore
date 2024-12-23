@@ -10,5 +10,5 @@ export const getGamerProductByIdBuilder = new RequestBuilder()
 getGamerProductByIdBuilder.setUrl("api/product/{id}")
 
 export const getGamerProductPageBuilder = new RequestBuilder()
-getGamerProductPageBuilder.setUrl("api/product/page/")
+getGamerProductPageBuilder.setUrl("api/product/page")
 

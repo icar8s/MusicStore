@@ -11,7 +11,7 @@
   outline: none;
 }
 .form > input:focus, .form > textarea:focus {
-  border-color: #ff69b4;
+  border-color: #69ffb4;
 }
 .form > textarea {
   resize: vertical;
@@ -20,14 +20,14 @@
 .form > button {
   margin-top: 20px;
   padding: 10px;
-  background-color: pink;
+  background-color: lightgreen;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 .form > button:hover {
-  background-color: #ff69b4;
+  background-color: #69ffb4;
 }
 
 /*# sourceMappingURL=productModal.css.map */

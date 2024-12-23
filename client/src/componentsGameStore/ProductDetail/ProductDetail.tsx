@@ -41,5 +41,5 @@ export const ProductDetailGameStore: ComponentWithMeta  = ()  => {
 
 ProductDetailGameStore.meta = {
     route: `/productDetailGameStore/:id`,
-    roles: ["admin", "moderator"]
+    roles: [""]
 };

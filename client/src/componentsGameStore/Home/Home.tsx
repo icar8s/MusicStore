@@ -45,5 +45,5 @@ export const HomeGameStore: ComponentWithMeta  = ()  => {
 
 HomeGameStore.meta = {
     route: '',
-    roles: ['admin', 'moderator'],
+    roles: [''],
 };

@@ -57,5 +57,5 @@ export const ContactUsGameStore: ComponentWithMeta = () => {
 
 ContactUsGameStore.meta = {
     route: "contactUs",
-    roles: ["admin", "moderator"],
+    roles: [""],
 };

@@ -46,5 +46,5 @@ export const RegisterGameStore: ComponentWithMeta  = ()  => {
 
 RegisterGameStore.meta = {
     route: "/registerGameStore",
-    roles: ["admin", "moderator"]
+    roles: [""]
 }
