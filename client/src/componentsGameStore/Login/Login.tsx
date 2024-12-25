@@ -7,6 +7,7 @@ import {useApi} from "../../misc/hooks/useApi.tsx";
 import {$api} from "../../api";
 import {FormEvent, useEffect, useState} from "react";
 import {SignInType} from "../../models/dtos/token.ts";
+import {useIdentityStore} from "../../stores/identity/useIdentityStore.ts";
 
 export const LoginGameStore: ComponentWithMeta  = () => {
     const {selectedTheme} = useThemeStore();
@@ -18,7 +19,11 @@ export const LoginGameStore: ComponentWithMeta  = () => {
         password: "",
         username: ""
     })
-    const {data, reFetch: signIn, error} = useApi({method: $api.general.identity.signIn, params:[signInData], auto: false})
+
+    const {token: t, setToken, setRole} = useIdentityStore();
+
+    const {data: token, reFetch: signIn} = useApi({method: $api.general.identity.signIn, params:[signInData], auto: false})
+    const {data: role, reFetch: getRole} = useApi({method: $api.general.account.getRole, params: [token ?? t], auto: false})
 
     function handleSubmit(e: FormEvent) {
         e.preventDefault()
@@ -26,12 +31,17 @@ export const LoginGameStore: ComponentWithMeta  = () => {
     }
 
     useEffect(() => {
-        console.log(data)
-    }, [data]);
+        if(token){
+            setToken(token)
+            getRole()
+        }
+    }, [token]);
 
     useEffect(() => {
-        console.log(error?.status)
-    }, [error]);
+       if(role){
+           setRole(role)
+       }
+    }, [role]);
 
     return (
         <div className={styles["contact-us"]}>

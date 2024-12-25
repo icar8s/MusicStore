@@ -15,7 +15,14 @@ class AccountApiManager implements IAccountApiManager {
             }
         }
         try{
-            return  await axios<string>(config)
+
+            const role = await axios(config)
+
+            role.data = {
+                data: role.data,
+                IsSucceeded: true
+            }
+            return Promise.resolve(role);
         }
         catch(error){
             return Promise.reject(error);

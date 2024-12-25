@@ -24,7 +24,6 @@ class IdentityApiManager implements IIdentityApiManager {
         };
 
         try{
-            await new Promise((r) => setTimeout(r, 5000));
             const token = await axios(config)
 
             token.data = {
