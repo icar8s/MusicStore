@@ -19,7 +19,8 @@ import {ProductDetailGameStore} from "./componentsGameStore/ProductDetail/Produc
 import {CartGameStore} from "./componentsGameStore/Cart/Cart.tsx";
 import {NewsGameStore} from "./componentsGameStore/News/News.tsx";
 import {News} from "./components/News/News.tsx";
-import {Layout} from "./components/layout/Layout.tsx";
+import {Layout} from "./components/Layout/Layout.tsx";
+
 
 function App() {
     const scope = import.meta.env.VITE_APP_SCOPE;

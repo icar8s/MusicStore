@@ -1,14 +1,13 @@
 import { Panel } from "../../shared/panel/Panel.tsx";
 import { useProductsStore } from "../../stores/products/useProductsStore.ts";
 import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
-import "./products.module.scss";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import {useModal} from "../../misc/providers/ModalProvider.tsx";
-import styles from "../../components/Products/products.module.scss";
+import styles from "./products.module.scss";
 import {ProtectedContent} from "../../misc/Protected.tsx";
 import create from "../../assets/images/sliderHome/plus-circle.png";
 import {ProductModal} from "./ModalProducts/ProductModal.tsx";
-import {Product} from "../../components/Product/Product.tsx";
+import {Product} from "../../shared/Product/Product.tsx";
 
 export const ProductsGameStore: ComponentWithMeta  = ()  => {
     const { shortGamerProducts} = useProductsStore();

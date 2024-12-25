@@ -1,35 +1,34 @@
-.container.MsStore-theme, .MsStore-theme .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-}
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
 .container.GsStore-theme, .GsStore-theme .container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  display: flex;
-}
-.container.Christmas-theme, .Christmas-theme .container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-}
-.container .content.MsStore-theme, .MsStore-theme .container .content {
-  font-size: 20rem;
-  filter: opacity(0.5);
-  color: #eee;
 }
 .container .content.GsStore-theme, .GsStore-theme .container .content {
-  font-size: 20rem;
-  filter: opacity(0.5);
-  color: #eee;
-}
-.container .content.Christmas-theme, .Christmas-theme .container .content {
   font-size: 20rem;
   filter: opacity(0.5);
   color: #eee;

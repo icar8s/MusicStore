@@ -1,7 +1,7 @@
 import {Select} from "../select/Select.tsx";
 import {SelectOption} from "../option/SelectOption.tsx";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
-import {definedThemes, definedThemesKeys} from "../../laoyout/_themes/themify.ts";
+import {definedThemes, definedThemesKeys} from "../../layout/_themes/themify.ts";
 
 export const ThemeSelector = () => {
 

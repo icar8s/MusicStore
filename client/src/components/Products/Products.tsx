@@ -1,6 +1,6 @@
 import { Panel } from "../../shared/panel/Panel.tsx";
 import { useProductsStore } from "../../stores/products/useProductsStore.ts";
-import { Product } from "../Product/Product.tsx";
+import { Product } from "../../shared/Product/Product.tsx";
 import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
 import styles from "./products.module.scss";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";

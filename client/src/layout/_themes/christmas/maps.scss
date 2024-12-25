@@ -1,0 +1,32 @@
+/*File generated automatically*/
+/*Do not modify*/
+
+
+@use "variables";
+@forward "variables";
+
+$nav: (
+        background-color:  variables.$nav-background-color,
+        box-shadow:  variables.$nav-box-shadow,
+        border-bottom:  variables.$nav-border-bottom,
+        height:  variables.$nav-height,
+        padding:  variables.$nav-padding,
+        display:  variables.$nav-display,
+        horizontal:  variables.$nav-horizontal,
+        vertical:  variables.$nav-vertical,
+        justify-content:  variables.$nav-justify-content,
+        align-items:  variables.$nav-align-items,
+        font-family:  variables.$nav-font-family,
+);
+
+$select: (
+        background:  variables.$select-background,
+        color:  variables.$select-color,
+        width:  variables.$select-width,
+        height:  variables.$select-height,
+        cursor:  variables.$select-cursor,
+        display:  variables.$select-display,
+        position:  variables.$select-position,
+        font-size:  variables.$select-font-size,
+);
+
