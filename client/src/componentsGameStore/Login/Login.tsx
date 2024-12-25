@@ -3,20 +3,50 @@ import styles from "../ContactUs/сontactUs.module.scss";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import {RegisterGameStore} from "../Register/Register.tsx";
+import {useApi} from "../../misc/hooks/useApi.tsx";
+import {$api} from "../../api";
+import {FormEvent, useEffect, useState} from "react";
+import {SignInType} from "../../models/dtos/token.ts";
 
 export const LoginGameStore: ComponentWithMeta  = () => {
     const {selectedTheme} = useThemeStore();
+    const [signInData, setSignInData] = useState<SignInType>({
+        client_secret: "client_secret",
+        client_id: "Api",
+        scope: "api",
+        grant_type: "password",
+        password: "",
+        username: ""
+    })
+    const {data, reFetch: signIn, error} = useApi({method: $api.general.identity.signIn, params:[signInData], auto: false})
+
+    function handleSubmit(e: FormEvent) {
+        e.preventDefault()
+        signIn()
+    }
+
+    useEffect(() => {
+        console.log(data)
+    }, [data]);
+
+    useEffect(() => {
+        console.log(error?.status)
+    }, [error]);
 
     return (
         <div className={styles["contact-us"]}>
             <div className={`${styles.card} ${styles["login-card"]}`}>
-                <form className={styles["contact-form"]}>
+                <form
+                    onSubmit={handleSubmit}
+                    className={styles["contact-form"]}>
                     <h2 className={styles.h2}>Login</h2>
                     <label className={styles["contact-form-label"]}>
                         Email
                         <input
                             type="text"
                             name="name"
+                            value={signInData.username}
+                            onChange={(event) => setSignInData((prevState) => ({...prevState, username: event.target?.value ?? prevState.username}))}
                             className={styles["contact-form-input"]}
                             required
                         />
@@ -24,8 +54,10 @@ export const LoginGameStore: ComponentWithMeta  = () => {
                     <label className={styles["contact-form-label"]}>
                         Password
                         <input
-                            type="email"
-                            name="email"
+                            value={signInData.password}
+                            onChange={(event) => setSignInData((prevState) => ({...prevState, password: event.target?.value ?? prevState.password}))}
+                            type="password"
+                            name="password"
                             className={styles["contact-form-input"]}
                             required
                         />

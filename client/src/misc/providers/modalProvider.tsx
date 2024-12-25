@@ -1,13 +1,8 @@
-import {createContext, ReactNode, useContext, useEffect, useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import "./modal.scss"
 import change from "../../assets/images/sliderHome/cross-circle.png"
-
-interface IModalContext {
-    openModal: (content: ReactNode) => void;
-    closeModal: () => void;
-}
-
-const ModalContext = createContext<IModalContext | undefined>(undefined);
+import {useModal} from "../hooks/useModal.ts";
+import { ModalContext } from "../contexts/modalContext.ts";
 
 interface IModalProvider {
     children: ReactNode;
@@ -68,10 +63,3 @@ export const ModalTitle = ({title}: IModalTitle) => {
     </div>
 }
 
-export const useModal = (): IModalContext => {
-    const context = useContext(ModalContext);
-    if (!context) {
-        throw new Error('useModal must be used within a ModalProvider');
-    }
-    return context;
-};

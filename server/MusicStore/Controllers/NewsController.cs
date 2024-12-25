@@ -14,7 +14,7 @@ public sealed class NewsController(IMusicNewsService musicNewsService): Controll
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageAsync(PageIndex page,
+    public async Task<IActionResult> GetPageAsync([FromQuery]PageIndex page,
         CancellationToken ctx = default)
     {
         var result = await musicNewsService.GetNewsAsync(page, ctx);

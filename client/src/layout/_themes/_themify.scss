@@ -5,9 +5,7 @@
 @use "./christmas/define" as material;
 
 $themes: (
-        MsStore: msStore.$msStore-theme,
         GsStore: gsStore.$gsStore-theme,
-        Christmas: material.$christmas-theme
 );
 
 @mixin themify($property, $key, $themes: $themes) {

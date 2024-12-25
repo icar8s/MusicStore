@@ -1,5 +1,5 @@
 import "./productModal.scss";
-import {ModalTitle} from "../../../misc/providers/ModalProvider.tsx";
+import {ModalTitle} from "../../../misc/providers/modalProvider.tsx";
 import {ImagePicker} from "../../../shared/imagePicker/ImagePicker.tsx";
 import {ChangeEvent, FormEvent, useState} from "react";
 import {SelectOption} from "../../../shared/option/SelectOption.tsx";

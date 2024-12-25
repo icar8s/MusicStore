@@ -14,7 +14,7 @@ public sealed class NewsController(IGamerNewsService gamerNewsService): Controll
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageAsync(PageIndex page)
+    public async Task<IActionResult> GetPageAsync([FromQuery]PageIndex page)
     {
         var result = await gamerNewsService.GetNewsAsync(page);
         
@@ -23,7 +23,7 @@ public sealed class NewsController(IGamerNewsService gamerNewsService): Controll
             return BadRequest();
         }
         
-        return Ok(result.Data);
+        return Ok(result);
     }
 
     [HttpPost]

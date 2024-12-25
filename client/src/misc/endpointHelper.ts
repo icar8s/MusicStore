@@ -3,6 +3,10 @@ export const getBaseEndpointUrl = () => {
     return scope === "MsStore" ? "http://localhost:3001/" : "http://localhost:3002/"
 }
 
+export const getBaseGamerEndpointUrl = () =>  "http://localhost:3002/"
+
+export const getBaseMusicEndpointUrl = () =>  "http://localhost:3001/"
+
 export const getBaseIdentityUrl = () => {
     return "http://localhost:3003/connect/token"
 }

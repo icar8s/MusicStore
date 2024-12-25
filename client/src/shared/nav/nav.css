@@ -22,33 +22,7 @@
 /*Do not modify*/
 /*File generated automatically*/
 /*Do not modify*/
-.nav.MsStore-theme, .MsStore-theme .nav {
-  background-color: rgb(0, 0, 0);
-  box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.8);
-  border-bottom: 0px solid white;
-  height: 50px;
-  padding: 20px 20px 20px 20px;
-  display: flex;
-  horizontal: row;
-  vertical: column;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Poppins", sans-serif;
-}
 .nav.GsStore-theme, .GsStore-theme .nav {
-  background-color: rgb(0, 0, 0);
-  box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.8);
-  border-bottom: 0px solid white;
-  height: 50px;
-  padding: 20px 20px 20px 20px;
-  display: flex;
-  horizontal: row;
-  vertical: column;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Poppins", sans-serif;
-}
-.nav.Christmas-theme, .Christmas-theme .nav {
   background-color: rgb(0, 0, 0);
   box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.8);
   border-bottom: 0px solid white;

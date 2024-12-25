@@ -3,7 +3,6 @@ using Application.DTOs.General;
 using Application.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared;
 
 namespace MusicStore.Controllers;
 
@@ -41,6 +40,6 @@ public sealed class AccountController(IUserService userService): ControllerBase
         {
             return BadRequest();
         }
-        return Ok(Result<string>.Success(role));
+        return Ok(role);
     }
 }

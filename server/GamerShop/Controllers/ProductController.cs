@@ -18,7 +18,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetDetailByIdAsync([FromRoute] Guid id)
+    public async Task<IActionResult> GetDetailByIdAsync(Guid id)
     {
         var result = await gamerProductService.GetGamerProductAsync(id);
         
@@ -34,7 +34,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageAsync([FromBody]PageIndex page)
+    public async Task<IActionResult> GetPageAsync([FromQuery]PageIndex page)
     {
         var result = await gamerProductService.GetGamerProductsAsync(page);
         
@@ -43,14 +43,14 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
             return NotFound();
         }
         
-        return Ok(result.Data);
+        return Ok(result);
     }
 
     [HttpGet("page/{type:gpt}")]
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageByProductTypeAsync(GamerProductType type, [FromBody]PageIndex page)
+    public async Task<IActionResult> GetPageByProductTypeAsync(GamerProductType type, [FromQuery]PageIndex page)
     {
         var result = await gamerProductService.GetGamerProductsByTypeAsync(page, type);
         
@@ -59,7 +59,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
             return NotFound();
         }
         
-        return Ok(result.Data);
+        return Ok(result);
     }
 
     [HttpPost("add")]

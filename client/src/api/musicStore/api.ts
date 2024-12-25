@@ -1,15 +1,11 @@
-import {IAccountApiManager} from "../interfaces/accountApiManager.ts";
 import {ICartApiManager} from "./interfaces/cartApiManager.ts";
 import {IProductApiManager} from "./interfaces/productApiManager.ts";
-import {INewsApiManager} from "../interfaces/newsApiManager.ts";
-import {IIdentityApiManager} from "../interfaces/identityApiManager.ts";
+import {musicCartApiManager} from "./cartApiManager.ts";
+import {musicProductApiManager} from "./productApiManager.ts";
 
 export type MusicApi = {
-    account: IAccountApiManager;
     cart: ICartApiManager;
     product: IProductApiManager;
-    news: INewsApiManager;
-    identity: IIdentityApiManager;
 }
 
-//$api.music.account.getRole()
+export const musicApi : MusicApi = {cart: musicCartApiManager, product: musicProductApiManager}

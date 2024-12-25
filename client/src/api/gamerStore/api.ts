@@ -1,13 +1,11 @@
-import {IAccountApiManager} from "../interfaces/accountApiManager.ts";
 import {ICartApiManager} from "./interfaces/cartApiManager.ts";
 import {IProductApiManager} from "./interfaces/productApiManager.ts";
-import {INewsApiManager} from "../interfaces/newsApiManager.ts";
-import {IIdentityApiManager} from "../interfaces/identityApiManager.ts";
+import {gamerCartApiManager} from "./cartApiManager.ts";
+import {gamerProductApiManager} from "./productApiManager.ts";
 
 export type GamerApi = {
-    account: IAccountApiManager;
     cart: ICartApiManager;
     product: IProductApiManager;
-    news: INewsApiManager;
-    identity: IIdentityApiManager;
 }
+
+export const gamerApi: GamerApi = {cart: gamerCartApiManager, product: gamerProductApiManager}

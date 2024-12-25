@@ -1,5 +1,7 @@
-import {User} from "../../models/dtos/general/user.ts";
+import {IToken, SignInType} from "../../models/dtos/token.ts";
+import {IResult} from "../../misc/requestHelpers/IResult.ts";
+import {AxiosResponse} from "axios";
 
 export interface IIdentityApiManager {
-    signIn: (data: User) => Promise<void>;
+    signIn: (signInData: SignInType) => Promise<AxiosResponse<IResult<IToken>, unknown>>;
 }

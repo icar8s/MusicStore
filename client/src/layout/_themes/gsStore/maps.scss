@@ -338,6 +338,8 @@ $products-container: (
 $products-wrapper: (
         display:  variables.$products-wrapper-display,
         grid-template-columns:  variables.$products-wrapper-grid-template-columns,
+        width:  variables.$products-wrapper-width,
+        height:  variables.$products-wrapper-height,
 );
 
 $sale: (

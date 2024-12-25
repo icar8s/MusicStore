@@ -1,5 +1,4 @@
 using Application.Common;
-using Application.DTOs.General;
 using Application.DTOs.MusicStore;
 using Application.Interfaces.Services.MusicStore;
 using Domain.Enums;
@@ -16,7 +15,7 @@ public sealed class ProductController(IMusicProductService musicProductService) 
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetDetailByIdAsync([FromRoute] Guid id)
+    public async Task<IActionResult> GetDetailByIdAsync(Guid id)
     {
         var result = await musicProductService.GetMusicProductAsync(id);
 
@@ -32,7 +31,7 @@ public sealed class ProductController(IMusicProductService musicProductService) 
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageAsync([FromBody]PageIndex page)
+    public async Task<IActionResult> GetPageAsync([FromQuery]PageIndex page)
     {
         var result = await musicProductService.GetMusicProductsAsync(page);
         
@@ -41,7 +40,7 @@ public sealed class ProductController(IMusicProductService musicProductService) 
             return NotFound();
         }
         
-        return Ok(result.Data);
+        return Ok(result);
         
     }
     
@@ -49,7 +48,7 @@ public sealed class ProductController(IMusicProductService musicProductService) 
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageByProductTypeAsync(MusicProductType type, [FromBody] PageIndex page)
+    public async Task<IActionResult> GetPageByProductTypeAsync(MusicProductType type, [FromQuery]PageIndex page)
     {
         var result = await musicProductService.GetMusicProductsByTypeAsync(page, type);
         
@@ -58,7 +57,7 @@ public sealed class ProductController(IMusicProductService musicProductService) 
             return NotFound();
         }
         
-        return Ok(result.Data);
+        return Ok(result);
     }
 
     [HttpPost("add")]

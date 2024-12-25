@@ -5,9 +5,9 @@ import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
 import styles from "./products.module.scss";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import create from "../../assets/images/sliderHome/plus-circle.png"
-import {useModal} from "../../misc/providers/ModalProvider.tsx";
 import {ProductModal} from "../../componentsGameStore/Products/ModalProducts/ProductModal.tsx";
 import {ProtectedContent} from "../../misc/Protected.tsx";
+import {useModal} from "../../misc/hooks/useModal.ts";
 
 export const Products: ComponentWithMeta = () => {
     const { shortMusicProducts} = useProductsStore();
