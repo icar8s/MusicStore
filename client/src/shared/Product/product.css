@@ -1,0 +1,119 @@
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+/*File generated automatically*/
+/*Do not modify*/
+.product-wrapper.GsStore-theme, .GsStore-theme .product-wrapper {
+  background: rgba(1, 1, 1, 0.1);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: fit-content;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  height: 180px;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.product-wrapper .product-content.GsStore-theme, .GsStore-theme .product-wrapper .product-content {
+  display: flex;
+  flex-direction: column;
+}
+.product-wrapper .product-content .product-image-background.GsStore-theme, .GsStore-theme .product-wrapper .product-content .product-image-background {
+  position: absolute;
+  background: url("../../../../assets/images/sliderHome/cardProduct.png") no-repeat center center;
+  width: 100%;
+  height: 120px;
+  margin-top: 65px;
+  z-index: 1;
+  box-shadow: 240px 0 200px 0 rgba(255, 255, 255, 0.5);
+}
+.product-wrapper .product-content .product-name.GsStore-theme, .GsStore-theme .product-wrapper .product-content .product-name {
+  grid-area: n;
+  font-size: 24px;
+  color: white;
+  z-index: 2;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+.product-wrapper .product-content .product-learn-more.GsStore-theme, .GsStore-theme .product-wrapper .product-content .product-learn-more {
+  font-size: 16px;
+  color: white;
+  margin-top: 90px;
+  margin-left: 30px;
+  z-index: 2;
+}
+.product-wrapper .product-content .product-image.GsStore-theme, .GsStore-theme .product-wrapper .product-content .product-image {
+  grid-area: i;
+  width: 300px;
+  aspect-ratio: 1;
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
+}
+.product-wrapper .product-content[data-sale=true] .product-actual-price.GsStore-theme, .GsStore-theme .product-wrapper .product-content[data-sale=true] .product-actual-price {
+  grid-area: ap;
+}
+.product-wrapper .product-content[data-sale=true] .product-price.GsStore-theme, .GsStore-theme .product-wrapper .product-content[data-sale=true] .product-price {
+  grid-area: p;
+  color: gray;
+  text-decoration: line-through;
+}
+.product-wrapper .product-content[data-sale=false] .product-percentage.GsStore-theme, .GsStore-theme .product-wrapper .product-content[data-sale=false] .product-percentage {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: auto;
+  left: auto;
+  background: red;
+  border-radius: 5px;
+  color: #fff;
+  padding: 5px 10px;
+}
+.product-wrapper .product-content[data-sale=false] .product-actual-price.GsStore-theme, .GsStore-theme .product-wrapper .product-content[data-sale=false] .product-actual-price {
+  display: none;
+}
+.product-wrapper .product-image-container.GsStore-theme, .GsStore-theme .product-wrapper .product-image-container {
+  display: flex;
+  margin-top: -50px;
+  margin-left: 150px;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+.product-wrapper .product-image-container .product-image.GsStore-theme, .GsStore-theme .product-wrapper .product-image-container .product-image {
+  grid-area: i;
+  width: 300px;
+  aspect-ratio: 1;
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 50px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
+}
+
+/*# sourceMappingURL=product.css.map */

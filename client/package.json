@@ -4,17 +4,20 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "generate-sass": "node scripts/sassGenerator.js",
     "dev": "vite",
     "lint": "eslint .",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/node": "^22.10.2",
     "axios": "^1.7.9",
     "qs": "^6.13.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
+    "sass-export": "^2.1.2",
     "swiper": "^11.1.15",
     "zustand": "^5.0.0"
   },

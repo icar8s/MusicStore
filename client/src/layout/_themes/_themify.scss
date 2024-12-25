@@ -1,0 +1,40 @@
+@use "sass:map";
+@use "sass:meta";
+@use "msStore/define" as msStore;
+@use "gsStore/define" as gsStore;
+@use "./christmas/define" as material;
+
+$themes: (
+        MsStore: msStore.$msStore-theme,
+        GsStore: gsStore.$gsStore-theme,
+        Christmas: material.$christmas-theme
+);
+
+@mixin themify($property, $key, $themes: $themes) {
+  @each $theme, $prop in $themes {
+    &.#{$theme}-theme,
+    .#{$theme}-theme & {
+      @if meta.type-of($prop) == 'map' and map.has-key($prop, $key) {
+        #{$property}: map.get($prop, $key);
+      } @else {
+        @warn "The key '#{$key}' does not exist in theme '#{$theme}'.";
+      }
+    }
+  }
+}
+
+@mixin themify($map, $themes: $themes) {
+  @each $theme, $props in $themes {
+    $nested-props: map.get($props, $map);
+    @if $nested-props {
+      &.#{$theme}-theme,
+      .#{$theme}-theme & {
+        @each $property, $value in $nested-props {
+          #{$property}: $value;
+        }
+      }
+    } @else {
+      @warn "The map '#{$map}' does not exist in theme '#{$theme}'.";
+    }
+  }
+}
