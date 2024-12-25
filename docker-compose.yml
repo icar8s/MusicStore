@@ -89,8 +89,9 @@ services:
     ports:
       - "4000:80" 
     environment:
-      NODE_ENV: development
-      VITE_APP_SCOPE: MsStore
+      NODE_ENV: "development"
+      VITE_APP_SCOPE: "MsStore"
+      MY_APP_SCOPE: "MsStore"
     depends_on:
       - postgres
       - redis
@@ -104,8 +105,9 @@ services:
     ports:
       - "4001:80" 
     environment:
-      NODE_ENV: development
-      VITE_APP_SCOPE: GsStore
+      NODE_ENV: "development"
+      VITE_APP_SCOPE: "GsStore"
+      MY_APP_SCOPE: "GsStore"
     depends_on:
       - postgres
       - redis
