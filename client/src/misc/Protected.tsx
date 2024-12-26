@@ -18,8 +18,8 @@ export const ProtectedRoute = ({
 
     const {role} = useIdentityStore();
 
-    if(!component.meta.roles.includes(role.dataResult?.data ?? "")){
-        return <>You don't have permission to this resource'</>
+    if(!component.meta.roles.includes(role)){
+        return <div style={{color: "white"}}>You don't have permission to this resource'</div>
     }
 
     return React.createElement(component)
@@ -34,8 +34,8 @@ export const ProtectedContent = ({children, roles}: IProtectedContent) => {
     const {role} = useIdentityStore();
 
     if((typeof roles === "string" &&
-        (role.dataResult?.data ?? "") !== roles) ||
-        !roles.includes(role.dataResult?.data ?? "")){
+        role !== roles) ||
+        !roles.includes(role)){
 
         return null
     }

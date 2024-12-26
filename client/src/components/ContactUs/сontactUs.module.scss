@@ -7,11 +7,15 @@
   height: 100%;
   min-height: 100vh;
 }
-
 .h1 {
   font-size: 3em;
   margin: 150px 30px 20px 200px;
-  position: absolute;
+  font-weight: bold; /* Толщина текста */
+  display: inline; /* Убедитесь, что работает с точкой */
+}
+
+.point{
+  color: #ff69b4;
 }
 .sale{
   width: 100%;
@@ -78,6 +82,11 @@ h2 {
   border-right: none;
   border-bottom: none;
 }
+.title-container {
+  display: flex;
+  flex-direction: row;
+}
+
 
 .card::after {
   bottom: -3px;

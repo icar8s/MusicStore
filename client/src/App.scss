@@ -1,7 +1,8 @@
-@use "laoyout/_themes/global" as global;
+@use "layout/_themes/global" as global;
 
 #root {
   min-height: 100vh;
+  display: flex;
 }
 
 .container {

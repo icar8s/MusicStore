@@ -14,7 +14,7 @@ public sealed class NewsController(IMusicNewsService musicNewsService): Controll
     [AllowAnonymous]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetPageAsync(PageIndex page,
+    public async Task<IActionResult> GetPageAsync([FromQuery]PageIndex page,
         CancellationToken ctx = default)
     {
         var result = await musicNewsService.GetNewsAsync(page, ctx);
@@ -24,16 +24,16 @@ public sealed class NewsController(IMusicNewsService musicNewsService): Controll
             return BadRequest();
         }
         
-        return Ok(result.Data);
+        return Ok(result);
     }
     
     [HttpPost]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "admin")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> CreateAsync(NewsDto newsDto,
+    public async Task<IActionResult> CreateAsync([FromBody]NewsDto newsDto,
         CancellationToken ctx = default)
     {
         var result = await musicNewsService.CreateAsync(newsDto, ctx);

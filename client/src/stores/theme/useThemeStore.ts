@@ -1,4 +1,4 @@
-import {definedThemes} from "../../laoyout/_themes/themify.ts";
+import {definedThemes} from "../../layout/_themes/themify.ts";
 import {create} from "zustand";
 
 type SetThemeAction = {

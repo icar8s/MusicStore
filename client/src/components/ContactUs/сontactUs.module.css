@@ -12,7 +12,12 @@
 .h1 {
   font-size: 3em;
   margin: 150px 30px 20px 200px;
-  position: absolute;
+  font-weight: bold; /* Толщина текста */
+  display: inline; /* Убедитесь, что работает с точкой */
+}
+
+.point {
+  color: #ff69b4;
 }
 
 .sale {
@@ -85,6 +90,11 @@ h2 {
   border-bottom: none;
 }
 
+.title-container {
+  display: flex;
+  flex-direction: row;
+}
+
 .card::after {
   bottom: -3px;
   right: -3px;
@@ -130,4 +140,4 @@ h2 {
   background-color: #ff69b4;
 }
 
-/*# sourceMappingURL=сontactUs.module.css.map */
+/*# sourceMappingURL=%D1%81ontactUs.module.css.map */

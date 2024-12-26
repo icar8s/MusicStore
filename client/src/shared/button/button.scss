@@ -1,0 +1,5 @@
+@use "../../layout/_themes/global" as global;
+
+.button{
+  @include global.themify("button");
+}

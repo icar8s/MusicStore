@@ -8,12 +8,12 @@ namespace GamerShop.Controllers;
 [Route("api/[controller]")]
 public class CartController(IGamerCartService gamerCartService): ControllerBase
 {
-    [HttpGet("{cartId:guid}")]
+    [HttpGet]
     [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetCartByIdAsync(Guid cartId)
+    public async Task<IActionResult> GetCartByIdAsync()
     {
         var result = await gamerCartService.GetCartAsync();
         
@@ -25,12 +25,12 @@ public class CartController(IGamerCartService gamerCartService): ControllerBase
         return Ok(result);
     }
 
-    [HttpPut("{cartId:guid}")]
+    [HttpPut("{itemId:guid}")]
     [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> AddItemToCartAsync(Guid cartId, Guid itemId, uint amount)
+    public async Task<IActionResult> AddItemToCartAsync(Guid itemId, uint amount)
     {
         var result = await gamerCartService.AddGamerToCartAsync(itemId);
         
@@ -42,12 +42,12 @@ public class CartController(IGamerCartService gamerCartService): ControllerBase
         return Ok(result);
     }
 
-    [HttpDelete("{cartId:guid}")]
+    [HttpDelete("{itemId:guid}")]
     [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> RemoveItemFromCartAsync(Guid cartId, Guid itemId)
+    public async Task<IActionResult> RemoveItemFromCartAsync(Guid itemId)
     {
         var result = await gamerCartService.RemoveProductFromCartAsync(itemId);
         

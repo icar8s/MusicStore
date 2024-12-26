@@ -1,77 +1,84 @@
 import {NavLink} from "react-router-dom";
-import {Register} from "../Register/Register.tsx";
 import styles from "../ContactUs/сontactUs.module.scss";
 import {useThemeStore} from "../../stores/theme/useThemeStore.ts";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import {useIdentityStore} from "../../stores/identity/useIdentityStore.ts";
-import {Button} from "../../shared/button/Button.tsx";
-import {ChangeEvent, FormEvent, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 import {SignInType} from "../../models/dtos/token.ts";
-import {Input} from "../../shared/input/Input.tsx";
+import {useApi} from "../../misc/hooks/useApi.tsx";
+import {$api} from "../../api";
+import {Register} from "../Register/Register.tsx";
 
 export const Login: ComponentWithMeta  = () => {
     const {selectedTheme} = useThemeStore();
-    const {signIn} = useIdentityStore();
+    const [signInData, setSignInData] = useState<SignInType>({
+        client_secret: "client_secret",
+        client_id: "Api",
+        scope: "api",
+        grant_type: "password",
+        password: "!QAZ2wsx",
+        username: "admin"
+    })
 
-    const [name, setName] = useState("admin");
-    const [password, setPassword] = useState("!QAZ2wsx");
+    const {token: t, setToken, setRole, role: r} = useIdentityStore();
 
-    const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setName(e.target.value);
-    };
+    const {data: token, reFetch: signIn} = useApi({method: $api.general.identity.signIn, params:[signInData], auto: false})
+    const {data: role, reFetch: getRole} = useApi({method: $api.general.account.getRole, params: [token ?? t], auto: false})
 
-    const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
+    function handleSubmit(e: FormEvent) {
+        e.preventDefault()
+        signIn()
+    }
 
-
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
-        const signInData: SignInType = {
-            client_id: "Api",
-            client_secret: "client_secret",
-            scope: "api offline_access",
-            grant_type: "password",
-            password: password,
-            username: name,
+    useEffect(() => {
+        if(token){
+            setToken(token)
+            getRole()
         }
-        signIn(signInData)
-    };
+    }, [token]);
+
+    useEffect(() => {
+        if(role){
+            setRole(role)
+        }
+    }, [role]);
 
     return (
         <div className={styles["contact-us"]}>
             <div className={`${styles.card} ${styles["login-card"]}`}>
-                <form className={styles["contact-form"]} onSubmit={handleSubmit}>
+                <form
+                    onSubmit={handleSubmit}
+                    className={styles["contact-form"]}>
                     <h2 className={styles.h2}>Login</h2>
                     <label className={styles["contact-form-label"]}>
-                        Name
-                        <Input
+                        Email + {r}
+                        <input
                             type="text"
-                            name="email"
+                            name="name"
+                            value={signInData.username}
+                            onChange={(event) => setSignInData((prevState) => ({...prevState, username: event.target?.value ?? prevState.username}))}
                             className={styles["contact-form-input"]}
-                            value={name}
-                            onChange={handleNameChange}
                             required
                         />
-                    </label>
+                    </label >
                     <label className={styles["contact-form-label"]}>
                         Password
-                        <Input
+                        <input
+                            value={signInData.password}
+                            onChange={(event) => setSignInData((prevState) => ({...prevState, password: event.target?.value ?? prevState.password}))}
                             type="password"
                             name="password"
                             className={styles["contact-form-input"]}
-                            value={password}
-                            onChange={handlePasswordChange}
                             required
                         />
                     </label>
-                    <Button
+                    <button
                         className={`${styles["contact-form-button-hover"]} ${styles["contact-form-button"]}`}
                         type="submit"
                         onClick={() => console.log("login")}
                     >
                         Login
-                    </Button>
+                    </button>
                     <NavLink
                         className={`${selectedTheme}-theme nav-link login-text`}
                         to={Register.meta.route}>
@@ -87,5 +94,5 @@ export const Login: ComponentWithMeta  = () => {
 // Определяем мета-информацию для компонента
 Login.meta = {
     route: "login",
-    roles: ["admin", "moderator"],
+    roles: ["guest"],
 };

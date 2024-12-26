@@ -59,26 +59,9 @@ public class GamerProductService(
     public async Task<IResult<Guid>> AddGamerProductAsync(GamerProductDto gamerProduct,
         CancellationToken cancellationToken = default)
     {
-        if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
-        {
-            await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
-        }
-        
-        var blobContainerClient = blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName);
-        
-        var blobClient = blobContainerClient.GetBlobClient($"{gamerProduct.Name}.txt");
-        
-        var data =  Convert.FromBase64String(gamerProduct.Base64Image);
-        
-        var binaryData = new BinaryData(data);
-        
-        await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
-        
-        var newsEntity = mapper.Map<GamerProduct>(gamerProduct);
+        var productEntity = mapper.Map<GamerProduct>(gamerProduct);
 
-        newsEntity.BlobId = $"{blobClient.Uri}/{gamerProduct.Name}.txt";
-        
-        var id = await genericGamerRepository.CreateAsync(newsEntity, cancellationToken);
+        var id = await genericGamerRepository.CreateAsync(productEntity, cancellationToken);
         
         if (gamerProduct.Percentage >= 0)
         {
@@ -97,27 +80,8 @@ public class GamerProductService(
     public async Task<IResult<bool>> UpdateGamerProductAsync(GamerProductDto gamerProduct,
         CancellationToken cancellationToken = default)
     {
-        if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
-        {
-            await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
-        }
-        
-        var blobContainerClient = blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName);
-        
-        var blobClient = blobContainerClient.GetBlobClient($"{gamerProduct.Name}.txt");
-        
-        await blobClient.DeleteIfExistsAsync(cancellationToken: cancellationToken);
-        
-        var data =  Convert.FromBase64String(gamerProduct.Base64Image);
-        
-        var binaryData = new BinaryData(data);
-        
-        await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
-        
         var gamerEntity = mapper.Map<GamerProduct>(gamerProduct);
 
-        gamerEntity.BlobId = $"{blobClient.Uri}/{gamerProduct.Name}.txt";
-        
         await genericGamerRepository.UpdateAsync(gamerEntity, cancellationToken);
         
         var sale = await saleRepository.GetByProductIdAsync(gamerEntity.Id, cancellationToken);

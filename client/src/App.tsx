@@ -21,6 +21,7 @@ import {NewsGameStore} from "./componentsGameStore/News/News.tsx";
 import {News} from "./components/News/News.tsx";
 import {Layout} from "./components/Layout/Layout.tsx";
 
+
 function App() {
     const scope = import.meta.env.VITE_APP_SCOPE;
     const {selectedTheme} = useThemeStore();

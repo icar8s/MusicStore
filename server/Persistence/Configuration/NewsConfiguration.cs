@@ -16,8 +16,7 @@ public class NewsConfiguration: IEntityTypeConfiguration<News>
             .HasMaxLength(500)
             .IsRequired();
         
-        builder.Property(p => p.BlobId)
-            .HasMaxLength(20)
+        builder.Property(p => p.Base64Image)
             .IsRequired();
     }
 }

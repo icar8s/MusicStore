@@ -29,8 +29,7 @@ internal static class IdentityData
                 context.IdentityResources.Add(resource.ToEntity());
             context.SaveChanges();
         }
-
-
+        
         var notExistedScopes = Configurations.GetApiScopes()
             .Where(c => !context.ApiScopes.Select(c => c.Name).Contains(c.Name)).ToList();
 

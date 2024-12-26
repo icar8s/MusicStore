@@ -56,24 +56,7 @@ public class MusicProductService(
     public async Task<IResult<Guid>> AddMusicProductAsync(MusicProductDto musicProduct,
         CancellationToken cancellationToken = default)
     {
-        if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
-        {
-            await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
-        }
-        
-        var blobContainerClient = blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName);
-        
-        var blobClient = blobContainerClient.GetBlobClient($"{musicProduct.Name}.txt");
-        
-        var data =  Convert.FromBase64String(musicProduct.Base64Image);
-        
-        var binaryData = new BinaryData(data);
-        
-        await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
-        
         var musicEntity = mapper.Map<MusicProduct>(musicProduct);
-
-        musicEntity.BlobId = $"{blobClient.Uri}/{musicProduct.Name}.txt";
         
         var id = await genericMusicRepository.CreateAsync(musicEntity, cancellationToken);
         
@@ -94,26 +77,7 @@ public class MusicProductService(
     public async Task<IResult<bool>> UpdateMusicProductAsync(MusicProductDto musicProduct,
         CancellationToken cancellationToken = default)
     {
-        if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
-        {
-            await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
-        }
-        
-        var blobContainerClient = blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName);
-        
-        var blobClient = blobContainerClient.GetBlobClient($"{musicProduct.Name}.txt");
-        
-        await blobClient.DeleteIfExistsAsync(cancellationToken: cancellationToken);
-        
-        var data =  Convert.FromBase64String(musicProduct.Base64Image);
-        
-        var binaryData = new BinaryData(data);
-        
-        await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
-        
         var musicEntity = mapper.Map<MusicProduct>(musicProduct);
-
-        musicEntity.BlobId = $"{blobClient.Uri}/{musicProduct.Name}.txt";
         
         await genericMusicRepository.UpdateAsync(musicEntity, cancellationToken);
         

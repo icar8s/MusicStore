@@ -3,6 +3,7 @@ using System.Reflection;
 using Application.Interfaces.Repositories;
 using Application.Interfaces.Services;
 using Application.Interfaces.Services.GamerStore;
+using Azure.Storage.Blobs;
 using Domain.Entities.GamerStore;
 using Domain.Entities.General;
 using Domain.Entities.General.Links;
@@ -87,7 +88,6 @@ internal static class ServiceExtensions
             options.Authority = identityUrl;
             options.RequireHttpsMetadata = false;
             options.Audience = audience;
-            options.TokenValidationParameters.RoleClaimType = "role";
         });
 
         return services;

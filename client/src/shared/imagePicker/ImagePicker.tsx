@@ -11,7 +11,8 @@ export const ImagePicker = ({setImageBase64Image}: IImagePicker) => {
 
     reader.onload = () => {
         if (reader.result) {
-            setImageBase64Image(reader.result.toString()); // Set the Base64 image
+            const base64 = reader.result.toString();
+            setImageBase64Image(base64.substring(base64.indexOf(",") + 1)); // Set the Base64 image
         }
     };
 

@@ -1,0 +1,10 @@
+@use "general/fonts" as font;
+
+$select-background:#4f4f4f;
+$select-color: #fff;
+$select-width: 220px;
+$select-height: 40px;
+$select-cursor: pointer;
+$select-display: inline-block;
+$select-position: relative;
+$select-font-size: font.$m_font;

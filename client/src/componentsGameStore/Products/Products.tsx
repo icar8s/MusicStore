@@ -1,27 +1,46 @@
 import { Panel } from "../../shared/panel/Panel.tsx";
-import { useProductsStore } from "../../stores/products/useProductsStore.ts";
 import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
-import "./products.module.scss";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
-import {useModal} from "../../misc/providers/ModalProvider.tsx";
-import styles from "../../components/Products/products.module.scss";
+import "./products.scss";
 import {ProtectedContent} from "../../misc/Protected.tsx";
 import create from "../../assets/images/sliderHome/plus-circle.png";
-import {ProductModal} from "./ModalProducts/ProductModal.tsx";
-import {Product} from "../../components/Product/Product.tsx";
+import {ProductModal} from "../../components/Products/ModalProducts/ProductModal.tsx";
+import {Product} from "../../shared/Product/Product.tsx";
+import {useEffect, useState} from "react";
+import {useModal} from "../../misc/hooks/useModal.ts";
+import {$api} from "../../api";
+import {IPageIndex} from "../../misc/requestHelpers/pageIndex.ts";
+import {useApi} from "../../misc/hooks/useApi.tsx";
+import {useProductsStore} from "../../stores/products/useProductsStore.ts";
 
 export const ProductsGameStore: ComponentWithMeta  = ()  => {
-    const { shortGamerProducts} = useProductsStore();
     const { selectedTheme } = useThemeStore();
+    const {addGamerProducts} = useProductsStore()
     const {openModal} = useModal();
+    const [page, setPage] = useState<IPageIndex>({pageNumber: 0, pageSize: 10})
+    const {data, hasNextPage} = useApi({method: $api.gamer.product.getProducts, params: [page]})
+
+    useEffect(() => {
+        if(hasNextPage){
+            setPage((prevPage) => ({
+                ...prevPage,
+                pageNumber: prevPage.pageNumber + 1
+            }))
+        }
+    }, [data, hasNextPage]);
+
+    useEffect(() => {
+        if(data){
+            addGamerProducts(data)
+        }
+    }, [data, addGamerProducts]);
 
     return (
-        <div className={`${styles.productsWrapper} ${selectedTheme}-theme ${styles["products-all"]}`}>
+        <div className={`products-wrapper ${selectedTheme}-theme`}>
             <div className="products-container">
-                <ProtectedContent roles={""}>
+                <ProtectedContent roles={"admin"}>
                     <div
                         style={{
-                            position: "fixed",
                             top: "0",
                             left: "0",
                             width: "100%",
@@ -36,7 +55,8 @@ export const ProductsGameStore: ComponentWithMeta  = ()  => {
                                 right: "20px",
                                 bottom: "50px",
                                 width: "50px",
-                                display: ""
+                                display: "",
+                                cursor: "pointer"
                             }}
                             src={create}
                             alt="Product 1"
@@ -46,8 +66,8 @@ export const ProductsGameStore: ComponentWithMeta  = ()  => {
                 </ProtectedContent>
             </div>
 
-            <Panel className={`${styles.productsContainer} ${selectedTheme}-theme`}>
-                {shortGamerProducts.dataResult?.data?.map((product, index) => (
+            <Panel className={`products-container ${selectedTheme}-theme`}>
+                {data?.map((product, index) => (
                     <Product
                         key={index}
                         product={product}
