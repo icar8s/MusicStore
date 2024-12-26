@@ -16,11 +16,11 @@ export const LoginGameStore: ComponentWithMeta  = () => {
         client_id: "Api",
         scope: "api",
         grant_type: "password",
-        password: "",
-        username: ""
+        password: "!QAZ2wsx",
+        username: "vadmin"
     })
 
-    const {token: t, setToken, setRole} = useIdentityStore();
+    const {token: t, setToken, setRole, role: r} = useIdentityStore();
 
     const {data: token, reFetch: signIn} = useApi({method: $api.general.identity.signIn, params:[signInData], auto: false})
     const {data: role, reFetch: getRole} = useApi({method: $api.general.account.getRole, params: [token ?? t], auto: false})
@@ -51,7 +51,7 @@ export const LoginGameStore: ComponentWithMeta  = () => {
                     className={styles["contact-form"]}>
                     <h2 className={styles.h2}>Login</h2>
                     <label className={styles["contact-form-label"]}>
-                        Email
+                        Email + {r}
                         <input
                             type="text"
                             name="name"

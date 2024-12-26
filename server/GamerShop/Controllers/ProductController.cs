@@ -63,7 +63,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
     }
 
     [HttpPost("add")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "admin")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -81,7 +81,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
     }
 
     [HttpPut("update/{id:guid}")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "admin")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -99,7 +99,7 @@ public sealed class ProductController(IGamerProductService gamerProductService) 
     }
 
     [HttpDelete("delete/{id:guid}")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "admin")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]

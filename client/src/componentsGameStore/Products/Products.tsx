@@ -1,5 +1,4 @@
 import { Panel } from "../../shared/panel/Panel.tsx";
-import { useProductsStore } from "../../stores/products/useProductsStore.ts";
 import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
 import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import "./products.scss";
@@ -12,10 +11,11 @@ import {useModal} from "../../misc/hooks/useModal.ts";
 import {$api} from "../../api";
 import {IPageIndex} from "../../misc/requestHelpers/pageIndex.ts";
 import {useApi} from "../../misc/hooks/useApi.tsx";
+import {useProductsStore} from "../../stores/products/useProductsStore.ts";
 
 export const ProductsGameStore: ComponentWithMeta  = ()  => {
-    const { shortGamerProducts} = useProductsStore();
     const { selectedTheme } = useThemeStore();
+    const {addGamerProducts} = useProductsStore()
     const {openModal} = useModal();
     const [page, setPage] = useState<IPageIndex>({pageNumber: 0, pageSize: 10})
     const {data, hasNextPage} = useApi({method: $api.gamer.product.getProducts, params: [page]})
@@ -28,6 +28,12 @@ export const ProductsGameStore: ComponentWithMeta  = ()  => {
             }))
         }
     }, [data, hasNextPage]);
+
+    useEffect(() => {
+        if(data){
+            addGamerProducts(data)
+        }
+    }, [data, addGamerProducts]);
 
     return (
         <div className={`products-wrapper ${selectedTheme}-theme`}>
@@ -61,7 +67,7 @@ export const ProductsGameStore: ComponentWithMeta  = ()  => {
             </div>
 
             <Panel className={`products-container ${selectedTheme}-theme`}>
-                {shortGamerProducts.dataResult?.data?.map((product, index) => (
+                {data?.map((product, index) => (
                     <Product
                         key={index}
                         product={product}

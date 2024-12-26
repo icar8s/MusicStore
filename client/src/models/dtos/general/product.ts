@@ -1,7 +1,7 @@
 import {Sale} from "./sale.ts";
 
 export type Product = {
-    id: string;
+    id: string | null;
     name: string;
     price: number;
     quantity: number;

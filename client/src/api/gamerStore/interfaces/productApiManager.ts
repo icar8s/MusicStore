@@ -6,12 +6,13 @@ import {GamerProductShort} from "../../../models/dtos/gameStore/gamerProductShor
 import {IResponseList} from "../../../misc/requestHelpers/IResponseList.ts";
 import {IToken} from "../../../models/dtos/token.ts";
 import {AxiosResponse} from "axios";
+import {IResult} from "../../../misc/requestHelpers/IResult.ts";
 
 export interface IProductApiManager {
     getProduct: (productId: string) => Promise<AxiosResponse<GamerProductDetail, unknown>>;
     getProducts: (page: IPageIndex) => Promise<AxiosResponse<IResponseList<GamerProductShort>, unknown>>;
     getProductsByType: (type: GamerProductType, page: IPageIndex) => Promise<AxiosResponse<IResponseList<GamerProductShort>, unknown>>;
-    create: (product: GamerProduct, token: IToken) => Promise<AxiosResponse<string, unknown>>;
-    update: (product: GamerProduct, token: IToken) => Promise<AxiosResponse<unknown, unknown>>;
+    create: (product: GamerProduct, token: IToken) => Promise<AxiosResponse<IResult<string>, unknown>>;
+    update: (product: GamerProduct, token: IToken) => Promise<AxiosResponse<IResult<unknown>, unknown>>;
     delete: (productId: string, token: IToken) => Promise<AxiosResponse<unknown, unknown>>;
 }

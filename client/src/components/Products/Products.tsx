@@ -1,5 +1,4 @@
 import { Panel } from "../../shared/panel/Panel.tsx";
-import { useProductsStore } from "../../stores/products/useProductsStore.ts";
 import { Product } from "../../shared/Product/Product.tsx";
 import { useThemeStore } from "../../stores/theme/useThemeStore.ts";
 import styles from "./products.module.scss";
@@ -8,11 +7,22 @@ import create from "../../assets/images/sliderHome/plus-circle.png"
 import {ProductModal} from "../../componentsGameStore/Products/ModalProducts/ProductModal.tsx";
 import {ProtectedContent} from "../../misc/Protected.tsx";
 import {useModal} from "../../misc/hooks/useModal.ts";
+import {useApi} from "../../misc/hooks/useApi.tsx";
+import {$api} from "../../api";
+import {useEffect, useState} from "react";
+import {IPageIndex} from "../../misc/requestHelpers/pageIndex.ts";
+import {useProductsStore} from "../../stores/products/useProductsStore.ts";
 
 export const Products: ComponentWithMeta = () => {
-    const { shortMusicProducts} = useProductsStore();
+    const {addMusicProducts} = useProductsStore()
+    const [page, setPage] = useState<IPageIndex>({pageNumber: 1, pageSize: 10})
+    const {data} = useApi({method: $api.music.product.getProducts, params: [page]})
     const { selectedTheme } = useThemeStore();
     const {openModal} = useModal();
+
+    useEffect(() => {
+
+    }, [data]);
 
     return (
         <div className={`${styles.productsWrapper} ${selectedTheme}-theme ${styles["products-all"]}`}>
@@ -45,7 +55,7 @@ export const Products: ComponentWithMeta = () => {
             </div>
 
             <Panel className={`${styles.productsContainer} ${selectedTheme}-theme`}>
-                {shortMusicProducts.dataResult?.data?.map((product, index) => (
+                {data?.map((product, index) => (
                     <Product
                         key={index}
                         product={product}

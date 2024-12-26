@@ -32,8 +32,8 @@ public class GamerStoreData: AbstractData<GamerProduct>
         new ()
         {
             Id = _roleId,
-            Name = "Moderator",
-            NormalizedName = "MODERATOR",
+            Name = "admin",
+            NormalizedName = "ADMIN",
             ConcurrencyStamp = Guid.NewGuid().ToString("D")
         }
     };

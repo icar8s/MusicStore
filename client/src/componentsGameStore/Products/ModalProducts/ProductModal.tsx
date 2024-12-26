@@ -13,6 +13,9 @@ import {
     gamerProductType,
     GamerProductType
 } from "../../../models/dtos/enums/gameProductType.ts";
+import {$api} from "../../../api";
+import {useApi} from "../../../misc/hooks/useApi.tsx";
+import {useIdentityStore} from "../../../stores/identity/useIdentityStore.ts";
 
 export interface IProductModal {
     product?: GamerProductDetail
@@ -21,7 +24,8 @@ export interface IProductModal {
 export const ProductModal = ({product}: IProductModal) => {
 
     const isEdit = product !== undefined;
-
+    const method = isEdit ? $api.gamer.product.update : $api.gamer.product.create;
+    const {token} = useIdentityStore()
     const [productState, setProductState] = useState<GamerProduct>(
         product
             ? {
@@ -35,7 +39,7 @@ export const ProductModal = ({product}: IProductModal) => {
                 type: product.type
             }
             : {
-                id: '',
+                id: null,
                 name: '',
                 price: 0,
                 quantity: 0,
@@ -45,6 +49,8 @@ export const ProductModal = ({product}: IProductModal) => {
                 type: GamerProductType.Laptop
             }
     );
+
+    const {reFetch: send} = useApi({method, params: [productState, token], auto: false})
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { id, value } = e.target;
@@ -64,7 +70,7 @@ export const ProductModal = ({product}: IProductModal) => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-
+        send()
     };
 
     return (

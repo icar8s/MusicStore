@@ -8,6 +8,7 @@ import {getBaseGamerEndpointUrl} from "../../misc/endpointHelper.ts";
 import axios from "axios";
 import {IResponseList} from "../../misc/requestHelpers/IResponseList.ts";
 import {IToken} from "../../models/dtos/token.ts";
+import {IResult} from "../../misc/requestHelpers/IResult.ts";
 
 class ProductApiManager implements IProductApiManager {
     getProduct = async (productId: string) => {
@@ -76,7 +77,7 @@ class ProductApiManager implements IProductApiManager {
         }
 
         try{
-            return  await axios<string>(config)
+            return  await axios<IResult<string>>(config)
         }
         catch(error){
             return Promise.reject(error);

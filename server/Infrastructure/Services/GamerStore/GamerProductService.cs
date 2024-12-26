@@ -74,11 +74,11 @@ public class GamerProductService(
         
         await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
         
-        var newsEntity = mapper.Map<GamerProduct>(gamerProduct);
+        var productEntity = mapper.Map<GamerProduct>(gamerProduct);
 
-        newsEntity.BlobId = $"{blobClient.Uri}/{gamerProduct.Name}.txt";
+        productEntity.BlobId = $"{blobClient.Uri}/{gamerProduct.Name}.txt";
         
-        var id = await genericGamerRepository.CreateAsync(newsEntity, cancellationToken);
+        var id = await genericGamerRepository.CreateAsync(productEntity, cancellationToken);
         
         if (gamerProduct.Percentage >= 0)
         {
