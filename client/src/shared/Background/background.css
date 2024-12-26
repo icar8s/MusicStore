@@ -28,7 +28,18 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.container.MsStore-theme, .MsStore-theme .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .container .content.GsStore-theme, .GsStore-theme .container .content {
+  font-size: 20rem;
+  filter: opacity(0.5);
+  color: #eee;
+}
+.container .content.MsStore-theme, .MsStore-theme .container .content {
   font-size: 20rem;
   filter: opacity(0.5);
   color: #eee;

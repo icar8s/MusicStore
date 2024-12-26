@@ -32,5 +32,10 @@
   height: inherit;
   background: linear-gradient(to right, black, #044100);
 }
+.container.MsStore-theme, .MsStore-theme .container {
+  width: 100%;
+  height: inherit;
+  background: linear-gradient(to right, black, #044100);
+}
 
 /*# sourceMappingURL=App.css.map */

@@ -4,7 +4,7 @@ import {ComponentWithMeta} from "../../misc/ComponentWithMeta.ts";
 import "./products.scss";
 import {ProtectedContent} from "../../misc/Protected.tsx";
 import create from "../../assets/images/sliderHome/plus-circle.png";
-import {ProductModal} from "./ModalProducts/ProductModal.tsx";
+import {ProductModal} from "../../components/Products/ModalProducts/ProductModal.tsx";
 import {Product} from "../../shared/Product/Product.tsx";
 import {useEffect, useState} from "react";
 import {useModal} from "../../misc/hooks/useModal.ts";

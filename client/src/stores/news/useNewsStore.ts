@@ -1,22 +1,23 @@
-/*
 import {create} from "zustand/index";
-import {IInFiniteList, InFiniteList} from "../../misc/requestHelpers/infiniteList.ts";
-import {IResponseList} from "../../misc/requestHelpers/IResponseList.ts";
 import {News} from "../../models/dtos/general/news.ts";
 
 export type NewsState = {
-    news: IInFiniteList<IResponseList<News>>
+    news: News[]
 }
 
 const newsState: NewsState = {
-    news: new InFiniteList()
+    news: []
 }
 
+export type NewsDispatch = {
+    addNews: (news: News[]) => void
+}
 
-const useNewsStore = create<NewsState>((set) => ({
-
+const useNewsStore = create<NewsState & NewsDispatch>((set) => ({
+    ...newsState,
+    addNews: (news: News[]) => set((state => ({...state, news: [...state.news, ...news]})),),
 }));
 
 
-export { useNewsStore };*/
+export { useNewsStore };
 console.log("10")

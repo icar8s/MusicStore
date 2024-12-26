@@ -31,5 +31,14 @@
   font-size: 16px;
   cursor: pointer;
 }
+.button.MsStore-theme, .MsStore-theme .button {
+  background-color: #69ef26;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 /*# sourceMappingURL=button.css.map */

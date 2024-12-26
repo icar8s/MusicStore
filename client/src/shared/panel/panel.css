@@ -25,5 +25,8 @@
 .panel.GsStore-theme, .GsStore-theme .panel {
   padding: 16px;
 }
+.panel.MsStore-theme, .MsStore-theme .panel {
+  padding: 16px;
+}
 
 /*# sourceMappingURL=panel.css.map */

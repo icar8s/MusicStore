@@ -6,6 +6,7 @@
 
 $themes: (
         GsStore: gsStore.$gsStore-theme,
+        MsStore: msStore.$msStore-theme
 );
 
 @mixin themify($property, $key, $themes: $themes) {

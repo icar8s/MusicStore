@@ -2,9 +2,180 @@
 /*Do not modify*/
 
 
+@use "variables/background-container.scss" as background-container;
+@forward "variables/background-container.scss";
+
+@use "variables/background-content.scss" as background-content;
+@forward "variables/background-content.scss";
+
+@use "variables/button.scss" as button;
+@forward "variables/button.scss";
+
+@use "variables/card-after.scss" as card-after;
+@forward "variables/card-after.scss";
+
+@use "variables/card-before.scss" as card-before;
+@forward "variables/card-before.scss";
+
+@use "variables/card.scss" as card;
+@forward "variables/card.scss";
+
+@use "variables/contact-form-button-hover.scss" as contact-form-button-hover;
+@forward "variables/contact-form-button-hover.scss";
+
+@use "variables/contact-form-button.scss" as contact-form-button;
+@forward "variables/contact-form-button.scss";
+
+@use "variables/contact-form-input-focus.scss" as contact-form-input-focus;
+@forward "variables/contact-form-input-focus.scss";
+
+@use "variables/contact-form-input.scss" as contact-form-input;
+@forward "variables/contact-form-input.scss";
+
+@use "variables/contact-form-label.scss" as contact-form-label;
+@forward "variables/contact-form-label.scss";
+
+@use "variables/contact-form.scss" as contact-form;
+@forward "variables/contact-form.scss";
+
+@use "variables/contact-us.scss" as contact-us;
+@forward "variables/contact-us.scss";
+
+@use "variables/content.scss" as content;
+@forward "variables/content.scss";
+
+@use "variables/h1.scss" as h1;
+@forward "variables/h1.scss";
+
+@use "variables/h2.scss" as h2;
+@forward "variables/h2.scss";
+
+@use "variables/home-container.scss" as home-container;
+@forward "variables/home-container.scss";
+
+@use "variables/input.scss" as input;
+@forward "variables/input.scss";
+
+@use "variables/login-card.scss" as login-card;
+@forward "variables/login-card.scss";
+
+@use "variables/login-text.scss" as login-text;
+@forward "variables/login-text.scss";
+
+@use "variables/logo-image.scss" as logo-image;
+@forward "variables/logo-image.scss";
+
+@use "variables/main-container.scss" as main-container;
+@forward "variables/main-container.scss";
+
+@use "variables/nav-horizontal.scss" as nav-horizontal;
+@forward "variables/nav-horizontal.scss";
+
+@use "variables/nav-link-active-hover.scss" as nav-link-active-hover;
+@forward "variables/nav-link-active-hover.scss";
+
+@use "variables/nav-link-active.scss" as nav-link-active;
+@forward "variables/nav-link-active.scss";
+
+@use "variables/nav-link-hover.scss" as nav-link-hover;
+@forward "variables/nav-link-hover.scss";
+
+@use "variables/nav-link-visited.scss" as nav-link-visited;
+@forward "variables/nav-link-visited.scss";
+
+@use "variables/nav-link.scss" as nav-link;
+@forward "variables/nav-link.scss";
+
+@use "variables/nav-section-left.scss" as nav-section-left;
+@forward "variables/nav-section-left.scss";
+
+@use "variables/nav-section-right.scss" as nav-section-right;
+@forward "variables/nav-section-right.scss";
+
+@use "variables/nav-section.scss" as nav-section;
+@forward "variables/nav-section.scss";
+
+@use "variables/nav-vertical.scss" as nav-vertical;
+@forward "variables/nav-vertical.scss";
+
 @use "variables/nav.scss" as nav;
 @forward "variables/nav.scss";
 
+@use "variables/panel.scss" as panel;
+@forward "variables/panel.scss";
+
+@use "variables/product-actual-price-active.scss" as product-actual-price-active;
+@forward "variables/product-actual-price-active.scss";
+
+@use "variables/product-actual-price.scss" as product-actual-price;
+@forward "variables/product-actual-price.scss";
+
+@use "variables/product-content.scss" as product-content;
+@forward "variables/product-content.scss";
+
+@use "variables/product-image-background.scss" as product-image-background;
+@forward "variables/product-image-background.scss";
+
+@use "variables/product-image-container.scss" as product-image-container;
+@forward "variables/product-image-container.scss";
+
+@use "variables/product-image.scss" as product-image;
+@forward "variables/product-image.scss";
+
+@use "variables/product-learn-more.scss" as product-learn-more;
+@forward "variables/product-learn-more.scss";
+
+@use "variables/product-name.scss" as product-name;
+@forward "variables/product-name.scss";
+
+@use "variables/product-percentage-active.scss" as product-percentage-active;
+@forward "variables/product-percentage-active.scss";
+
+@use "variables/product-percentage.scss" as product-percentage;
+@forward "variables/product-percentage.scss";
+
+@use "variables/product-price-active.scss" as product-price-active;
+@forward "variables/product-price-active.scss";
+
+@use "variables/product-price.scss" as product-price;
+@forward "variables/product-price.scss";
+
+@use "variables/product-wrapper.scss" as product-wrapper;
+@forward "variables/product-wrapper.scss";
+
+@use "variables/products-container.scss" as products-container;
+@forward "variables/products-container.scss";
+
+@use "variables/products-wrapper.scss" as products-wrapper;
+@forward "variables/products-wrapper.scss";
+
+@use "variables/sale.scss" as sale;
+@forward "variables/sale.scss";
+
+@use "variables/select-hover.scss" as select-hover;
+@forward "variables/select-hover.scss";
+
 @use "variables/select.scss" as select;
 @forward "variables/select.scss";
+
+@use "variables/slider-button-hover.scss" as slider-button-hover;
+@forward "variables/slider-button-hover.scss";
+
+@use "variables/slider-button.scss" as slider-button;
+@forward "variables/slider-button.scss";
+
+@use "variables/slider-content.scss" as slider-content;
+@forward "variables/slider-content.scss";
+
+@use "variables/slider-description.scss" as slider-description;
+@forward "variables/slider-description.scss";
+
+@use "variables/slider-title.scss" as slider-title;
+@forward "variables/slider-title.scss";
+
+@use "variables/slider.scss" as slider;
+@forward "variables/slider.scss";
+
+@use "variables/store-hours.scss" as store-hours;
+@forward "variables/store-hours.scss";
 

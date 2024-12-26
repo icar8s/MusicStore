@@ -1,0 +1,10 @@
+@use "../../layout/_themes/global" as global;
+
+.products-wrapper{
+  @include global.themify("products-wrapper");
+
+  .products-container{
+    @include global.themify("products-container");
+
+  }
+}

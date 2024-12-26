@@ -5,6 +5,7 @@ import {IToken} from "../models/dtos/token.ts";
 import {getBaseEndpointUrl} from "../misc/endpointHelper.ts";
 import axios from "axios";
 import {IResponseList} from "../misc/requestHelpers/IResponseList.ts";
+import {IResult} from "../misc/requestHelpers/IResult.ts";
 
 class NewsApiManager implements INewsApiManager {
     getPage = async (page: IPageIndex) => {
@@ -34,7 +35,7 @@ class NewsApiManager implements INewsApiManager {
         };
 
         try{
-            return  await axios<string>(config)
+            return await axios<IResult<string>>(config)
         }catch(error){
             return Promise.reject(error);
         }
