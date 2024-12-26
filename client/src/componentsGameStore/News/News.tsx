@@ -37,7 +37,7 @@ export const NewsGameStore: ComponentWithMeta  = () => {
     return (
         <div className={`products-wrapper ${selectedTheme}-theme`}>
             <div className="products-container">
-                <ProtectedContent roles={""}>
+                <ProtectedContent roles={"admin"}>
                     <div
                         style={{
                             top: "0",
@@ -67,11 +67,12 @@ export const NewsGameStore: ComponentWithMeta  = () => {
 
             <Panel className={`products-container ${selectedTheme}-theme`}>
                 {data?.map((news, index) => (
-                    <div style={{
+                    <div key={index} style={{
                         display: "flex",
-                        flexDirection: "column"
+                        flexDirection: "column",
+                        color: "white"
                     }}>
-                        <div><Base64Image base64String={news.base64Image} /></div>
+                        <div ><Base64Image style={{width: "200px"}} base64String={news.base64Image} /></div>
                         <div>{news.name}</div>
                         <div>{news.description}</div>
                     </div>
@@ -82,6 +83,6 @@ export const NewsGameStore: ComponentWithMeta  = () => {
 };
 
 NewsGameStore.meta = {
-    route: "news",
-    roles: [""],
+    route: "newsGameStore",
+    roles: ["admin"],
 };

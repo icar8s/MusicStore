@@ -6,27 +6,26 @@ import {SelectOption} from "../../../shared/option/SelectOption.tsx";
 import {Select} from "../../../shared/select/Select.tsx";
 import {Input} from "../../../shared/input/Input.tsx";
 import {Button} from "../../../shared/button/Button.tsx";
-import {GamerProductDetail} from "../../../models/dtos/gameStore/gamerProductDetail.ts";
-import {GamerProduct} from "../../../models/dtos/gameStore/gamerProduct.ts";
-import {
-    definedGamerProductKeys,
-    gamerProductType,
-    GamerProductType
-} from "../../../models/dtos/enums/gameProductType.ts";
 import {$api} from "../../../api";
 import {useApi} from "../../../misc/hooks/useApi.tsx";
 import {useIdentityStore} from "../../../stores/identity/useIdentityStore.ts";
+import {MusicProduct} from "../../../models/dtos/musicStore/musicProduct.ts";
+import {
+    definedMusicProductKeys,
+    musicProductType,
+    MusicProductType
+} from "../../../models/dtos/enums/musicProductType.ts";
 
 export interface IProductModal {
-    product?: GamerProductDetail
+    product?: MusicProduct
 }
 
 export const ProductModal = ({product}: IProductModal) => {
 
     const isEdit = product !== undefined;
-    const method = isEdit ? $api.gamer.product.update : $api.gamer.product.create;
+    const method = isEdit ? $api.music.product.update : $api.music.product.create;
     const {token} = useIdentityStore()
-    const [productState, setProductState] = useState<GamerProduct>(
+    const [productState, setProductState] = useState<MusicProduct>(
         product
             ? {
                 id: product.id,
@@ -46,7 +45,7 @@ export const ProductModal = ({product}: IProductModal) => {
                 base64Image: '',
                 description: '',
                 percentage: 0,
-                type: GamerProductType.Laptop
+                type: MusicProductType.Guitar
             }
     );
 
@@ -127,11 +126,11 @@ export const ProductModal = ({product}: IProductModal) => {
                     <label htmlFor="type">Product Type</label>
                     <Select
                         onClick={(e)=> {
-                            const productType = e.currentTarget.value as gamerProductType;
-                            setProductState((prev) => ({ ...prev, type: GamerProductType[productType] }));
+                            const productType = e.currentTarget.value as musicProductType;
+                            setProductState((prev) => ({ ...prev, type: MusicProductType[productType] }));
                         }}
                         defaultValue={productState.type}>
-                        {definedGamerProductKeys.map(type =>
+                        {definedMusicProductKeys.map(type =>
                             <SelectOption
                                 key={type}
                                 value={type}>

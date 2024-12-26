@@ -11,7 +11,7 @@ const LayoutGameStore: ComponentWithMeta = () => {
 
 LayoutGameStore.meta = {
     route: "/",
-    roles: [""]
+    roles: ["admin", "guest"]
 }
 
 export default LayoutGameStore;

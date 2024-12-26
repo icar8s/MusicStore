@@ -11,5 +11,5 @@ export const Layout: ComponentWithMeta = () => {
 
 Layout.meta = {
     route: "/",
-    roles: [""]
+    roles: ["admin", "guest"]
 }

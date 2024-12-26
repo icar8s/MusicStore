@@ -32,7 +32,7 @@ public class MusicStoreData : AbstractData<MusicProduct>
         new ()
         {
             Id =_roleId,
-            Name = "Admin",
+            Name = "admin",
             NormalizedName = "ADMIN",
             ConcurrencyStamp = Guid.NewGuid().ToString("D")
         }

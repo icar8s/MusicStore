@@ -28,7 +28,7 @@ class NewsApiManager implements INewsApiManager {
             url: getBaseEndpointUrl() + "api/news",
             method: 'POST',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token.access_token}`
             },
             data: news

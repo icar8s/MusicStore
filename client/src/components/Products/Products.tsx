@@ -37,7 +37,7 @@ export const Products: ComponentWithMeta  = ()  => {
     return (
         <div className={`products-wrapper ${selectedTheme}-theme`}>
             <div className="products-container">
-                <ProtectedContent roles={""}>
+                <ProtectedContent roles={"admin"}>
                     <div
                         style={{
                             top: "0",
