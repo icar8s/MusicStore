@@ -13,7 +13,7 @@ public abstract class Product: EventInfEntity
     
     public uint Quantity { get; set; } = 0;
     
-    public string BlobId { get; set; } = string.Empty;
+    public string Base64Image { get; set; } = string.Empty;
     
     public virtual List<CartProduct> Products { get; set; }
     

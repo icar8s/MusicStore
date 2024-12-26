@@ -28,24 +28,7 @@ public class GamerNewsService(IRepository<News> repository,
     public async Task<IResult<Guid>> CreateAsync(NewsDto news,
         CancellationToken cancellationToken = default)
     {
-        if(blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName) == null)
-        {
-            await blobServiceClient.CreateBlobContainerAsync(blobOptions.Value.ContainerName, cancellationToken: cancellationToken);
-        }
-        
-        var blobContainerClient = blobServiceClient.GetBlobContainerClient(blobOptions.Value.ContainerName);
-        
-        var blobClient = blobContainerClient.GetBlobClient($"{news.Name}.txt");
-        
-        var data =  Convert.FromBase64String(news.Base64Image);
-        
-        var binaryData = new BinaryData(data);
-        
-        await blobClient.UploadAsync(binaryData, cancellationToken: cancellationToken);
-        
         var newsEntity = mapper.Map<News>(news);
-
-        newsEntity.BlobId = $"{blobClient.Uri}/{news.Name}.txt";
         
         var id = await repository.CreateAsync(newsEntity, cancellationToken);
 

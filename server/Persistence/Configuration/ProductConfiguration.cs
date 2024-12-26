@@ -16,8 +16,7 @@ public sealed class ProductConfiguration: IEntityTypeConfiguration<Product>
             .HasMaxLength(500)
             .IsRequired();
         
-        builder.Property(p => p.BlobId)
-            .HasMaxLength(20)
+        builder.Property(p => p.Base64Image)
             .IsRequired();
         
         builder.HasMany(x=>x.Products)

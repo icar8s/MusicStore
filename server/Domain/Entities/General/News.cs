@@ -8,5 +8,5 @@ public class News: EventInfEntity
 
     public string Description { get; set; } = string.Empty;
     
-    public string BlobId { get; set; } = string.Empty;
+    public string Base64Image { get; set; } = string.Empty;
 }
